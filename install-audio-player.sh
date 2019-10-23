@@ -1,23 +1,24 @@
 #!/bin/sh
 
-### Config.json fuer rootPW vs. interaktiv, 
-### GPIO-Buttons, RFID-USB aktivieren ueber Audioserver config
-### startnode audio shaudio
-### RFID shplayer
-### gemeinsame Tasks von Audion und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
-### IP extern DHCP setzen
-### WLAN power_off deaktiveren?
-### USB Stick config?
-### Mausberry
-### Webseite auf Server bauen und deployen?
-### useradd -m pi?
+echo 'set static ip address in router settings'
+echo '192.168.0.1'
 
 echo 'update / upgrade system'
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade
 echo
 
+#read values from config file
+. ./config
+
+#check if default root pw from config file was changed
+if [ $ROOTPW = "CHANGEME" ];
+then
+  echo 'please change root pw in config file'
+  exit 1;
+fi
+
 echo 'set root pw'
-sudo sh -c 'echo root:martin12 | chpasswd'
+sudo sh -c "echo root:$ROOTPW | chpasswd"
 echo
 
 echo 'enable ssh root login'
@@ -92,23 +93,43 @@ sudo apt-get install -y ntfs-3g
 sudo mkdir /media/usb_audio
 echo
 
-echo 'get gpio buttons code from github'
-git clone https://github.com/MortenHe/WSGpioButtons /home/pi/mh_prog/WSGpioButtons
-echo
+#GPIO Buttons
+if [ $GPIOBUTTONS = true ];
+then
+  echo 'get gpio buttons code from github'
+  git clone https://github.com/MortenHe/WSGpioButtons /home/pi/mh_prog/WSGpioButtons
+  echo
 
-echo 'install gpio buttons' 
-npm  --prefix /home/pi/mh_prog/WSGpioButtons install
-cp /home/pi/mh_prog/WSGpioButtons/config.json.dist /home/pi/mh_prog/WSGpioButtons/config.json
-echo
+  echo 'install gpio buttons' 
+  npm  --prefix /home/pi/mh_prog/WSGpioButtons install
+  cp /home/pi/mh_prog/WSGpioButtons/config.json.dist /home/pi/mh_prog/WSGpioButtons/config.json
+  echo
 
-echo 'get usb rfid reader code from github'
-git clone https://github.com/MortenHe/WSRFID /home/pi/mh_prog/WSRFID
-echo
+  echo 'enable gpio buttons in audio and sh audio server'
+  sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i /home/pi/mh_prog/AudioServer/config.json
+  sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i /home/pi/mh_prog/NewSHAudioServer/config.json
+fi
 
-echo 'install usb rfid reader' 
-npm  --prefix /home/pi/mh_prog/WSRFID install
-cp /home/pi/mh_prog/WSRFID/config_input.json.dist /home/pi/mh_prog/WSRFID/config_input.json
-echo
+#USB RFID Reader
+if [ $USBRFIDREADER = true ];
+then
+  echo 'get usb rfid reader code from github'
+  git clone https://github.com/MortenHe/WSRFID /home/pi/mh_prog/WSRFID
+  echo
+
+  echo 'install usb rfid reader' 
+  npm  --prefix /home/pi/mh_prog/WSRFID install
+  cp /home/pi/mh_prog/WSRFID/config_input.json.dist /home/pi/mh_prog/WSRFID/config_input.json
+  echo
+
+  echo 'enable usb rfid reader in audio and sh audio server'
+  sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i /home/pi/mh_prog/AudioServer/config.json
+  sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i /home/pi/mh_prog/NewSHAudioServer/config.json
+fi
+
+echo 'get and install mausberry power button script'
+sudo wget http://files.mausberrycircuits.com/setup.sh
+sudo bash setup.sh
 
 echo 'installation done'
 echo
@@ -143,6 +164,19 @@ echo
 
 echo 'wiring'
 echo 'led: 161 (board 8) 220k ground'
+echo
 echo 'button previous: 160 (board 10) button ground'
 echo 'button pause: 253 (board 5) button ground'
 echo 'button next: 252 (board 3) button ground'
+echo
+echo 'mausberry power button'
+echo 'out GPIO 23 (8. Pin von Seite SD-Karte aussen)'
+echo 'in GPIO 24 (9. Pin von Seite SD-Karte aussen)'
+echo 'Button = SW = auessere Kontakte auf Button'
+echo 'LED = innere Kontakte auf Button (ggf. + / - vertauschen)'
+echo
+
+echo 'configure usb automount'
+echo 'sudo blkid -o list -w /dev/null -> get UUID like E012519312517010'
+echo 'sudo nano -w /etc/fstab -> UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0'
+echo

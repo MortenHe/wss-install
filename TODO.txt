@@ -38,3 +38,8 @@ VideoServer
 
 WSGpioButtons
 - config mit Button Nummern
+
+wss-install
+- gemeinsame Tasks von Audion und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
+- WLAN power_off deaktiveren?
+- Webseite auf Server bauen und deployen?
