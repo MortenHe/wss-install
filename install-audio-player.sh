@@ -131,3 +131,18 @@ echo
 echo 'config usb rfid reader'
 echo 'cat /dev/input/event0'
 echo 'vi /home/pi/mh_prog/WSRFID/config_input.json'
+echo
+
+echo 'build and deploy audio app from local computer'
+echo 'node .\deployWebsiteToServer.js appId appId'
+echo
+
+echo 'build and deploy sh audio app from local computer'
+echo 'node .\deployWebsiteToServer.js appId appId'
+echo
+
+echo 'wiring'
+echo 'led: 161 (board 8) 220k ground'
+echo 'button previous: 160 (board 10) button ground'
+echo 'button pause: 253 (board 5) button ground'
+echo 'button next: 252 (board 3) button ground'

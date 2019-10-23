@@ -1,0 +1,40 @@
+AudioClient
+- color über environment (grün 149, rosa Laila)
+- config Digital(hifiberry)|PCM|Master(tinkerboard)
+- volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
+- Countdown (konfigurierbar)
+- display:flex über :host in die Komponente ziehen aus search.html
+- Resultlist.ts, etc. prüfen welche Abos benötigt
+- Playlist-View per Route ansteuern
+- Filter, Suchterm etc. per URL-Parameter setzen
+- Zeit erster Track (20 min statt 3 min)
+
+AudioServer
+- Mockserver
+- Colors für console.log
+
+NewSHAudioClient
+- color-grey (z.B. connection icon) uber body setzen
+- searchfield und searchresult aufteilen
+- getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
+- aktuelles Volume nur aus Server laden (kein Startwert 50)
+- Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
+- config pw vs. marlen
+- Trackby für Trefferliste
+- Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
+- favicon mit besserer Auflösung und rund
+
+NewSHAudioServer
+- mock-server weitere Funktionen (pause stoppt fakeCountdown)
+
+VideoClient
+- font-awesome 5
+- Resultlist.ts, etc. prüfen welche Abos benötigt
+- Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
+
+VideoServer
+- Abschlussbild als Video danach random
+- mock-server weitere Funktionen
+
+WSGpioButtons
+- config mit Button Nummern
