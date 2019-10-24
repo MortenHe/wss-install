@@ -1,0 +1,9 @@
+git clone https://github.com/MortenHe/SoundQuizServer
+cd SoundQuizServer
+npm install
+
+git clone https://github.com/MortenHe/SoundQuizGPIO
+cd SoundQuizGPIO
+npm install
+
+Sounds nach /media/soundquiz

@@ -1,8 +1,8 @@
 AudioClient
+- Favicon mit besserer Auflösung und rund und pro Instanz
+- toggle paused mit null statt ""
 - color über environment (grün 149, rosa Laila)
-- config Digital(hifiberry)|PCM|Master(tinkerboard)
 - volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
-- Countdown (konfigurierbar)
 - display:flex über :host in die Komponente ziehen aus search.html
 - Resultlist.ts, etc. prüfen welche Abos benötigt
 - Playlist-View per Route ansteuern
@@ -10,6 +10,8 @@ AudioClient
 - Zeit erster Track (20 min statt 3 min)
 
 AudioServer
+- execSync vs. exec
+- for (let) vs. for (const)
 - Mockserver
 - Colors für console.log
 
@@ -22,9 +24,9 @@ NewSHAudioClient
 - config pw vs. marlen
 - Trackby für Trefferliste
 - Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
-- favicon mit besserer Auflösung und rund
 
 NewSHAudioServer
+--- config welcher Modus zuerst startet
 - mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 VideoClient
@@ -33,11 +35,19 @@ VideoClient
 - Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
 
 VideoServer
+- Countdown umarbeiten wie bei Audio Server
 - Abschlussbild als Video danach random
 - mock-server weitere Funktionen
 
 WSGpioButtons
-- config mit Button Nummern
+
+SoundQuizGPIO
+- keyboard
+
+SoundQuizServer
+- Countdown
+- sendclientinfo fct
+- if / else vs. return
 
 wss-install
 - gemeinsame Tasks von Audion und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
