@@ -145,6 +145,11 @@ echo 'aplay -l'
 echo 'vi /root/.mplayer/config'
 echo 'ao=alsa:device=hw=1.0'
 
+echo 'configure usb automount'
+echo 'sudo blkid -o list -w /dev/null -> get UUID like E012519312517010'
+echo 'sudo nano -w /etc/fstab -> UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0'
+echo
+
 echo 'config button pins'
 echo 'vi /home/pi/mh_prog/WSGpioButtons/config.json'
 echo
@@ -174,9 +179,4 @@ echo 'out GPIO 23 (8. Pin von Seite SD-Karte aussen)'
 echo 'in GPIO 24 (9. Pin von Seite SD-Karte aussen)'
 echo 'Button = SW = auessere Kontakte auf Button'
 echo 'LED = innere Kontakte auf Button (ggf. + / - vertauschen)'
-echo
-
-echo 'configure usb automount'
-echo 'sudo blkid -o list -w /dev/null -> get UUID like E012519312517010'
-echo 'sudo nano -w /etc/fstab -> UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0'
 echo

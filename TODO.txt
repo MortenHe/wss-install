@@ -26,7 +26,6 @@ NewSHAudioClient
 - Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
 
 NewSHAudioServer
---- config welcher Modus zuerst startet
 - mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 VideoClient
@@ -42,7 +41,6 @@ VideoServer
 WSGpioButtons
 
 SoundQuizGPIO
-- keyboard
 
 SoundQuizServer
 - Countdown
@@ -50,6 +48,10 @@ SoundQuizServer
 - if / else vs. return
 
 wss-install
-- gemeinsame Tasks von Audion und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
+- alsamixer F6 Soundkarte auswählen -> hifiberry?
+--- hifiberry https://support.hifiberry.com/hc/en-us/community/posts/207306565-Raspberry-Pi-3-DAC-Step-by-Step
+- fstab extrahieren und per sed schreiben
+- gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
 - WLAN power_off deaktiveren?
 - Webseite auf Server bauen und deployen?
+- mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
