@@ -143,7 +143,7 @@ echo
 echo 'config mplayer'
 echo 'aplay -l'
 echo 'vi /root/.mplayer/config'
-echo 'ao=alsa:device=hw=1.0'
+echo 'ao=alsa:device=hw=0.2'
 
 echo 'configure usb automount'
 echo 'sudo blkid -o list -w /dev/null -> get UUID like E012519312517010'
