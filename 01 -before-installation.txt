@@ -1,0 +1,22 @@
+=== Raspi ===
+- Download "Raspian with desktop"
+- Image mit Etcher auf SD Karte flashen
+- Raspi-Pop-Config durchklicken
+- Raspi-Config (SSH) durchklicken
+- Bluetooth deaktivieren
+sudo -s
+git clone wss-install
+cd wss-install
+cp config.dist config
+mousepad config
+./install-audio-player.sh
+
+=== Tinkerboard ===
+- Download TinkerOS
+- Tinkerboard per USB verbinden und Image mit Etcher flashen
+sudo -s
+git clone wss-install
+cd wss-install
+cp config.dist config
+leafpad config
+./install-audio-player.sh

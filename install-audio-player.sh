@@ -27,7 +27,7 @@ sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd
 echo
 
 echo 'set aliases in .bashrc'
-sed -e "\$aalias ..='cd ..'\nalias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade'\nalias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'\nalias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'\n" -i /root/.bashrc
+sed -e "\$aalias ..='cd ..'\nalias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade'\nalias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'\nalias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'\nalias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'\nalias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'\n" -i /root/.bashrc
 source /root/.bashrc
 echo
 
@@ -68,6 +68,14 @@ npm  --prefix /home/pi/mh_prog/NewSHAudioServer install
 cp /home/pi/mh_prog/NewSHAudioServer/config.json.dist /home/pi/mh_prog/NewSHAudioServer/config.json
 echo
 
+echo 'get soundquiz wss code from github' 
+git clone https://github.com/MortenHe/SoundQuizServer /home/pi/mh_prog/SoundQuizServer
+echo 
+
+echo 'install soundquiz wss server'
+npm --prefix /home/pi/mh_prog/SoundQuizServer install
+cp /home/pi/mh_prog/SoundQuizServer/config.json.dist /home/pi/mh_prog/SoundQuizServer/config.json
+
 echo 'install apache'
 sudo apt-get install -y apache2
 sudo a2enmod rewrite
@@ -88,7 +96,7 @@ mkdir /var/www/html/php
 cp /home/pi/mh_prog/AudioServer/activateApp.php /var/www/html/php/
 echo
 
-echo 'prepare usb mount'
+echo 'prepare usb automount mount'
 sudo apt-get install -y ntfs-3g
 sudo mkdir /media/usb_audio
 echo
@@ -101,7 +109,7 @@ then
   echo
 
   echo 'install gpio buttons' 
-  npm  --prefix /home/pi/mh_prog/WSGpioButtons install
+  sudo npm  --prefix /home/pi/mh_prog/WSGpioButtons install
   cp /home/pi/mh_prog/WSGpioButtons/config.json.dist /home/pi/mh_prog/WSGpioButtons/config.json
   echo
 
@@ -132,51 +140,4 @@ sudo wget http://files.mausberrycircuits.com/setup.sh
 sudo bash setup.sh
 
 echo 'installation done'
-echo
-
-echo 'config audio server'
-echo 'alsamixer'
-echo 'vi /home/pi/mh_prog/AudioServer/config.json'
-echo 'vi /home/pi/mh_prog/NewSHAudioServer/config.json'
-echo
-
-echo 'config mplayer'
-echo 'aplay -l'
-echo 'vi /root/.mplayer/config'
-echo 'ao=alsa:device=hw=0.2'
-
-echo 'configure usb automount'
-echo 'sudo blkid -o list -w /dev/null -> get UUID like E012519312517010'
-echo 'sudo nano -w /etc/fstab -> UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0'
-echo
-
-echo 'config button pins'
-echo 'vi /home/pi/mh_prog/WSGpioButtons/config.json'
-echo
-
-echo 'config usb rfid reader'
-echo 'cat /dev/input/event0'
-echo 'vi /home/pi/mh_prog/WSRFID/config_input.json'
-echo
-
-echo 'build and deploy audio app from local computer'
-echo 'node .\deployWebsiteToServer.js appId appId'
-echo
-
-echo 'build and deploy sh audio app from local computer'
-echo 'node .\deployWebsiteToServer.js appId appId'
-echo
-
-echo 'wiring'
-echo 'led: 161 (board 8) 220k ground'
-echo
-echo 'button previous: 160 (board 10) button ground'
-echo 'button pause: 253 (board 5) button ground'
-echo 'button next: 252 (board 3) button ground'
-echo
-echo 'mausberry power button'
-echo 'out GPIO 23 (8. Pin von Seite SD-Karte aussen)'
-echo 'in GPIO 24 (9. Pin von Seite SD-Karte aussen)'
-echo 'Button = SW = auessere Kontakte auf Button'
-echo 'LED = innere Kontakte auf Button (ggf. + / - vertauschen)'
-echo
+echo 'read 02-after-installation.txt'

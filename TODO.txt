@@ -1,13 +1,14 @@
 USB
--- Sync der Hörspiele (Nextcloud)
+--- rsync.  Sync der Hörspiele (Nextcloud)
 
 AudioClient
+-- Tracks splitten (Bibi und Tina)
 -- bei connect vorheriger (pending) canceln
--- wenn keine lastSeesion zufällige Playlist?
--- Audiolist für Herbst, Ostern, etc. active = false
+-- wenn keine lastSeesion zufällige Playlist vs. lastSeesion.config.dist?
 -- deploy mit Dateien aus done Ornder -> Ziel ermitteln wohin Datei kopiert werden soll
 -- multi deploy (auf alle 3 Player aufspielen)
--- CDs für Audio Player
+-- CDs für Audio Player (Weihnachten)
+- Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
 - htaccess / linkseite für 150/
 - JSON von zentraler Stelle laden?
 - Favicon mit besserer Auflösung und rund und pro Instanz
@@ -21,13 +22,15 @@ AudioClient
 - Zeit erster Track (20 min statt 3 min)
 
 AudioServer
+- path / mode / lastSession überdenken
 - execSync vs. exec
 - for (let) vs. for (const)
 - Mockserver
 - Colors für console.log
 
 NewSHAudioClient
---- Audiomodes für Laila und Luis
+--- switch Audio mode über value: sh statt Wert direkt (s. Buttons)
+- Audiomodes für Laila und Luis
 - color-grey (z.B. connection icon) uber body setzen
 - searchfield und searchresult aufteilen
 - getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
@@ -38,6 +41,7 @@ NewSHAudioClient
 - Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
 
 NewSHAudioServer
+- Songs in Drive speichern und passend benennen
 - mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 VideoClient
@@ -51,56 +55,36 @@ VideoServer
 - mock-server weitere Funktionen
 
 WSGpioButtons
---- Buttons für Lernspiel
---- Sound abspielen, wenn Button gedrückt
+- Play sound bei Click (mix mplayer)
+- Buttons über Config (for button of buttonConfig)
 
 WSRIF
---- Karten immer spielen können (Emil Grünbär, wenn gerade in SH Audio Player)
---- Hörspielkarten über JSON-Assets steuern?
+-- JSON Path konfigurieren
+-- game select bei SoundQuizServer direkt starten (game als Parameter)
 - IR / USB Remote Control
 - Karte WLAN deaktiveren
 
 SoundQuizGPIO
 
 SoundQuizServer
---- Buttons für Joker, Next, Jingle
+--- Jingle per Button
 - Countdown
+- Spiel: "wer hat am 18.11. Geburtstag"
 - sendclientinfo fct
 - if / else vs. return
 
 wss-install
 -- boot to desktop
--- lastSession.json besserer Check
--- after-install.txt mit Befehlen zu config (mousepad statt vi)
--- Raspian with desktop -> Etcher
--- Raspi-Pop-Config durchklicken, Raspi-Config (SSH) durchklicken, Bluetooth deaktivieren
--- sudo -s, git clone wss-instll, cp config.dist config, mousepad config, ./install-audio-player.sh
+- lastSession.json besserer Check
 - Ausgabe von install-script in Datei
--- sudo pcmanfm (Explorer als Root)
--- onoff mit sudo npm install?
--- Buttons 15, 5, 7 -> Photoshop
--- Tinkerbutton 160,253,252
--- Lernspiel install
-- zusätzlich echo nach Überschrift?
--- autoconfig bei mausberry Audioserver?
---- hifiberry https://support.hifiberry.com/hc/en-us/community/posts/207306565-Raspberry-Pi-3-DAC-Step-by-Step
---- boot/config anpassen + reboot hifiberry
 -- ls -l /dev/disk/by-uuid/ -> UUID ermittlen
 - fstab extrahieren und per sed schreiben
--- wiring Info in extra Datei
 - gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
 - WLAN power_off deaktiveren?
 - Webseite auf Server bauen und deployen?
 - mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
-- audioOutpt Digital|PCM|Master|Headphone,1
 - git status über mehrere Projekte ermittlen (was muss auf Server commitet werden)
 - USB-Kabel Maus / Tastatur wegen WLAN?
-
-git clone https://github.com/MortenHe/SoundQuizServer
-npm install
-cp config.json.dist config.json
---- startnodesh und startnodesound in rc.local startnode zu startnodesound.sh umbenennen
-- Tinkerboard per USB verbinden und per Etcher flashen
---- wss-install config.dist raspi default true rue
------ stopnode ???
------ Laila Player NewSHAudioServer neu auschekcne wegen shutdown
+---- stopnode ???
+---- config_7070.json.dist (bei Buttons und bei cp in install script)
+---- config_cards_7070.json.dist (bei RFID und bei cp in install script)

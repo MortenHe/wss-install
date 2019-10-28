@@ -1,0 +1,49 @@
+=== Root Explorer öffnen ===
+sudo -s
+pcmanfm
+
+=== Hifiberry aktivieren ===
+sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i /boot/config.txt
+reboot
+
+=== Config audio and sh audio server ===
+alsamixer (Digital|PCM|Master|Headphone,1)
+mousepad /home/pi/mh_prog/AudioServer/config.json
+mousepad /home/pi/mh_prog/NewSHAudioServer/config.json
+
+=== Config buttons ===
+mousepad /home/pi/mh_prog/WSGpioButtons/config_7070.json
+mousepad /home/pi/mh_prog/WSGpioButtons/config_8080.json
+mousepad /home/pi/mh_prog/WSGpioButtons/config_9090.json
+
+=== Config usb rfid reader ===
+cat /dev/input/event0
+mousepad /home/pi/mh_prog/WSRFID/config_input.json
+
+=== USB Automount ===
+sudo blkid -o list -w /dev/null -> get UUID like E012519312517010
+mousepad /etc/fstab -> UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+
+=== Mausberry power button ===
+out GPIO 23 (8. Pin von Seite SD-Karte aussen)
+in GPIO 24 (9. Pin von Seite SD-Karte aussen)
+Button = SW = auessere Kontakte auf Button
+LED = innere Kontakte auf Button (ggf. + / - vertauschen)
+
+=== build and deploy audio app from local computer ===
+connection.js
+node .\deployWebsiteToServer.js appId appId
+
+=== build and deploy sh audio app from local computer ===
+connection.js
+node .\deployWebsiteToServer.js appId appId
+
+=== Tinkerboard ===
+
+=== Buttons ===
+160 (board 10), 253 (board 5), 252 (board 3)
+
+=== mplayer ===
+aplay -l
+leafpad /root/.mplayer/config
+ao=alsa:device=hw=0.2
