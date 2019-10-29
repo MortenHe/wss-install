@@ -3,7 +3,7 @@ USB
 
 AudioClient
 -- Tracks splitten (Bibi und Tina)
--- bei connect vorheriger (pending) canceln
+-- bei connect vorherigen (pending) canceln
 -- wenn keine lastSeesion zufällige Playlist vs. lastSeesion.config.dist?
 -- deploy mit Dateien aus done Ornder -> Ziel ermitteln wohin Datei kopiert werden soll
 -- multi deploy (auf alle 3 Player aufspielen)
@@ -29,7 +29,6 @@ AudioServer
 - Colors für console.log
 
 NewSHAudioClient
---- switch Audio mode über value: sh statt Wert direkt (s. Buttons)
 - Audiomodes für Laila und Luis
 - color-grey (z.B. connection icon) uber body setzen
 - searchfield und searchresult aufteilen
@@ -59,25 +58,23 @@ WSGpioButtons
 - Buttons über Config (for button of buttonConfig)
 
 WSRIF
--- JSON Path konfigurieren
--- game select bei SoundQuizServer direkt starten (game als Parameter)
+---- JSON Path konfigurieren
 - IR / USB Remote Control
 - Karte WLAN deaktiveren
 
 SoundQuizGPIO
 
 SoundQuizServer
---- Jingle per Button
-- Countdown
+---- Countdown
 - Spiel: "wer hat am 18.11. Geburtstag"
 - sendclientinfo fct
 - if / else vs. return
 
 wss-install
 -- boot to desktop
-- lastSession.json besserer Check
 - Ausgabe von install-script in Datei
 -- ls -l /dev/disk/by-uuid/ -> UUID ermittlen
+-- shutdown sound, wenn über Button abgeschaltet
 - fstab extrahieren und per sed schreiben
 - gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
 - WLAN power_off deaktiveren?
@@ -85,6 +82,5 @@ wss-install
 - mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
 - git status über mehrere Projekte ermittlen (was muss auf Server commitet werden)
 - USB-Kabel Maus / Tastatur wegen WLAN?
----- stopnode ???
----- config_7070.json.dist (bei Buttons und bei cp in install script)
----- config_cards_7070.json.dist (bei RFID und bei cp in install script)
+-- config_7070.json.dist (bei Buttons und bei cp in install script)
+-- config_cards_7070.json.dist (bei RFID und bei cp in install script)
