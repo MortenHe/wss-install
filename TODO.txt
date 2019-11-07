@@ -1,86 +1,84 @@
-USB
---- rsync.  Sync der Hörspiele (Nextcloud)
+# USB
+-- rsync. Sync der Hörspiele (Nextcloud)
 
-AudioClient
+# AudioClient
 -- Tracks splitten (Bibi und Tina)
--- bei connect vorherigen (pending) canceln
--- wenn keine lastSeesion zufällige Playlist vs. lastSeesion.config.dist?
--- deploy mit Dateien aus done Ornder -> Ziel ermitteln wohin Datei kopiert werden soll
+-- CDs für Audio Player (Weihnachten, Uhubande)
+-- bei connect vorherigen (pending) canceln vs. ping rausnehmen
 -- multi deploy (auf alle 3 Player aufspielen)
--- CDs für Audio Player (Weihnachten)
-- Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
-- htaccess / linkseite für 150/
-- JSON von zentraler Stelle laden?
-- Favicon mit besserer Auflösung und rund und pro Instanz
-- toggle paused mit null statt ""
-- color über environment (grün 149, rosa Laila)
-- volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
-- display:flex über :host in die Komponente ziehen aus search.html
-- Resultlist.ts, etc. prüfen welche Abos benötigt
-- Playlist-View per Route ansteuern
-- Filter, Suchterm etc. per URL-Parameter setzen
-- Zeit erster Track (20 min statt 3 min)
+Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
+htaccess / linkseite für 150/
+JSON von zentraler Stelle laden?
+Deploy Skripte: ssh.close();
+Favicon mit besserer Auflösung und rund und pro Instanz
+toggle paused mit null statt ""
+color über environment (grün 149, rosa Laila)
+volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
+display:flex über :host in die Komponente ziehen aus search.html
+Resultlist.ts, etc. prüfen welche Abos benötigt
+Playlist-View per Route ansteuern
+Filter, Suchterm etc. per URL-Parameter setzen
+Zeit erster Track (20 min statt 3 min)
 
-AudioServer
-- path / mode / lastSession überdenken
-- execSync vs. exec
-- for (let) vs. for (const)
-- Mockserver
-- Colors für console.log
+# AudioServer
+---- activateApp + startnodeserverplayer.sh für Server Player
+path / mode / lastSession überdenken
+execSync vs. exec
+for (let) vs. for (const)
+Mockserver
+Colors für console.log
 
-NewSHAudioClient
-- Audiomodes für Laila und Luis
-- color-grey (z.B. connection icon) uber body setzen
-- searchfield und searchresult aufteilen
-- getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
-- aktuelles Volume nur aus Server laden (kein Startwert 50)
-- Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
-- config pw vs. marlen
-- Trackby für Trefferliste
-- Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
+# NewSHAudioClient
+Audiomodes für Laila und Luis
+color-grey (z.B. connection icon) uber body setzen
+searchfield und searchresult aufteilen
+getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
+aktuelles Volume nur aus Server laden (kein Startwert 50)
+Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
+config pw vs. marlen
+Trackby für Trefferliste
+Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
 
-NewSHAudioServer
-- Songs in Drive speichern und passend benennen
-- mock-server weitere Funktionen (pause stoppt fakeCountdown)
+# NewSHAudioServer
+Songs in Drive speichern und passend benennen
+mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
-VideoClient
-- font-awesome 5
-- Resultlist.ts, etc. prüfen welche Abos benötigt
-- Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
+# VideoClient
+font-awesome 5
+Resultlist.ts, etc. prüfen welche Abos benötigt
+Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
 
-VideoServer
-- Countdown umarbeiten wie bei Audio Server
-- Abschlussbild als Video danach random
-- mock-server weitere Funktionen
+# VideoServer
+Countdown umarbeiten wie bei Audio Server
+Abschlussbild als Video danach random
+mock-server weitere Funktionen
 
-WSGpioButtons
-- Play sound bei Click (mix mplayer)
-- Buttons über Config (for button of buttonConfig)
+# WSGpioButtons
+Play sound bei Click (mix mplayer)
+Buttons über Config (for button of buttonConfig)
 
-WSRIF
----- JSON Path konfigurieren
-- IR / USB Remote Control
-- Karte WLAN deaktiveren
+# WSRIF
+IR / USB Remote Control
+Karte WLAN deaktiveren
 
-SoundQuizGPIO
+# SoundQuizGPIO
 
-SoundQuizServer
----- Countdown
-- Spiel: "wer hat am 18.11. Geburtstag"
-- sendclientinfo fct
-- if / else vs. return
+# SoundQuizServer
+Spiel: "wer hat am 18.11. Geburtstag"
+sendclientinfo fct
+if / else vs. return
 
-wss-install
+# wss-install
 -- boot to desktop
-- Ausgabe von install-script in Datei
 -- ls -l /dev/disk/by-uuid/ -> UUID ermittlen
--- shutdown sound, wenn über Button abgeschaltet
-- fstab extrahieren und per sed schreiben
-- gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
-- WLAN power_off deaktiveren?
-- Webseite auf Server bauen und deployen?
-- mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
-- git status über mehrere Projekte ermittlen (was muss auf Server commitet werden)
-- USB-Kabel Maus / Tastatur wegen WLAN?
+-- fstab extrahieren und per sed schreiben
 -- config_7070.json.dist (bei Buttons und bei cp in install script)
 -- config_cards_7070.json.dist (bei RFID und bei cp in install script)
+Ausgabe von install-script in Datei
+shutdown sound, wenn über Button abgeschaltet
+gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
+WLAN power_off deaktiveren?
+Webseite auf Server bauen und deployen?
+mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
+git status über mehrere Projekte ermittlen (was muss auf Server commitet werden)
+USB-Kabel Maus / Tastatur wegen WLAN?
