@@ -6,23 +6,28 @@ pcmanfm
 sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i /boot/config.txt
 reboot
 
+=== Config usb rfid reader ===
+cat /dev/input/event0
+vi /home/pi/mh_prog/WSRFID/config_input.json
+
+=== USB Automount ===
+sudo blkid -o list -w /dev/null 
+-> get UUID like E012519312517010 | B8EA48B6EA487324
+
+vi /etc/fstab 
+UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+
 === Config audio and sh audio server ===
-alsamixer (Digital|PCM|Master|Headphone,1)
-mousepad /home/pi/mh_prog/AudioServer/config.json
-mousepad /home/pi/mh_prog/NewSHAudioServer/config.json
+(optional) alsamixer (Digital|PCM|Master|Headphone,1)
+(optional) vi /home/pi/mh_prog/AudioServer/config.json
+(optoinal) vi /home/pi/mh_prog/NewSHAudioServer/config.json
+(optional) vi /home/pi/mh_prog/SoundQuizServer/config.json
 
 === Config buttons ===
 mousepad /home/pi/mh_prog/WSGpioButtons/config_7070.json
 mousepad /home/pi/mh_prog/WSGpioButtons/config_8080.json
 mousepad /home/pi/mh_prog/WSGpioButtons/config_9090.json
-
-=== Config usb rfid reader ===
-cat /dev/input/event0
-mousepad /home/pi/mh_prog/WSRFID/config_input.json
-
-=== USB Automount ===
-sudo blkid -o list -w /dev/null -> get UUID like E012519312517010
-mousepad /etc/fstab -> UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 
 === Mausberry power button ===
 out GPIO 23 (8. Pin von Seite SD-Karte aussen)
