@@ -1,11 +1,3 @@
-=== Root Explorer öffnen ===
-sudo -s
-pcmanfm
-
-=== Hifiberry aktivieren ===
-sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i /boot/config.txt
-reboot
-
 === Config usb rfid reader ===
 cat /dev/input/event0
 vi /home/pi/mh_prog/WSRFID/config_input.json
@@ -42,6 +34,10 @@ node .\deployWebsiteToServer.js appId appId
 === build and deploy sh audio app from local computer ===
 connection.js
 node .\deployWebsiteToServer.js appId appId
+
+=== Root Explorer öffnen ===
+sudo -s
+pcmanfm
 
 === Tinkerboard ===
 

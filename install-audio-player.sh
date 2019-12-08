@@ -139,5 +139,14 @@ echo 'get and install mausberry power button script'
 sudo wget http://files.mausberrycircuits.com/setup.sh
 sudo bash setup.sh
 
+#Hifiberry Audio Card
+if  [$HIFIBERRY = true ];
+then
+  echo 'set hifiberry audio card'
+  sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i /boot/config.txt
+  echo
+  echo 'please reboot pi'
+fi  
+
 echo 'installation done'
 echo 'read 02-after-installation.txt'

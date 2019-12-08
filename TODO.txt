@@ -2,9 +2,9 @@
 -- rsync. Sync der Hörspiele (Nextcloud)
 
 # AudioClient
+--- setJoker mit Promises
 -- kein Ping, Variable connected
 -- Tracks splitten (Bibi und Tina)
--- CDs für Audio Player (Weihnachten, Uhubande)
 -- bei connect vorherigen (pending) canceln vs. ping rausnehmen
 -- multi deploy (auf alle 3 Player aufspielen)
 Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
@@ -22,6 +22,7 @@ Filter, Suchterm etc. per URL-Parameter setzen
 Zeit erster Track (20 min statt 3 min)
 
 # AudioServer
+-- Joker Folder anlegen
 path / mode / lastSession überdenken
 execSync vs. exec
 for (let) vs. for (const)
@@ -29,7 +30,7 @@ Mockserver
 Colors für console.log
 
 # NewSHAudioClient
-Audiomodes für Laila und Luis
+Audiomodes für Laila und Luis getrennt statt kids
 color-grey (z.B. connection icon) uber body setzen
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
@@ -71,11 +72,11 @@ sendclientinfo fct
 if / else vs. return
 
 # wss-install
----- sed HifiBerry über Config
 -- ls -l /dev/disk/by-uuid/ -> UUID ermittlen
 -- fstab extrahieren und per sed schreiben
--- config_7070.json.dist (bei Buttons und bei cp in install script)
--- config_cards_7070.json.dist (bei RFID und bei cp in install script)
+---- update-npm-packages in update command bei wss-install
+config_7070.json.dist (bei Buttons und bei cp in install script)
+config_cards_7070.json.dist (bei RFID und bei cp in install script)
 Ausgabe von install-script in Datei
 shutdown sound, wenn über Button abgeschaltet
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
@@ -140,38 +141,32 @@ sudo systemctl disable dphys-swapfile.service
 sudo systemctl disable avahi-daemon.service
 sudo systemctl disable triggerhappy.service
 
-
-TODO
-dhcpcd.service
-ssh.service
-
-No
-sudo systemctl disable networking.service
-
-wpa_supplicant.service?
-apache
-
-
 ###
 
-Raspian Lite
+Download Raspian Lite
+BalenaEtcher auf SD Karte
 
-pi / raspberry (Achtung mit z)
+USB Stick als NTFS formattieren als "usb_audio"
+Inhalte auf USB Stick kopieren 
+
+HDMI Kabel einstecken bei Pi
+
+Login pi / raspberry (Achtung mit z)
 sudo raspi-config
 8 update tool
-1 change user pw : martin12
+1 change user pi password : martin12
 2-2 Wifi Country DE -> Haustralien
 3-2 Don't wait for network
-3-3 ?
-4-1 de utf-8
-4-2 Berlin
-4-3 105 - other - german - german
+4-1 de_DE utf-8
+4-2 Europe -> Berlin
+4-3 Generic 105 - other - German - German - Default - Default
 4-4 DE
 5-2 ssh
-7-1
+7-1 resize sd card
 
 sudo -s -> root
 apt-get install git
 git clone https://github.com/MortenHe
 cd wss-install
 cp config.dist config
+./install-audio-player.sh

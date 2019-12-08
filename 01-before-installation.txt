@@ -1,4 +1,4 @@
-=== Raspi ===
+=== Raspi Desktop ===
 - Download "Raspian with desktop"
 - Image mit Etcher auf SD Karte flashen
 - Raspi-Pop-Config durchklicken
