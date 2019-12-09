@@ -11,6 +11,10 @@ npm update --prefix /home/pi/mh_prog/AudioServer
 echo 'update NewSHAudioServer npm packages'
 npm update --prefix /home/pi/mh_prog/NewSHAudioServer
 
+#SoundQuiz Server NPM packages updaten
+echo 'update SoundQuizServer npm packages'
+npm update --prefix /home/pi/mh_prog/SoundQuizServer
+
 #GPIO Buttons NPM packages updaten
 if [ $GPIOBUTTONS = true ];
 then
