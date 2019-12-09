@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#read values from config file
-. ./config
+#read values from config file in this dir
+. $(dirname "$0")/config
 
 #Audio Server NPM packages updaten
 echo 'update AudioServer npm packages'

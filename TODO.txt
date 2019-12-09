@@ -71,7 +71,7 @@ sendclientinfo fct
 if / else vs. return
 
 # wss-install
----- update-npm-packages in update command bei wss-install
+--- /boot/cmdline.txt -> quiet hinzufügen
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
 Ausgabe von install-script in Datei
