@@ -2,24 +2,24 @@
 cat /dev/input/event0
 vi /home/pi/mh_prog/WSRFID/config_input.json
 
-=== USB Automount ===
+=== USB automount ===
 sudo blkid -o list -w /dev/null 
--> get UUID like E012519312517010 | B8EA48B6EA487324
+-> get UUID like E012519312517010 | B8EA48B6EA487324 | 78C20C88C20C4CB6
 
 vi /etc/fstab 
 UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 
-=== Config audio and sh audio server ===
-(optional) alsamixer (Digital|PCM|Master|Headphone,1)
-(optional) vi /home/pi/mh_prog/AudioServer/config.json
-(optoinal) vi /home/pi/mh_prog/NewSHAudioServer/config.json
-(optional) vi /home/pi/mh_prog/SoundQuizServer/config.json
+=== build and deploy audio app from local computer ===
+connection.js
+node .\deployWebsiteToServer.js laila laila
+node .\deployWebsiteToServer.js luis luis
 
-=== Config buttons ===
-mousepad /home/pi/mh_prog/WSGpioButtons/config_7070.json
-mousepad /home/pi/mh_prog/WSGpioButtons/config_8080.json
-mousepad /home/pi/mh_prog/WSGpioButtons/config_9090.json
+=== build and deploy sh audio app from local computer ===
+connection.js
+node .\deployWebsiteToServer.js laila laila
+node .\deployWebsiteToServer.js luis luis
 
 === Mausberry power button ===
 out GPIO 23 (8. Pin von Seite SD-Karte aussen)
@@ -27,22 +27,19 @@ in GPIO 24 (9. Pin von Seite SD-Karte aussen)
 Button = SW = auessere Kontakte auf Button
 LED = innere Kontakte auf Button (ggf. + / - vertauschen)
 
-=== build and deploy audio app from local computer ===
-connection.js
-node .\deployWebsiteToServer.js appId appId
-
-=== build and deploy sh audio app from local computer ===
-connection.js
-node .\deployWebsiteToServer.js appId appId
-
-=== Root Explorer öffnen ===
-sudo -s
-pcmanfm
-
 === Tinkerboard ===
 
-=== Buttons ===
+=== Config audio and sh audio server ===
+alsamixer (Digital|PCM|Master|Headphone,1)
+leafpad /home/pi/mh_prog/AudioServer/config.json
+leafpad /home/pi/mh_prog/NewSHAudioServer/config.json
+leafpad /home/pi/mh_prog/SoundQuizServer/config.json
+
+=== Config buttons ===
 160 (board 10), 253 (board 5), 252 (board 3)
+leafpad /home/pi/mh_prog/WSGpioButtons/config_7070.json
+leafpad /home/pi/mh_prog/WSGpioButtons/config_8080.json
+leafpad /home/pi/mh_prog/WSGpioButtons/config_9090.json
 
 === mplayer ===
 aplay -l

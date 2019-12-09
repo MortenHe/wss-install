@@ -140,13 +140,36 @@ sudo wget http://files.mausberrycircuits.com/setup.sh
 sudo bash setup.sh
 
 #Hifiberry Audio Card
-if  [$HIFIBERRY = true ];
+if  [ $HIFIBERRY = true ];
 then
   echo 'set hifiberry audio card'
   sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i /boot/config.txt
   echo
-  echo 'please reboot pi'
 fi  
 
+echo 'optimize startup time in /boot/config.txt'
+echo "# Disable the rainbow splash screen" >> /boot/config.txt
+echo "disable_splash=1" >> /boot/config.txt
+
+echo "# Disable bluetooth" >> /boot/config.txt
+echo "dtoverlay=pi3-disable-bt" >> /boot/config.txt
+
+echo "# Overclock the SD Card from 50 to 100MHz" >> /boot/config.txt
+echo "# This can only be done with at least a UHS Class 1 card" >> /boot/config.txt
+echo "dtoverlay=sdtweak,overclock_50=100" >> /boot/config.txt
+ 
+echo "# Set the bootloader delay to 0 seconds. The default is 1s if not specified." >> /boot/config.txt
+echo "boot_delay=0" >> /boot/config.txt
+
+echo "# Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply." >> /boot/config.txt
+echo "force_turbo=1" >> /boot/config.txt
+
+echo "disable unused services"
+sudo systemctl disable raspi-config.service
+sudo systemctl disable keyboard-setup.service
+sudo systemctl disable dphys-swapfile.service
+sudo systemctl disable avahi-daemon.service
+sudo systemctl disable triggerhappy.service
+
 echo 'installation done'
-echo 'read 02-after-installation.txt'
+echo 'please reboot pi and read 02-after-installation.txt'

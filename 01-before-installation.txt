@@ -1,21 +1,55 @@
-=== Raspi Desktop ===
+=== Raspian Lite ===
+- Download Raspian Lite
+- Image mit BalenaEtcher auf SD Karte spielen
+
+- USB Stick mit NTFS formattieren als "usb_audio"
+- Inhalte auf USB Stick kopieren
+
+- HDMI Kabel einstecken bei Pi und starten
+
+- Login pi / raspberry (Achtung mit z)
+
+sudo raspi-config
+8 update tool
+1 change user pi password : martin12
+2-2 Wifi Country DE -> Haustralien
+3-2 Don't wait for network
+4-1 de_DE utf-8
+4-2 Europe -> Berlin
+4-3 Generic 105 - other - German - German - Default - Default
+4-4 DE
+5-2 ssh
+7-1 resize sd card
+
+sudo -s
+apt-get install git
+git clone https://github.com/MortenHe/wss-install
+cd wss-install
+cp config.dist config
+./install-audio-player.sh
+
+
+=== Raspian with Desktop ===
 - Download "Raspian with desktop"
-- Image mit Etcher auf SD Karte flashen
+- Mit BalenaEtcher auf SD Karte spielen
 - Raspi-Pop-Config durchklicken
 - Raspi-Config (SSH) durchklicken
 - Bluetooth deaktivieren
+
 sudo -s
-git clone wss-install
+git clone https://github.com/MortenHe/wss-install
 cd wss-install
 cp config.dist config
 mousepad config
 ./install-audio-player.sh
 
+
 === Tinkerboard ===
 - Download TinkerOS
 - Tinkerboard per USB verbinden und Image mit Etcher flashen
+
 sudo -s
-git clone wss-install
+git clone https://github.com/MortenHe/wss-install
 cd wss-install
 cp config.dist config
 leafpad config

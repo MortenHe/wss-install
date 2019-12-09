@@ -45,7 +45,6 @@ Songs in Drive speichern und passend benennen
 mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 # VideoClient
----- createVideoJSON ohne .mp4 bei "name" Erstellung und Großekleinschreibung wie bei Audio Json Die Maus - Maus Eis Schrift
 font-awesome 5
 Resultlist.ts, etc. prüfen welche Abos benötigt
 Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
@@ -72,8 +71,6 @@ sendclientinfo fct
 if / else vs. return
 
 # wss-install
--- ls -l /dev/disk/by-uuid/ -> UUID ermittlen
--- fstab extrahieren und per sed schreiben
 ---- update-npm-packages in update command bei wss-install
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
@@ -84,26 +81,6 @@ WLAN power_off deaktiveren?
 Webseite auf Server bauen und deployen?
 mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
 git status über mehrere Projekte ermittlen (was muss auf Server commitet werden)
-USB-Kabel Maus / Tastatur wegen WLAN?
-
---- /boot/config.txt
-# Disable the rainbow splash screen
-disable_splash=1
-
-# Disable bluetooth
-dtoverlay=pi3-disable-bt
-
-# Overclock the SD Card from 50 to 100MHz
-# This can only be done with at least a UHS Class 1 card
-dtoverlay=sdtweak,overclock_50=100
- 
-# Set the bootloader delay to 0 seconds. The default is 1s if not specified.
-boot_delay=0
-
-# Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply.
-force_turbo=1
-
-
 Service audioplayer.service anlegen in
 
 /etc/systemd/system
@@ -126,47 +103,7 @@ ExecStart=/usr/bin/qtdemoE -qws
 [Install]
 WantedBy=basic.target
 
-
 sudo chmod 644 /lib/systemd/system/audioplayer.service
 
 in Autostart mit
 systemctl enable audioplayer.service
-
-
-test:
-
-sudo systemctl disable raspi-config.service
-sudo systemctl disable keyboard-setup.service
-sudo systemctl disable dphys-swapfile.service
-sudo systemctl disable avahi-daemon.service
-sudo systemctl disable triggerhappy.service
-
-###
-
-Download Raspian Lite
-BalenaEtcher auf SD Karte
-
-USB Stick als NTFS formattieren als "usb_audio"
-Inhalte auf USB Stick kopieren 
-
-HDMI Kabel einstecken bei Pi
-
-Login pi / raspberry (Achtung mit z)
-sudo raspi-config
-8 update tool
-1 change user pi password : martin12
-2-2 Wifi Country DE -> Haustralien
-3-2 Don't wait for network
-4-1 de_DE utf-8
-4-2 Europe -> Berlin
-4-3 Generic 105 - other - German - German - Default - Default
-4-4 DE
-5-2 ssh
-7-1 resize sd card
-
-sudo -s -> root
-apt-get install git
-git clone https://github.com/MortenHe
-cd wss-install
-cp config.dist config
-./install-audio-player.sh
