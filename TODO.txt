@@ -1,15 +1,9 @@
-# USB
--- rsync. Sync der Hörspiele (Nextcloud)
-
 # AudioClient
 --- setJoker mit Promises
--- kein Ping, Variable connected
--- Tracks splitten (Bibi und Tina)
--- bei connect vorherigen (pending) canceln vs. ping rausnehmen
--- multi deploy (auf alle 3 Player aufspielen)
+kein Ping, Variable connected
+ bei connect vorherigen (pending) canceln vs. ping rausnehmen
 Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
 htaccess / linkseite für 150/
-JSON von zentraler Stelle laden?
 Deploy Skripte: ssh.close();
 Favicon mit besserer Auflösung und rund und pro Instanz
 toggle paused mit null statt ""
@@ -19,10 +13,8 @@ display:flex über :host in die Komponente ziehen aus search.html
 Resultlist.ts, etc. prüfen welche Abos benötigt
 Playlist-View per Route ansteuern
 Filter, Suchterm etc. per URL-Parameter setzen
-Zeit erster Track (20 min statt 3 min)
 
 # AudioServer
--- Joker Folder anlegen
 path / mode / lastSession überdenken
 execSync vs. exec
 for (let) vs. for (const)
@@ -30,8 +22,8 @@ Mockserver
 Colors für console.log
 
 # NewSHAudioClient
-Audiomodes für Laila und Luis getrennt statt kids
-color-grey (z.B. connection icon) uber body setzen
+--- Audiomodes für Laila und Luis getrennt statt kids
+color-grey (z.B. connection icon) über body setzen
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
 aktuelles Volume nur aus Server laden (kein Startwert 50)
@@ -55,7 +47,6 @@ Abschlussbild als Video danach random
 mock-server weitere Funktionen
 
 # WSGpioButtons
-Play sound bei Click (mix mplayer)
 Buttons über Config (for button of buttonConfig)
 
 # WSRIF
@@ -66,7 +57,7 @@ Karte WLAN deaktiveren
 
 # SoundQuizServer
 Spiel: "wer hat am 18.11. Geburtstag"
--- Wer spricht so: Bibi und Tina, Janoschfiguren, Woody
+Wer spricht so: Bibi und Tina, Janoschfiguren, Woody
 sendclientinfo fct
 if / else vs. return
 
@@ -74,13 +65,11 @@ if / else vs. return
 --- /boot/cmdline.txt -> quiet hinzufügen
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
-Ausgabe von install-script in Datei
-shutdown sound, wenn über Button abgeschaltet
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
-WLAN power_off deaktiveren?
-Webseite auf Server bauen und deployen?
+
 mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
-git status über mehrere Projekte ermittlen (was muss auf Server commitet werden)
+
+
 Service audioplayer.service anlegen in
 
 /etc/systemd/system
@@ -93,7 +82,6 @@ ExecStart=/usr/bin/node /home/pi/mh_prog/AudioServer/server.js > /home/pi/mh_pro
 
 [Install]
 WantedBy=sysinit.target
-
 
 [Unit]
 Description=qtdemo
