@@ -1,5 +1,8 @@
 # AudioClient
---- setJoker mit Promises
+--- uploadfiles und deployJSON und compare in einem Aufruf
+--- npmupdate für Clients
+- uploadFiles -> nur mp3. keine Desktop.ini hochladen
+setJoker mit Promises
 kein Ping, Variable connected
  bei connect vorherigen (pending) canceln vs. ping rausnehmen
 Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
@@ -22,7 +25,6 @@ Mockserver
 Colors für console.log
 
 # NewSHAudioClient
---- Audiomodes für Laila und Luis getrennt statt kids
 color-grey (z.B. connection icon) über body setzen
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
@@ -62,7 +64,8 @@ sendclientinfo fct
 if / else vs. return
 
 # wss-install
---- /boot/cmdline.txt -> quiet hinzufügen
+--- npmupdate mit npm install -g npm vorneweg
+-- alias setzen in einzelnen Zeilen aufteilen
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen

@@ -27,8 +27,12 @@ sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd
 echo
 
 echo 'set aliases in .bashrc'
-sed -e "\$aalias ..='cd ..'\nalias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade && sudo /home/pi/wss-install/update-npm-packages.sh'\nalias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'\nalias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'\nalias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'\nalias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'\n" -i /root/.bashrc
+sed -e "\$aalias ..='cd ..'\nalias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade && sudo /home/pi/wss-install/update-npm-packages.sh'\nalias pullgit='sudo /home/pi/wss-install/pull-git-repos.sh'\nalias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'\nalias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'\nalias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'\nalias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'\n" -i /root/.bashrc
 source /root/.bashrc
+echo
+
+echo 'set cmdline output to quiet'
+sed 's/$/ quiet/' -i /boot/cmdline.txt
 echo
 
 echo 'set audio wss autostart in rc.local'
