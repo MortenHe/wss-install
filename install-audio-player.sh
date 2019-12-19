@@ -26,8 +26,15 @@ sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd
 /etc/init.d/ssh restart
 echo
 
-echo 'set aliases in .bashrc'
-sed -e "\$aalias ..='cd ..'\nalias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade && sudo /home/pi/wss-install/update-npm-packages.sh'\nalias pullgit='sudo /home/pi/wss-install/pull-git-repos.sh'\nalias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'\nalias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'\nalias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'\nalias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'\n" -i /root/.bashrc
+echo 'set aliases in /root/.bashrc'
+sed "$ a alias ..='cd ..'" -i /root/.bashrc
+sed "$ a alias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'" -i /root/.bashrc
+sed "$ a alias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'" -i /root/.bashrc
+sed "$ a alias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'" -i /root/.bashrc
+sed "$ a alias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'" -i /root/.bashrc
+sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-repos.sh'" -i /root/.bashrc
+sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-npm-packages.sh'" -i /root/.bashrc
+sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade && pullgit && npmupdate'" -i /root/.bashrc
 source /root/.bashrc
 echo
 
