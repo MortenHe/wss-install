@@ -17,3 +17,7 @@ echo 'update VideoClient npm packages'
 cd C:/Apache24/htdocs/MortenHe/VideoClient
 npm update
 echo
+
+#keep windows opened
+echo 'update done'
+$SHELL
