@@ -5,7 +5,7 @@
 
 #WSS Install git pull
 echo 'pull wss-install git repo'
-git -C /home/pi/wss_install pull
+git -C /home/pi/wss-install pull
 echo
 
 #Audio Server git pull
