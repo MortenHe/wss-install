@@ -50,7 +50,7 @@ case "soundquizplayer":
 
 //Letzter Player in Datei schreiben fuer naechsten Autostart
 function writePlayerAutostartFile($command) {
-    $file = '/home/pi/last-player';
+    $file = '/home/pi/wss-install/last-player';
     $handle = fopen($file, 'w') or die('Cannot open file:  ' . $file);
     fwrite($handle, "AUTOSTART=" . $command);
     fclose($handle);

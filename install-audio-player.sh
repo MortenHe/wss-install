@@ -45,6 +45,7 @@ echo
 echo 'set wss player autostart in rc.local'
 sed '$ i\/home/pi/wss-install/start-last-wss-player.sh &' -i /etc/rc.local
 cp /home/pi/wss-install/last-player.dist /home/pi/wss-install/last-player
+chmod 777 /home/pi/wss-install/last-player
 echo
 
 echo 'install nodejs'
