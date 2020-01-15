@@ -42,8 +42,9 @@ echo 'set cmdline output to quiet'
 sed 's/$/ quiet/' -i /boot/cmdline.txt
 echo
 
-echo 'set audio wss autostart in rc.local'
-sed '$ i\/home/pi/mh_prog/AudioServer/startnode.sh &' -i /etc/rc.local
+echo 'set wss player autostart in rc.local'
+sed '$ i\/home/pi/wss-install/start-last-wss-player.sh &' -i /etc/rc.local
+cp /home/pi/wss-install/last-player.dist /home/pi/wss-install/last-player
 echo
 
 echo 'install nodejs'
@@ -104,7 +105,7 @@ echo
 
 echo 'deploy php activate script'
 mkdir /var/www/html/php
-cp /home/pi/mh_prog/AudioServer/activateApp.php /var/www/html/php/
+cp /home/pi/wss-install/activateApp.php /var/www/html/php/
 echo
 
 echo 'prepare usb automount mount'
