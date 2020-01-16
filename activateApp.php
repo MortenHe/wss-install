@@ -12,11 +12,7 @@ switch ($mode) {
 
 //Audio Player
 case "audio":
-
-    //Player merken fuer naechsten Autostart und Player starten
-    $command = "sudo /home/pi/mh_prog/AudioServer/startnode.sh";
-    writePlayerAutostartFile($command);
-    exec($command);
+    exec("sudo /home/pi/mh_prog/AudioServer/startnode.sh");
     break;
 
 //SH Audio Player
@@ -26,10 +22,8 @@ case "sh":
     $audioMode = filter_input(INPUT_GET, 'audioMode');
     $suffix = $audioMode ? " " . $audioMode : "";
 
-    //Player merken fuer naechsten Autostart und Player starten
-    $command = "sudo /home/pi/mh_prog/NewSHAudioServer/startnodesh.sh" . $suffix;
-    writePlayerAutostartFile($command);
-    exec($command);
+    //Player starten
+    exec("sudo /home/pi/mh_prog/NewSHAudioServer/startnodesh.sh" . $suffix);
     break;
 
 //Sound Quiz
@@ -39,6 +33,7 @@ case "soundquiz":
     $gameSelect = filter_input(INPUT_GET, 'gameSelect');
     $suffix = $gameSelect ? " " . $gameSelect : "";
 
+    //Quiz starten
     exec('sudo /home/pi/mh_prog/SoundQuizServer/startnodesound.sh' . $suffix);
     break;
 
@@ -47,12 +42,3 @@ case "soundquizplayer":
     exec('sudo /home/pi/mh_prog/SoundQuizServer/startnodesoundplayer.sh' . $suffix);
     break;
 };
-
-//Letzter Player in Datei schreiben fuer naechsten Autostart
-function writePlayerAutostartFile($command) {
-    $file = '/home/pi/wss-install/last-player';
-    $handle = fopen($file, 'w') or die('Cannot open file:  ' . $file);
-    fwrite($handle, "AUTOSTART=" . $command);
-    fclose($handle);
-}
-?>
