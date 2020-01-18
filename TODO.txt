@@ -70,6 +70,7 @@ if / else vs. return
 
 # wss-install
 --- bashrc tailf = tail -f /home/pi/mh_prog/output-server.txt
+-- sudo apt autoremove in bashrc
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
