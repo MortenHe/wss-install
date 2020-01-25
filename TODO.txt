@@ -71,6 +71,7 @@ if / else vs. return
 # wss-install
 --- bashrc tailf = tail -f /home/pi/mh_prog/output-server.txt
 -- sudo apt autoremove in bashrc
+-- 02-after-installation Video Deploy
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
@@ -84,6 +85,7 @@ lange Kabel https://www.adafruit.com/product/824
 onoff shim https://www.adafruit.com/product/3581
 lange breakaway https://www.adafruit.com/product/400
 solderless header
+bessere Buttons
 
 
 Service audioplayer.service anlegen in

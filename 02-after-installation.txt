@@ -13,8 +13,8 @@ UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 
 === build and deploy audio app from local computer ===
 connection.js
-node .\deployWebsiteToServer.js laila laila
-node .\deployWebsiteToServer.js luis luis
+node .\deployWebsiteToServer.js laila
+node .\deployWebsiteToServer.js luis
 
 === build and deploy sh audio app from local computer ===
 connection.js

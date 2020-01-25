@@ -3,8 +3,8 @@
 echo 'set static ip address in router settings'
 echo '192.168.0.1'
 
-echo 'update / upgrade system'
-sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade
+echo 'update / dist-upgrade system'
+sudo apt-get update && sudo apt-get -y dist-upgrade
 echo
 
 #read values from config file
@@ -32,9 +32,9 @@ sed "$ a alias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'" -i /root/.
 sed "$ a alias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'" -i /root/.bashrc
 sed "$ a alias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'" -i /root/.bashrc
 sed "$ a alias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'" -i /root/.bashrc
-sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-repos.sh'" -i /root/.bashrc
-sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-npm-packages.sh'" -i /root/.bashrc
-sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y upgrade && pullgit && npmupdate'" -i /root/.bashrc
+sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
+sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
+sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && pullgit && npmupdate'" -i /root/.bashrc
 source /root/.bashrc
 echo
 
@@ -68,7 +68,7 @@ git clone https://github.com/MortenHe/AudioServer /home/pi/mh_prog/AudioServer
 echo
 
 echo 'install audio wss server' 
-npm  --prefix /home/pi/mh_prog/AudioServer install
+npm --prefix /home/pi/mh_prog/AudioServer install
 cp /home/pi/mh_prog/AudioServer/config.json.dist /home/pi/mh_prog/AudioServer/config.json
 echo
 
@@ -77,7 +77,7 @@ git clone https://github.com/MortenHe/NewSHAudioServer /home/pi/mh_prog/NewSHAud
 echo
 
 echo 'install sh audio wss server' 
-npm  --prefix /home/pi/mh_prog/NewSHAudioServer install
+npm --prefix /home/pi/mh_prog/NewSHAudioServer install
 cp /home/pi/mh_prog/NewSHAudioServer/config.json.dist /home/pi/mh_prog/NewSHAudioServer/config.json
 echo
 
@@ -106,7 +106,7 @@ echo
 
 echo 'deploy php activate script'
 mkdir /var/www/html/php
-cp /home/pi/wss-install/activateApp.php /var/www/html/php/
+cp /home/pi/wss-install/activateAudioApp.php /var/www/html/php/
 echo
 
 echo 'prepare usb automount mount'
@@ -122,7 +122,7 @@ then
   echo
 
   echo 'install gpio buttons' 
-  sudo npm  --prefix /home/pi/mh_prog/WSGpioButtons install
+  sudo npm --prefix /home/pi/mh_prog/WSGpioButtons install
   cp /home/pi/mh_prog/WSGpioButtons/config.json.dist /home/pi/mh_prog/WSGpioButtons/config.json
   echo
 
@@ -139,7 +139,7 @@ then
   echo
 
   echo 'install usb rfid reader' 
-  npm  --prefix /home/pi/mh_prog/WSRFID install
+  npm --prefix /home/pi/mh_prog/WSRFID install
   cp /home/pi/mh_prog/WSRFID/config_input.json.dist /home/pi/mh_prog/WSRFID/config_input.json
   echo
 

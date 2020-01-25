@@ -1,4 +1,4 @@
-=== Raspian Lite ===
+=== Raspian Lite (Audio Player) ===
 - Download Raspian Lite
 - Image mit BalenaEtcher auf SD Karte spielen
 
@@ -25,32 +25,33 @@ sudo -s
 apt-get install git
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
-cp config.dist config
+cp config-audio.dist config-audio
+vi config-audio
 ./install-audio-player.sh
 
 
-=== Raspian with Desktop ===
+=== Raspian with Desktop (Video Player) ===
 - Download "Raspian with desktop"
-- Mit BalenaEtcher auf SD Karte spielen
-- Raspi-Pop-Config durchklicken
+- Image mit BalenaEtcher auf SD Karte spielen
+- Raspi-Popup-Config durchklicken
 - Raspi-Config (SSH) durchklicken
 - Bluetooth deaktivieren
 
 sudo -s
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
-cp config.dist config
-mousepad config
-./install-audio-player.sh
+cp config-video.dist config-video
+mousepad config-video
+./install-video-player.sh
 
 
-=== Tinkerboard ===
+=== Tinkerboard (Audio Player) ===
 - Download TinkerOS
 - Tinkerboard per USB verbinden und Image mit Etcher flashen
 
 sudo -s
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
-cp config.dist config
-leafpad config
+cp config-audio.dist config-audio
+leafpad config-audio
 ./install-audio-player.sh
