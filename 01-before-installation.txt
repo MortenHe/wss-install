@@ -34,6 +34,7 @@ vi config-audio
 - Download "Raspian with desktop"
 - Image mit BalenaEtcher auf SD Karte spielen
 - Raspi-Popup-Config durchklicken
+- Reboot
 - Raspi-Config (SSH) durchklicken
 - Bluetooth deaktivieren
 

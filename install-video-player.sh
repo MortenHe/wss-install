@@ -41,7 +41,7 @@ sed 's/$/ quiet/' -i /boot/cmdline.txt
 echo
 
 echo 'set wss player autostart in rc.local'
-sed '$ i\//home/pi/mh_prog/VideoServer/startnode.sh &' -i /etc/rc.local
+sed '$ i\/home/pi/mh_prog/VideoServer/startnode.sh &' -i /etc/rc.local
 echo
 
 echo 'install nodejs'
