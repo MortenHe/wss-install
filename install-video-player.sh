@@ -32,7 +32,7 @@ sed "$ a alias startnode='/home/pi/mh_prog/VideoServer/startnode.sh'" -i /root/.
 sed "$ a alias stopnode='/home/pi/mh_prog/VideoServer/stopnode.sh'" -i /root/.bashrc
 sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-video-repos.sh'" -i /root/.bashrc
 sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-video-npm-packages.sh'" -i /root/.bashrc
-sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && pullgit && npmupdate'" -i /root/.bashrc
+sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean && sudo npm install -g npm && pullgit && npmupdate'" -i /root/.bashrc
 source /root/.bashrc
 echo
 
@@ -64,6 +64,10 @@ npm --prefix /home/pi/mh_prog/VideoServer install
 cp /home/pi/mh_prog/VideoServer/config.json.dist /home/pi/mh_prog/VideoServer/config.json
 echo
 
+echo 'install cec-utils'
+sudo apt-get install -y cec-utils
+echo
+
 echo 'install apache'
 sudo apt-get install -y apache2
 sudo a2enmod rewrite
@@ -87,6 +91,11 @@ echo
 echo 'get and install mausberry power button script'
 sudo wget http://files.mausberrycircuits.com/setup.sh
 sudo bash setup.sh
+echo
+
+echo 'add cec-shutdown to mausberry script'
+sed '/\poweroff/i echo standby 0 | cec-client -s -d 1' -i /etc/switch.sh
+echo
 
 echo 'optimize startup time in /boot/config.txt'
 echo "# Disable the rainbow splash screen" >> /boot/config.txt

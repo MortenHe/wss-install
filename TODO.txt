@@ -40,6 +40,7 @@ Songs in Drive speichern und passend benennen
 mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 # VideoClient
+--- bereits eingefügte Folgen nicht doppelt einfügen
 -- deployWebsite und deployJson mit nur 1 Parameter
 font-awesome 5
 Resultlist.ts, etc. prüfen welche Abos benötigt
@@ -47,6 +48,7 @@ Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
 
 # VideoServer
 Countdown umarbeiten wie bei Audio Server
+Countdown in logfile ausgeben
 Abschlussbild als Video danach random
 mock-server weitere Funktionen
 

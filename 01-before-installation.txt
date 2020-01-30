@@ -27,7 +27,7 @@ git clone https://github.com/MortenHe/wss-install
 cd wss-install
 cp config-audio.dist config-audio
 vi config-audio
-./install-audio-player.sh
+sudo bash install-audio-player.sh
 
 
 === Raspian with Desktop (Video Player) ===
@@ -43,7 +43,7 @@ git clone https://github.com/MortenHe/wss-install
 cd wss-install
 cp config-video.dist config-video
 mousepad config-video
-./install-video-player.sh
+sudo bash install-video-player.sh
 
 
 === Tinkerboard (Audio Player) ===
