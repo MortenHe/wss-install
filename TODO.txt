@@ -1,9 +1,8 @@
 # AudioClient
--- Webseite auf Server bauen und deployen
 Video und Audio-Tools zusammenfassen -> upload, deploy, etc.
 setJoker mit Promises
 kein Ping, Variable connected
- bei connect vorherigen (pending) canceln vs. ping rausnehmen
+bei connect vorherigen (pending) canceln vs. ping rausnehmen
 Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
 htaccess / linkseite für 150/
 Deploy Skripte: ssh.close();
@@ -17,7 +16,9 @@ Playlist-View per Route ansteuern
 Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioServer
-- keine Eingabe mehr nach stopnode
+-- WLAN abschalten
+keine Eingabe mehr nach stopnode
+Mpv player
 path / mode / lastSession überdenken
 execSync vs. exec
 for (let) vs. for (const)
@@ -25,7 +26,7 @@ Mockserver
 Colors für console.log
 
 # NewSHAudioClient
--- deployWebsite und deployJson mit nur 1 Parameter
+Swipe für Titel einfügen löschen in SH Player
 color-grey (z.B. connection icon) über body setzen
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
@@ -41,7 +42,6 @@ mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 # VideoClient
 --- bereits eingefügte Folgen nicht doppelt einfügen
--- deployWebsite und deployJson mit nur 1 Parameter
 font-awesome 5
 Resultlist.ts, etc. prüfen welche Abos benötigt
 Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
@@ -49,7 +49,6 @@ Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
 # VideoServer
 Countdown umarbeiten wie bei Audio Server
 Countdown in logfile ausgeben
-Abschlussbild als Video danach random
 mock-server weitere Funktionen
 
 # WSGpioButtons
@@ -62,8 +61,6 @@ Karte WLAN deaktiveren
 # SoundQuizGPIO
 
 # SoundQuizServer
-Spiel: "wer hat am 18.11. Geburtstag"
-Wer spricht so: Bibi und Tina, Janoschfiguren, Woody
 sendclientinfo fct
 if / else vs. return
 
@@ -71,8 +68,6 @@ if / else vs. return
 8mm Buche
 
 # wss-install
---- bashrc tailf = tail -f /home/pi/mh_prog/output-server.txt
--- sudo apt autoremove in bashrc
 -- 02-after-installation Video Deploy
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
@@ -88,6 +83,7 @@ onoff shim https://www.adafruit.com/product/3581
 lange breakaway https://www.adafruit.com/product/400
 solderless header
 bessere Buttons
+s. Bookmarks (Pi-DAC+ Pro, )
 
 
 Service audioplayer.service anlegen in

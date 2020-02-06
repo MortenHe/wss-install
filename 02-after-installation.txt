@@ -1,3 +1,5 @@
+=== Raspi (Audio Player) ===
+
 === Config usb rfid reader ===
 cat /dev/input/event0
 vi /home/pi/mh_prog/WSRFID/config_input.json
@@ -18,8 +20,8 @@ node .\deployWebsiteToServer.js luis
 
 === build and deploy sh audio app from local computer ===
 connection.js
-node .\deployWebsiteToServer.js laila laila
-node .\deployWebsiteToServer.js luis luis
+node .\deployWebsiteToServer.js laila
+node .\deployWebsiteToServer.js luis
 
 === Mausberry power button ===
 out GPIO 23 (8. Pin von Seite SD-Karte aussen)
@@ -27,7 +29,7 @@ in GPIO 24 (9. Pin von Seite SD-Karte aussen)
 Button = SW = auessere Kontakte auf Button
 LED = innere Kontakte auf Button (ggf. + / - vertauschen)
 
-=== Tinkerboard ===
+=== Tinkerboard (Audio Player) ===
 
 === Config audio and sh audio server ===
 alsamixer (Digital|PCM|Master|Headphone,1)
@@ -45,3 +47,9 @@ leafpad /home/pi/mh_prog/WSGpioButtons/config_9090.json
 aplay -l
 leafpad /root/.mplayer/config
 ao=alsa:device=hw=0.2
+
+=== Raspi (Video Player) ===
+
+=== build and deploy video app from local computer ===
+connection.js
+node .\deployWebsiteToServer.js
