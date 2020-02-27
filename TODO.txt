@@ -1,7 +1,12 @@
 # AudioClient
+- aktuelle Playlist im Mix zeigen
+- mix starten cursor pointer, hover
+- joker symbol spinner, disable während Berechnung
+- Tracks über Oberfläche sperren -> _01-conni.mp3 ignorieren bei Audio-Server
+auf View Suche vs. Playlist per Route
 Video und Audio-Tools zusammenfassen -> upload, deploy, etc.
 setJoker mit Promises
-kein Ping, Variable connected
+kein Ping, Variable connected -> ping Zeit veroppeln?
 bei connect vorherigen (pending) canceln vs. ping rausnehmen
 Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
 htaccess / linkseite für 150/
@@ -17,6 +22,7 @@ Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioServer
 -- WLAN abschalten
+mix: sortierung 1970-01-01 wegen NTFS?
 keine Eingabe mehr nach stopnode
 Mpv player
 path / mode / lastSession überdenken
@@ -42,6 +48,7 @@ mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 # VideoClient
 --- bereits eingefügte Folgen nicht doppelt einfügen
+- VideoClient: klick auf kompletten Bereich der Zeile ermöglichen
 font-awesome 5
 Resultlist.ts, etc. prüfen welche Abos benötigt
 Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
@@ -68,7 +75,6 @@ if / else vs. return
 8mm Buche
 
 # wss-install
--- 02-after-installation Video Deploy
 config_7070.json.dist (bei Buttons und bei cp in install script)
 config_cards_7070.json.dist (bei RFID und bei cp in install script)
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen

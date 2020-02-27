@@ -6,6 +6,6 @@ git -C /home/pi/wss-install pull
 echo
 
 #Video Server git pull
-echo 'pull AudioServer git repo'
+echo 'pull VideoServer git repo'
 git -C /home/pi/mh_prog/VideoServer pull
 echo
