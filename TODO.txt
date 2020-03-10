@@ -1,9 +1,12 @@
 # AudioClient
+- Mix oben kein 07 - Präfix anzeigen, unten auch nicht bei ausgewählter Datei
+- media hover mit hover: hover + fine
 - bashrc für upload-Befehle
 - mix starten hover
 - Tracks über Oberfläche sperren -> _01-conni.mp3 ignorieren bei Audio-Server
 - copy json to "server" für linux vs. symlink setzen
 - Handy UI: Lange Namen mix
+- Playlist Deutsch 60s / 70s, Tanz
 auf View Suche vs. Playlist per Route
 Video und Audio-Tools zusammenfassen -> upload, deploy, etc.
 setJoker mit Promises
@@ -22,6 +25,9 @@ Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioServer
 -- WLAN abschalten
+sudo apt-get install libasound2-plugin-equal
+alsamixer -D equal
+https://www.hifiberry.com/docs/software/guide-adding-equalization-using-alsaeq/
 mix: sortierung 1970-01-01 wegen NTFS?
 keine Eingabe mehr nach stopnode
 Mpv player
@@ -32,6 +38,7 @@ Mockserver
 Colors für console.log
 
 # NewSHAudioClient
+- Underline hover bei newsh
 Swipe für Titel einfügen löschen in SH Player
 color-grey (z.B. connection icon) über body setzen
 searchfield und searchresult aufteilen
@@ -48,6 +55,7 @@ mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 # VideoClient
 --- bereits eingefügte Folgen nicht doppelt einfügen
+- Underline hover bei video
 - VideoClient: klick auf kompletten Bereich der Zeile ermöglichen
 font-awesome 5
 Resultlist.ts, etc. prüfen welche Abos benötigt
@@ -76,7 +84,6 @@ if / else vs. return
 
 # wss-install
 config_7070.json.dist (bei Buttons und bei cp in install script)
-config_cards_7070.json.dist (bei RFID und bei cp in install script)
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
 
 mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde

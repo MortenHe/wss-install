@@ -31,6 +31,7 @@ sed "$ a alias ..='cd ..'" -i /root/.bashrc
 sed "$ a alias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'" -i /root/.bashrc
 sed "$ a alias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'" -i /root/.bashrc
 sed "$ a alias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'" -i /root/.bashrc
+sed "$ a alias startnodesoundplayer='/home/pi/mh_prog/SoundQuizServer/startnodesoundplayer.sh'" -i /root/.bashrc
 sed "$ a alias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'" -i /root/.bashrc
 sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
 sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
