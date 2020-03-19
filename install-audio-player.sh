@@ -125,7 +125,9 @@ then
 
   echo 'install gpio buttons' 
   sudo npm --prefix /home/pi/mh_prog/WSGpioButtons install
-  cp /home/pi/mh_prog/WSGpioButtons/config.json.dist /home/pi/mh_prog/WSGpioButtons/config.json
+  cp /home/pi/mh_prog/WSGpioButtons/config_7070.json.dist /home/pi/mh_prog/WSGpioButtons/config_7070.json
+  cp /home/pi/mh_prog/WSGpioButtons/config_8080.json.dist /home/pi/mh_prog/WSGpioButtons/config_8080.json
+  cp /home/pi/mh_prog/WSGpioButtons/config_9090.json.dist /home/pi/mh_prog/WSGpioButtons/config_9090.json
   echo
 
   echo 'enable gpio buttons in audio and sh audio server'
