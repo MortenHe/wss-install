@@ -1,6 +1,13 @@
 # AudioClient
-- copy json to "server" für linux vs. symlink setzen
+--- Dateien und JSON per Nextcloud-Client
+-- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
+-- Skript, dass Playlists / Videos ohne JSON-Eintrag ermittelt und Audio-JSON erstellt
+-- reloadJSON (auch bei Video Player)
+- Creationdate bei Audio Video Sortierung 
+- Mix-Suche mit Paging
 - Playlist Deutsch 60s / 70s, Tanz
+- Arduino Sprachsteuerung
+- Abc Lieder Kids, Ordner deutsch, check, tanz, etc. überarbeiten, Osterplaylist
 Tracks über Oberfläche sperren -> _01-conni.mp3 ignorieren bei Audio-Server
 Android App
 auf View Suche vs. Playlist per Route
@@ -34,6 +41,7 @@ Mockserver
 Colors für console.log
 
 # NewSHAudioClient
+-- Liste der neuesten Tracks auf der Seite zeigen
 -- Underline hover bei newsh
 Swipe für Titel einfügen löschen in SH Player
 color-grey (z.B. connection icon) über body setzen
@@ -58,6 +66,7 @@ Resultlist.ts, etc. prüfen welche Abos benötigt
 Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
 
 # VideoServer
+--- Aktuelle Playlist als Datei auf Server, damit man bei Fehler nicht neu klicken muss
 Countdown umarbeiten wie bei Audio Server
 Countdown in logfile ausgeben
 mock-server weitere Funktionen
@@ -72,6 +81,7 @@ Karte WLAN deaktiveren
 # SoundQuizGPIO
 
 # SoundQuizServer
+- Answer wrong right Variationen. Quatsch, genau so ist es
 sendclientinfo fct
 if / else vs. return
 
@@ -85,7 +95,7 @@ mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
 
 V2
 raspi 4
-original Netzteil vs. Hülle über Stromkabel
+original Netzteil
 lange Kabel https://www.adafruit.com/product/824
 onoff shim https://www.adafruit.com/product/3581
 lange breakaway https://www.adafruit.com/product/400
@@ -119,3 +129,18 @@ sudo chmod 644 /lib/systemd/system/audioplayer.service
 
 in Autostart mit
 systemctl enable audioplayer.service
+
+
+Nextcloud Video Player
+install NTFS
+mkdir /media/pi/usb_red
+sudo apt-get install seahorse
+Nextcloud Client -> Schlüsselring: leeres Passwort -> sorgt für Autologin
+Bei default key Rechtklick Passwort ändern. Leeres Passwort -> sorgt für Autologin
+
+
+Tinker Nextcloud (geht nicht)
+add-apt-repository Befehl nachrüsten:
+//sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:nextcloud-devs/client

@@ -1,4 +1,4 @@
-=== Raspi (Audio Player) ===
+=== Raspi (Audio / Video Player) ===
 
 === Config usb rfid reader ===
 cat /dev/input/event0
@@ -12,6 +12,7 @@ vi /etc/fstab
 UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+UUID=C470BE3C70BE34D0 /media/pi/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 
 === build and deploy audio app from local computer ===
 connection.js
@@ -22,6 +23,10 @@ node .\deployWebsiteToServer.js luis
 connection.js
 node .\deployWebsiteToServer.js laila
 node .\deployWebsiteToServer.js luis
+
+=== build and deploy video app from local computer ===
+connection.js
+node .\deployWebsiteToServer.js
 
 === Mausberry power button ===
 out GPIO 23 (8. Pin von Seite SD-Karte aussen)
@@ -47,9 +52,3 @@ leafpad /home/pi/mh_prog/WSGpioButtons/config_9090.json
 aplay -l
 leafpad /root/.mplayer/config
 ao=alsa:device=hw=0.2
-
-=== Raspi (Video Player) ===
-
-=== build and deploy video app from local computer ===
-connection.js
-node .\deployWebsiteToServer.js
