@@ -144,7 +144,7 @@ then
 
   echo 'install usb rfid reader' 
   npm --prefix /home/pi/mh_prog/WSRFID install
-  cp /home/pi/mh_prog/WSRFID/config_input.json.dist /home/pi/mh_prog/WSRFID/config_input.json
+  cp /home/pi/mh_prog/WSRFID/config.json.dist /home/pi/mh_prog/WSRFID/config.json
   echo
 
   echo 'enable usb rfid reader in audio and sh audio server'

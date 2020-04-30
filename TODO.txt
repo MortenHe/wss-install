@@ -1,4 +1,29 @@
+
+
+nano ~/.netrc
+
+~/.netrc
+
+machine https://nx10108.your-storageshare.de
+login Audio
+password ###
+
+chmod 0600 ~/.netrc
+
+/media/usb_audio/Nextcloud anlegen
+
+nextcloudcmd --non-interactive -n /media/usb_audio/Nextcloud https://nx10108.your-storageshare.de/remote.php/webdav/
+
+
+nextcloudcmd -n /media/usb_audio/Nextcloud https://nx10108.your-storageshare.de
+
+
+
 # AudioClient
+---- Joker und Mix fuer Laila / Luis als einzelne Ordner
+---- Mix-Dir in mix.comp.ts
+
+-- soundquiz compare auf cloud anpassen 7070 -> soundquiz_rfid.json
 --- Dateien und JSON per Nextcloud-Client
 -- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
 -- Skript, dass Playlists / Videos ohne JSON-Eintrag ermittelt und Audio-JSON erstellt

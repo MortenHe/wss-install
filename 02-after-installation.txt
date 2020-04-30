@@ -2,7 +2,7 @@
 
 === Config usb rfid reader ===
 cat /dev/input/event0
-vi /home/pi/mh_prog/WSRFID/config_input.json
+vi /home/pi/mh_prog/WSRFID/config.json
 
 === USB automount ===
 sudo blkid -o list -w /dev/null 
