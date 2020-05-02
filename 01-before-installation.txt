@@ -1,14 +1,17 @@
-=== Raspian Lite (Audio Player) ===
-- Download Raspian Lite
-- Image mit BalenaEtcher auf SD Karte spielen
+=== Raspian with Desktop (ohne recommended Software) (Audio / Video Player) ===
+- Raspi Pi Imager
 
-- USB Stick mit NTFS formattieren als "usb_audio"
-- Inhalte auf USB Stick kopieren
+- USB Stick mit NTFS formattieren als "usb_audio" (Inhalte kommen später per Nextcloud)
 
-- HDMI Kabel einstecken bei Pi und starten
+- HDMI Kabel und USB Tastatur / Maus einstecken bei Pi und starten
 
 - Login pi / raspberry (Achtung mit z)
 
+- Config durchklicken
+
+- Bluetooth deaktivieren
+
+//Bei Installation mit Lite
 sudo raspi-config
 8 update tool
 1 change user pi password : martin12
@@ -22,29 +25,13 @@ sudo raspi-config
 7-1 resize sd card
 
 sudo -s
-apt-get install git
+//bei Lite: apt-get install git
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
-cp config-audio.dist config-audio
-vi config-audio
-sudo bash install-audio-player.sh
-
-
-=== Raspian with Desktop (Video Player) ===
-- Download "Raspian with desktop"
-- Image mit BalenaEtcher auf SD Karte spielen
-- Raspi-Popup-Config durchklicken
-- Reboot
-- Raspi-Config (SSH) durchklicken
-- Bluetooth deaktivieren
-
-sudo -s
-git clone https://github.com/MortenHe/wss-install
-cd wss-install
-cp config-video.dist config-video
-mousepad config-video
-sudo bash install-video-player.sh
-
+cp config-audio.dist config (Achtung nicht config-audio) | cp config-video.dist config (Achtung nicht config-video)
+thonny config-audio (PW setzen)
+//Lite: vi config
+sudo bash install-audio-player.sh | sudo bash install-video-player.sh
 
 === Tinkerboard (Audio Player) ===
 - Download TinkerOS

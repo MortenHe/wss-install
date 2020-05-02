@@ -1,3 +1,6 @@
+ggf. Remote Desktop Zugriff installieren
+sudo apt-get install -y xrdp
+
 === Raspi (Audio / Video Player) ===
 
 === Config usb rfid reader ===
@@ -12,19 +15,32 @@ vi /etc/fstab
 UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
-UUID=C470BE3C70BE34D0 /media/pi/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+UUID=C470BE3C70BE34D0 /media/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+
+=== Nextcloud installieren
+cd /home/pi/wss-install/
+sudo bash install-nextcloud-client.sh
+
+Nextcloud unter /media/usb_audio/Nextcloud | /media/usb_red/Nextcloud ablegen
+Nextcloud Autostart aktivieren
 
 === build and deploy audio app from local computer ===
+AudioClient
+cd src/tools
 connection.js
 node .\deployWebsiteToServer.js laila
 node .\deployWebsiteToServer.js luis
 
 === build and deploy sh audio app from local computer ===
+NewSHAudioServer
+cd src/tools
 connection.js
 node .\deployWebsiteToServer.js laila
 node .\deployWebsiteToServer.js luis
 
 === build and deploy video app from local computer ===
+VideoClient
+cd src/tools
 connection.js
 node .\deployWebsiteToServer.js
 
