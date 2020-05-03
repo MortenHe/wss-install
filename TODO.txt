@@ -1,27 +1,9 @@
-
-
-nano ~/.netrc
-
-~/.netrc
-
-machine https://nx10108.your-storageshare.de
-login Audio
-password ###
-
-chmod 0600 ~/.netrc
-
-/media/usb_audio/Nextcloud anlegen
-
-nextcloudcmd --non-interactive -n /media/usb_audio/Nextcloud https://nx10108.your-storageshare.de/remote.php/webdav/
-
-
-nextcloudcmd -n /media/usb_audio/Nextcloud https://nx10108.your-storageshare.de
-
-
-
 # AudioClient
 ---- Joker und Mix fuer Laila / Luis als einzelne Ordner
 ---- Mix-Dir in mix.comp.ts
+
+---- searchFiles nicht mit glob.sync
+--- Nextcloud Accout für wvp
 
 -- soundquiz compare auf cloud anpassen 7070 -> soundquiz_rfid.json
 --- Dateien und JSON per Nextcloud-Client
@@ -100,8 +82,6 @@ mock-server weitere Funktionen
 Buttons über Config (for button of buttonConfig)
 
 # WSRIF
-IR / USB Remote Control
-Karte WLAN deaktiveren
 
 # SoundQuizGPIO
 
