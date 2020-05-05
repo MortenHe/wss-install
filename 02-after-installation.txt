@@ -3,6 +3,9 @@ sudo apt-get install -y xrdp
 
 === Raspi (Audio / Video Player) ===
 
+=== AudioServer config ===
+vi /home/pi/mh_prog/AudioServer/config.json
+
 === Config usb rfid reader ===
 cat /dev/input/event0
 vi /home/pi/mh_prog/WSRFID/config.json
@@ -21,7 +24,14 @@ UUID=C470BE3C70BE34D0 /media/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 cd /home/pi/wss-install/
 sudo bash install-nextcloud-client.sh
 
-Nextcloud unter /media/usb_audio/Nextcloud | /media/usb_red/Nextcloud ablegen
+reboot (damit USB-Stick gemountet ist)
+Zubehör / Nextcloud Client
+Konto Audio | Video
+Alle Dateien sync
+keine Bestätitung erfragen für 500MB / externe SpeicherNext
+Order Nextcloud anlegen
+/media/usb_audio/Nextcloud | /media/usb_red/Nextcloud
+Schlüsselbund -> leeres PW
 Nextcloud Autostart aktivieren
 
 === build and deploy audio app from local computer ===

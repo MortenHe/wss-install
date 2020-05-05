@@ -1,5 +1,5 @@
-=== Raspian with Desktop (ohne recommended Software) (Audio / Video Player) ===
-- Raspi Pi Imager
+=== Audio / Video Player ===
+- Raspi Pi Imager -> Raspian with Desktop (ohne recommended Software)
 
 - USB Stick mit NTFS formattieren als "usb_audio" (Inhalte kommen später per Nextcloud)
 
@@ -10,6 +10,16 @@
 - Config durchklicken
 
 - Bluetooth deaktivieren
+
+sudo -s
+git clone https://github.com/MortenHe/wss-install
+cd wss-install
+cp config-audio.dist config (Achtung nicht config-audio) | cp config-video.dist config (Achtung nicht config-video)
+thonny config (PW setzen)
+sudo bash install-audio-player.sh | sudo bash install-video-player.sh
+
+
+=== Bei Installation von Lite ===
 
 //Bei Installation mit Lite
 sudo raspi-config
@@ -24,14 +34,10 @@ sudo raspi-config
 5-2 ssh
 7-1 resize sd card
 
-sudo -s
-//bei Lite: apt-get install git
-git clone https://github.com/MortenHe/wss-install
-cd wss-install
-cp config-audio.dist config (Achtung nicht config-audio) | cp config-video.dist config (Achtung nicht config-video)
-thonny config-audio (PW setzen)
-//Lite: vi config
-sudo bash install-audio-player.sh | sudo bash install-video-player.sh
+apt-get install git
+
+vi config
+
 
 === Tinkerboard (Audio Player) ===
 - Download TinkerOS
