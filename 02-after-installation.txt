@@ -9,6 +9,7 @@ vi /home/pi/mh_prog/AudioServer/config.json
 === Config usb rfid reader ===
 cat /dev/input/event0
 vi /home/pi/mh_prog/WSRFID/config.json
+ID ändert sich ggf., wenn USB Maus / Tastatur entfernt wird
 
 === USB automount ===
 sudo blkid -o list -w /dev/null 
@@ -32,6 +33,7 @@ keine Bestätitung erfragen für 500MB / externe SpeicherNext
 Order Nextcloud anlegen
 /media/usb_audio/Nextcloud | /media/usb_red/Nextcloud
 Schlüsselbund -> leeres PW
+ggf. Ordner von Sync ausschließen (shp/mh & shp/sh bei Kids Playern)
 Nextcloud Autostart aktivieren
 
 === build and deploy audio app from local computer ===
