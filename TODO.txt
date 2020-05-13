@@ -1,14 +1,9 @@
 # AudioClient
----- Joker und Mix fuer Laila / Luis als einzelne Ordner
----- Mix-Dir in mix.comp.ts
 
----- searchFiles nicht mit glob.sync
---- Nextcloud Accout für wvp
-
+--- Nextcloud Accout für wvp, Nextcloud wvp zu video umbenennen
+--- Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
 -- soundquiz compare auf cloud anpassen 7070 -> soundquiz_rfid.json
---- Dateien und JSON per Nextcloud-Client
 -- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
--- Skript, dass Playlists / Videos ohne JSON-Eintrag ermittelt und Audio-JSON erstellt
 -- reloadJSON (auch bei Video Player)
 - Creationdate bei Audio Video Sortierung 
 - Mix-Suche mit Paging
@@ -21,7 +16,6 @@ auf View Suche vs. Playlist per Route
 Video und Audio-Tools zusammenfassen -> upload, deploy, etc.
 setJoker mit Promises
 kein Ping, Variable connected -> ping Zeit veroppeln?
-Kinder HSP und Musik prüfen für Brennen und Player (Nola, Piratenschwein)
 htaccess / linkseite für 150/
 Deploy Skripte: ssh.close();
 Favicon mit besserer Auflösung und rund und pro Instanz
@@ -35,16 +29,10 @@ Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioServer
 -- WLAN abschalten
-sudo apt-get install libasound2-plugin-equal
-alsamixer -D equal
-https://www.hifiberry.com/docs/software/guide-adding-equalization-using-alsaeq/
-mix: sortierung 1970-01-01 wegen NTFS?
 keine Eingabe mehr nach stopnode
 Mpv player
-path / mode / lastSession überdenken
 execSync vs. exec
 for (let) vs. for (const)
-Mockserver
 Colors für console.log
 
 # NewSHAudioClient
@@ -61,8 +49,6 @@ Trackby für Trefferliste
 Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
 
 # NewSHAudioServer
--- Kids Songs in Drive speichern und passend benennen
-mock-server weitere Funktionen (pause stoppt fakeCountdown)
 
 # VideoClient
 --- bereits eingefügte Folgen nicht doppelt einfügen
@@ -98,16 +84,6 @@ gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezi
 
 mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
 
-V2
-raspi 4
-original Netzteil
-lange Kabel https://www.adafruit.com/product/824
-onoff shim https://www.adafruit.com/product/3581
-lange breakaway https://www.adafruit.com/product/400
-solderless header
-bessere Buttons
-s. Bookmarks (Pi-DAC+ Pro, )
-
 
 Service audioplayer.service anlegen in
 
@@ -134,18 +110,3 @@ sudo chmod 644 /lib/systemd/system/audioplayer.service
 
 in Autostart mit
 systemctl enable audioplayer.service
-
-
-Nextcloud Video Player
-install NTFS
-mkdir /media/pi/usb_red
-sudo apt-get install seahorse
-Nextcloud Client -> Schlüsselring: leeres Passwort -> sorgt für Autologin
-Bei default key Rechtklick Passwort ändern. Leeres Passwort -> sorgt für Autologin
-
-
-Tinker Nextcloud (geht nicht)
-add-apt-repository Befehl nachrüsten:
-//sudo apt-get update
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:nextcloud-devs/client
