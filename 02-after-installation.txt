@@ -4,33 +4,33 @@ sudo apt-get install -y xrdp
 === Raspi (Audio / Video Player) ===
 
 === AudioServer config ===
-vi /home/pi/mh_prog/AudioServer/config.json
+sudo thonny /home/pi/mh_prog/AudioServer/config.json (joker-### und mix-### setzen)
 
 === Config usb rfid reader ===
 cat /dev/input/event0
-vi /home/pi/mh_prog/WSRFID/config.json
+sudo thonny /home/pi/mh_prog/WSRFID/config.json
 ID ändert sich ggf., wenn USB Maus / Tastatur entfernt wird
 
 === USB automount ===
 sudo blkid -o list -w /dev/null 
 -> get UUID like E012519312517010 | B8EA48B6EA487324 | 78C20C88C20C4CB6
 
-vi /etc/fstab 
+sudo thonny /etc/fstab 
 UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=C470BE3C70BE34D0 /media/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+sudo reboot damit USB-Stick gemountet wird
 
 === Nextcloud installieren
 cd /home/pi/wss-install/
 sudo bash install-nextcloud-client.sh
 
-reboot (damit USB-Stick gemountet ist)
 Zubehör / Nextcloud Client
 Konto Audio | Video
 Alle Dateien sync
 keine Bestätitung erfragen für 500MB / externe SpeicherNext
-Order Nextcloud anlegen
+Order Nextcloud anlegen in /media/usb_audio
 /media/usb_audio/Nextcloud | /media/usb_red/Nextcloud
 Schlüsselbund -> leeres PW
 ggf. Ordner von Sync ausschließen (shp/mh & shp/sh bei Kids Playern)

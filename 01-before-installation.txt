@@ -11,6 +11,8 @@
 
 - Bluetooth deaktivieren
 
+- In Raspi-Config: SSH aktivieren
+
 sudo -s
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
