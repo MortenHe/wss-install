@@ -5,6 +5,7 @@
 -- soundquiz compare auf cloud anpassen 7070 -> soundquiz_rfid.json
 -- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
 -- reloadJSON (auch bei Video Player)
+-- Deprecated Funktionen weg (deployJsonToServer)
 - Creationdate bei Audio Video Sortierung 
 - Mix-Suche mit Paging
 - Playlist Deutsch 60s / 70s, Tanz
