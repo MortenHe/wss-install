@@ -2,6 +2,7 @@
 
 --- Nextcloud Accout für wvp, Nextcloud wvp zu video umbenennen
 --- Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
+--- Audio Compare mit localhost
 -- soundquiz compare auf cloud anpassen 7070 -> soundquiz_rfid.json
 -- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
 -- reloadJSON (auch bei Video Player)
