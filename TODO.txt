@@ -1,6 +1,19 @@
 # AudioClient
+statische IP-Vergabe
 
---- WebM converter
+sudo service dhcpcd status
+
+Sollte dies nicht der Fall sein, aktivieren Sie den DHCPC wie folgt:
+sudo service dhcpcd start
+sudo systemctl enable dhcpcd
+
+sudo nano /etc/dhcpcd.conf
+
+interface wlan0
+static ip_address=192.168.0.149/24
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1
+
 --- Nextcloud Accout für wvp, Nextcloud wvp zu video umbenennen
 --- Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
 --- Audio Compare mit localhost
