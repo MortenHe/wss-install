@@ -42,6 +42,8 @@ cd src/tools
 connection.js
 node .\deployWebsiteToServer.js laila
 node .\deployWebsiteToServer.js luis
+node .\deployWebsiteToServer.js pw
+node .\deployWebsiteToServer.js sh
 
 === build and deploy sh audio app from local computer ===
 NewSHAudioServer
@@ -49,6 +51,8 @@ cd src/tools
 connection.js
 node .\deployWebsiteToServer.js laila
 node .\deployWebsiteToServer.js luis
+node .\deployWebsiteToServer.js pw
+node .\deployWebsiteToServer.js sh
 
 === build and deploy video app from local computer ===
 VideoClient

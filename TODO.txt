@@ -14,6 +14,9 @@ static ip_address=192.168.0.149/24
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
 
+--- Nextcloud Ordner in Config files bei Audio auf /home/pi/umarbeiten
+--- assetId (Audio / Video?) entfernen
+--- config.js vs. config.json vs. connection vs. link.js
 --- Nextcloud Accout für wvp, Nextcloud wvp zu video umbenennen
 --- Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
 --- Audio Compare mit localhost

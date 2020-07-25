@@ -1,5 +1,5 @@
 === Audio / Video Player ===
-- Raspi Pi Imager -> Raspian with Desktop (ohne recommended Software)
+- Raspberry Pi Imager -> Raspian with Desktop (ohne recommended Software)
 
 - USB Stick mit NTFS formattieren als "usb_audio" (Inhalte kommen später per Nextcloud)
 
