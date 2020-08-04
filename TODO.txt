@@ -14,25 +14,15 @@ static ip_address=192.168.0.149/24
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
 
---- Nextcloud Ordner in Config files bei Audio auf /home/pi/umarbeiten
---- assetId (Audio / Video?) entfernen
---- config.js vs. config.json vs. connection vs. link.js
---- Nextcloud Accout für wvp, Nextcloud wvp zu video umbenennen
---- Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
---- Audio Compare mit localhost
--- soundquiz compare auf cloud anpassen 7070 -> soundquiz_rfid.json
--- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
--- reloadJSON (auch bei Video Player)
--- Deprecated Funktionen weg (deployJsonToServer)
 - Creationdate bei Audio Video Sortierung 
 - Mix-Suche mit Paging
-- Playlist Deutsch 60s / 70s, Tanz
-- Arduino Sprachsteuerung
-- Abc Lieder Kids, Ordner deutsch, check, tanz, etc. überarbeiten, Osterplaylist
-Tracks über Oberfläche sperren -> _01-conni.mp3 ignorieren bei Audio-Server
+- Nextcloud /raspi/files/wvp -> video umbenennen, danach mit Nutzer Video (existiert schon) teilen
+- Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
+- Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
+- reloadJSON (auch bei Video Player)
+Arduino Sprachsteuerung
 Android App
 auf View Suche vs. Playlist per Route
-Video und Audio-Tools zusammenfassen -> upload, deploy, etc.
 setJoker mit Promises
 kein Ping, Variable connected -> ping Zeit veroppeln?
 htaccess / linkseite für 150/
@@ -52,7 +42,6 @@ keine Eingabe mehr nach stopnode
 Mpv player
 execSync vs. exec
 for (let) vs. for (const)
-Colors für console.log
 
 # NewSHAudioClient
 -- Liste der neuesten Tracks auf der Seite zeigen

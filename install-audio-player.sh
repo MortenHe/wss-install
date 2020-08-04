@@ -111,10 +111,11 @@ mkdir /var/www/html/php
 cp /home/pi/wss-install/activateAudioApp.php /var/www/html/php/
 echo
 
-echo 'prepare usb automount mount'
-sudo apt-get install -y ntfs-3g
-sudo mkdir /media/usb_audio
-echo
+#Audio liegt auf SD Karte und wird per Nextcloud gesynct, daher kein USB-Stick mehr
+#echo 'prepare usb automount mount'
+#sudo apt-get install -y ntfs-3g
+#sudo mkdir /media/usb_audio
+#echo
 
 #GPIO Buttons
 if [ $GPIOBUTTONS = true ];
