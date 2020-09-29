@@ -14,19 +14,19 @@ git -C /home/pi/mh_prog/AudioServer pull
 echo
 
 #SH Audio Server git pull
-echo 'pull NewSHAudioServer git reppackages'
+echo 'pull NewSHAudioServer git repo'
 git -C /home/pi/mh_prog/NewSHAudioServer pull
 echo
 
 #SoundQuiz Server git pull
-echo 'update SoundQuizServer npm packages'
+echo 'pull SoundQuizServer git repo'
 git -C /home/pi/mh_prog/SoundQuizServer pull
 echo
 
 #GPIO Buttons git pull
 if [ $GPIOBUTTONS = true ];
 then
-  echo 'update WSGpioButtons npm packages'
+  echo 'pull WSGpioButtons git repo'
   git -C /home/pi/mh_prog/WSGpioButtons pull
   echo
 fi
@@ -34,7 +34,7 @@ fi
 #USB RFID Reader NPM git pull
 if [ $USBRFIDREADER = true ];
 then
-  echo 'update WSRFID npm packages'
+  echo 'pull WSRFID git repo'
   git -C /home/pi/mh_prog/WSRFID pull
   echo
 fi

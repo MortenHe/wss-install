@@ -1,6 +1,6 @@
 #!/bin/sh
 
 #Video Server NPM packages updaten
-echo 'update VideoServer npm packages'
-npm update --prefix /home/pi/mh_prog/VideoServer
+echo 'install VideoServer npm packages'
+npm install --prefix /home/pi/mh_prog/VideoServer
 echo
