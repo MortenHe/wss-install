@@ -14,12 +14,13 @@ static ip_address=192.168.0.149/24
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
 
+- node ws auf 7 hochziehen
 - Creationdate bei Audio Video Sortierung 
 - Mix-Suche mit Paging
 - Nextcloud /raspi/files/wvp -> video umbenennen, danach mit Nutzer Video (existiert schon) teilen
 - Logging Ausgabe > output-server.txt direkt in server.js einbauen, ggf. startnode loswerden / vereinfachen?
 - Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
-- reloadJSON (auch bei Video Player)
+- reloadJSON bei Video Player nach 5 min
 Arduino Sprachsteuerung
 Android App
 auf View Suche vs. Playlist per Route
@@ -68,7 +69,6 @@ Liste nach Nummer erstellen (welche Folgen von Bibi und Tina fehlen noch)
 
 # VideoServer
 --- Aktuelle Playlist als Datei auf Server, damit man bei Fehler nicht neu klicken muss
-Countdown umarbeiten wie bei Audio Server
 Countdown in logfile ausgeben
 mock-server weitere Funktionen
 
@@ -81,11 +81,15 @@ Buttons über Config (for button of buttonConfig)
 
 # SoundQuizServer
 - Answer wrong right Variationen. Quatsch, genau so ist es
+Lernspiel: Wer hat am 18.11. Geburtstag, Musikinstrumente, Flaggen, Was bedeutet das frz. Wort Baguette? (Fremdsprachen), Wappen Pfaffenweiler 
 sendclientinfo fct
 if / else vs. return
 
 # Gehäuse
 8mm Buche
+http://www.makercase.com/
+https://www.festi.info/boxes.py/
+https://www.formulor.de/uploadHelp
 
 # wss-install
 gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
