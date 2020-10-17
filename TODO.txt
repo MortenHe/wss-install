@@ -1,8 +1,8 @@
 - Nextcloud /raspi/files/wvp -> video umbenennen, danach mit Nutzer Video (existiert schon) teilen
+- welches Projekt aus Workspace wird zuerst geöffnet in Terminal? Mehrere möglich? nebeneinander
 
 Versionsnummer in Oberfläche anzeigen
 kein Ping, Variable connected -> ping Zeit veroppeln?
-Deploy Skripte: ssh.close();
 Favicon / color pro Instanz
 volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
 Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
@@ -10,7 +10,6 @@ Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioClient
 auf View Suche vs. Playlist per Route
-Resultlist.ts, etc. prüfen welche Abos benötigt
 
 # AudioServer
 
@@ -25,7 +24,6 @@ getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
 
 # VideoClient
 font-awesome 5
-Resultlist.ts, etc. prüfen welche Abos benötigt
 
 # VideoServer
 # WSGpioButtons

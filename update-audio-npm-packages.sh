@@ -5,24 +5,24 @@
 
 #Audio Server NPM packages updaten
 echo 'install AudioServer npm packages'
-npm install --prefix /home/pi/mh_prog/AudioServer
+npm ci --prefix /home/pi/mh_prog/AudioServer
 echo
 
 #SH Audio Server NPM packages updaten
 echo 'install NewSHAudioServer npm packages'
-npm install --prefix /home/pi/mh_prog/NewSHAudioServer
+npm ci --prefix /home/pi/mh_prog/NewSHAudioServer
 echo
 
 #SoundQuiz Server NPM packages updaten
 echo 'install SoundQuizServer npm packages'
-npm install --prefix /home/pi/mh_prog/SoundQuizServer
+npm ci --prefix /home/pi/mh_prog/SoundQuizServer
 echo
 
 #GPIO Buttons NPM packages updaten
 if [ $GPIOBUTTONS = true ];
 then
   echo 'install WSGpioButtons npm packages'
-  npm install --prefix /home/pi/mh_prog/WSGpioButtons
+  npm ci --prefix /home/pi/mh_prog/WSGpioButtons
   echo
 fi
 
@@ -30,6 +30,6 @@ fi
 if [ $USBRFIDREADER = true ];
 then
   echo 'install WSRFID npm packages'
-  npm install --prefix /home/pi/mh_prog/WSRFID
+  npm ci --prefix /home/pi/mh_prog/WSRFID
   echo
 fi

@@ -35,7 +35,7 @@ sed "$ a alias startnodesoundplayer='/home/pi/mh_prog/SoundQuizServer/startnodes
 sed "$ a alias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'" -i /root/.bashrc
 sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
 sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
-sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean && sudo npm install -g npm && pullgit && npmupdate'" -i /root/.bashrc
+sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean && pullgit && npmupdate'" -i /root/.bashrc
 sed "$ a alias tailf='tail -f /home/pi/mh_prog/output-server.txt'" -i /root/.bashrc
 source /root/.bashrc
 echo
