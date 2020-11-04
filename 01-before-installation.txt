@@ -20,7 +20,7 @@ static domain_name_servers=192.168.0.1
 
 - HDMI Kabel und USB Tastatur / Maus einstecken bei Pi und starten
 
-- Login pi / raspberry (Achtung mit z)
+(- Login pi / raspberry -> Achtung mit z)
 
 - Config durchklicken
 

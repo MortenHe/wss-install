@@ -1,11 +1,47 @@
-- Nextcloud /raspi/files/wvp -> video umbenennen, danach mit Nutzer Video (existiert schon) teilen
+Buster 64-bit
+apt search nextcloud
+sudo apt install nextcloud-desktop
+
+Raspi 4
+/boot/config.txt
+hdmi_force_hotplug=1
+damit Nextcloud Gui Client geht
+
 - welches Projekt aus Workspace wird zuerst geöffnet in Terminal? Mehrere möglich? nebeneinander
+lodash, path dependencies
+mix files console.log weg
+newsh / soundquiz config -> Nextcloud Pfad
+config Hifiberry = false
+
+Bei Fehler
+init=/bin/bash
+in cmdline.txt ganz hinten
+
+bei read only system
+rw vor rootwait einfügen in cmdline.txt
+
+USB-Audio-Karte
+aplay -l
+-> Karte-Nr ermitteln (Nummer kann sich ändern wegen USB-Maus)
+
+thonny /usr/share/alsa/alsa.conf
+defaults.ctl.card CARD-Nr
+defaults.pcm.card CARD-Nr
+
+Test
+speaker-test -c2
+
+Test ob nicht gemutet
+alsmixer
+
+
+volume ohne sync
+Suchfelder ggf. nur mit border-bottom
 
 Versionsnummer in Oberfläche anzeigen
 kein Ping, Variable connected -> ping Zeit veroppeln?
 Favicon / color pro Instanz
 volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
-Playlists / Videos ausgegraut anzeigen, wenn Datei Info schon in JSON aber Datei noch nicht von Nextcloud geladen
 Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioClient

@@ -1,10 +1,15 @@
 ggf. Remote Desktop Zugriff installieren
 sudo apt-get install -y xrdp
 
+//Status
+sudo systemctl status xrdp
+
 === Raspi (Audio / Video Player) ===
 
 === AudioServer config ===
 sudo thonny /home/pi/mh_prog/AudioServer/config.json (joker-### und mix-### setzen)
+sudo thonny /home/pi/mh_prog/NewSHAudioServer/config.json
+sudo thonny /home/pi/mh_prog/SoundquizServer/config.json
 
 === Config usb rfid reader ===
 cat /dev/input/event0
@@ -32,8 +37,8 @@ sudo bash install-nextcloud-client.sh
 Zubehör / Nextcloud Client
 Konto Audio | Video
 Alle Dateien sync
-keine Bestätitung erfragen für 500MB / externe SpeicherNext
-Order Nextcloud anlegen in /media/usb_audio
+keine Bestätitung erfragen für 500MB / externe Speicher
+(Order Nextcloud anlegen in /media/usb_audio)
 /media/usb_audio/Nextcloud | /media/usb_red/Nextcloud
 Schlüsselbund -> leeres PW
 ggf. Ordner von Sync ausschließen (shp/mh & shp/sh bei Kids Playern)
@@ -68,22 +73,3 @@ out GPIO 23 (8. Pin von Seite SD-Karte aussen)
 in GPIO 24 (9. Pin von Seite SD-Karte aussen)
 Button = SW = auessere Kontakte auf Button
 LED = innere Kontakte auf Button (ggf. + / - vertauschen)
-
-=== Tinkerboard (Audio Player) ===
-
-=== Config audio and sh audio server ===
-alsamixer (Digital|PCM|Master|Headphone,1)
-leafpad /home/pi/mh_prog/AudioServer/config.json
-leafpad /home/pi/mh_prog/NewSHAudioServer/config.json
-leafpad /home/pi/mh_prog/SoundQuizServer/config.json
-
-=== Config buttons ===
-160 (board 10), 253 (board 5), 252 (board 3)
-leafpad /home/pi/mh_prog/WSGpioButtons/config_7070.json
-leafpad /home/pi/mh_prog/WSGpioButtons/config_8080.json
-leafpad /home/pi/mh_prog/WSGpioButtons/config_9090.json
-
-=== mplayer ===
-aplay -l
-leafpad /root/.mplayer/config
-ao=alsa:device=hw=0.2
