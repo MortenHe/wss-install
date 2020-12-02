@@ -8,6 +8,7 @@ hdmi_force_hotplug=1
 damit Nextcloud Gui Client geht
 
 - welches Projekt aus Workspace wird zuerst geöffnet in Terminal? Mehrere möglich? nebeneinander
+https://stackoverflow.com/questions/41991178/correct-way-of-importing-and-using-lodash-in-angular
 lodash, path dependencies
 mix files console.log weg
 newsh / soundquiz config -> Nextcloud Pfad
