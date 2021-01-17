@@ -31,17 +31,17 @@ UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 sudo reboot damit USB-Stick gemountet wird
 
 === Nextcloud installieren
-cd /home/pi/wss-install/
-sudo bash install-nextcloud-client.sh
+sudo apt-get install nextcloud-desktop
+
+#cd /home/pi/wss-install/
+#sudo bash install-nextcloud-client.sh
 
 Zubehör / Nextcloud Client
 Konto Audio | Video
 Alle Dateien sync
 keine Bestätitung erfragen für 500MB / externe Speicher
-(Order Nextcloud anlegen in /media/usb_audio)
-/media/usb_audio/Nextcloud | /media/usb_red/Nextcloud
+/home/pi/Nextcloud | /media/usb_red/Nextcloud
 Schlüsselbund -> leeres PW
-ggf. Ordner von Sync ausschließen (shp/mh & shp/sh bei Kids Playern)
 Nextcloud Autostart aktivieren
 
 === build and deploy audio app from local computer ===

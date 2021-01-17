@@ -46,7 +46,7 @@ sed '$ i\/home/pi/mh_prog/VideoServer/startnode.sh &' -i /etc/rc.local
 echo
 
 echo 'install nodejs'
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
 sudo apt-get install -y nodejs
 echo
 
