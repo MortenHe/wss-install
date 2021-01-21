@@ -158,7 +158,7 @@ sudo wget http://files.mausberrycircuits.com/setup.sh
 sudo bash setup.sh
 
 echo 'install nextcloud client'
-sudo apt-get install nextcloud-desktop
+sudo apt-get install -y nextcloud-desktop
 
 #Hifiberry Audio Card
 if  [ $HIFIBERRY = true ];
@@ -191,6 +191,9 @@ sudo systemctl disable keyboard-setup.service
 sudo systemctl disable dphys-swapfile.service
 sudo systemctl disable avahi-daemon.service
 sudo systemctl disable triggerhappy.service
+sudo systemctl disable apt-daily.service
+sudo systemctl disable avahi-daemon.service
+sudo systemctl disable rsyslog.service
 
 echo 'installation done'
 echo 'please reboot pi and read 02-after-installation.txt'

@@ -34,22 +34,3 @@ interface wlan0
 static ip_address=192.168.0.149/24
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
-
-=== Bei Installation von Lite ===
-
-//Bei Installation mit Lite
-sudo raspi-config
-8 update tool
-1 change user pi password : martin12
-2-2 Wifi Country DE -> Haustralien
-3-2 Don't wait for network
-4-1 de_DE utf-8
-4-2 Europe -> Berlin
-4-3 Generic 105 - other - German - German - Default - Default
-4-4 DE
-5-2 ssh
-7-1 resize sd card
-
-apt-get install git
-
-vi config

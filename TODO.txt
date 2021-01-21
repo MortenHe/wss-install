@@ -1,9 +1,30 @@
+ggf. Remote Desktop Zugriff installieren
+sudo apt-get install -y xrdp
+
+//Status
+sudo systemctl status xrdp
+
+//boot-Optimierung
+sudo apt-get purge -y modemmanager
+sudo apt-get purge -y avahi-daemon
+
+
 Raspi 4
 /boot/config.txt
 hdmi_force_hotplug=1
 damit Nextcloud Gui Client geht
 
-- welches Projekt aus Workspace wird zuerst geöffnet in Terminal? Mehrere möglich? nebeneinander
+Info nach install-Skript -> reboot wegen DHCP
+- Nextcloud syncen 
+- Audio / NewSH Code hochladen vs. auf Server bauen
+
+Hifiberry Code aus install / config rausnehmen
+
+DHCP Config in Install-Skript
+
+Joker / Mix config.json mit Wert Laila setzen bein install-audio
+audioOutput setzen?
+
 path dependencies
 newsh / soundquiz config -> Nextcloud Pfad
 config Hifiberry = false
@@ -17,7 +38,7 @@ rw vor rootwait einfügen in cmdline.txt
 
 USB-Audio-Karte
 aplay -l
--> Karte-Nr ermitteln (Nummer kann sich ändern wegen USB-Maus)
+-> Karte-Nr ermitteln (Nummer kann sich ändern wenn kein HDMI mehr eingesteckt, daher hotplug bei Raspi 4?)
 
 thonny /usr/share/alsa/alsa.conf
 defaults.ctl.card CARD-Nr
@@ -31,6 +52,28 @@ alsamixer
 
 environment-Werte in audiolist.json verschieben (domainModes) auch bei NewSHAudioClient
 kein Ping, Variable connected -> ping Zeit veroppeln?
+
+#cd /home/pi/wss-install/
+#sudo bash install-nextcloud-client.sh
+
+=== Bei Installation von Lite ===
+
+//Bei Installation mit Lite
+sudo raspi-config
+8 update tool
+1 change user pi password : martin12
+2-2 Wifi Country DE -> Haustralien
+3-2 Don't wait for network
+4-1 de_DE utf-8
+4-2 Europe -> Berlin
+4-3 Generic 105 - other - German - German - Default - Default
+4-4 DE
+5-2 ssh
+7-1 resize sd card
+
+apt-get install git
+
+vi config
 
 volume ohne sync
 Suchfelder ggf. nur mit border-bottom

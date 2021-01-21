@@ -1,11 +1,3 @@
-ggf. Remote Desktop Zugriff installieren
-sudo apt-get install -y xrdp
-
-//Status
-sudo systemctl status xrdp
-
-=== Raspi (Audio / Video Player) ===
-
 === AudioServer config ===
 sudo thonny /home/pi/mh_prog/AudioServer/config.json (joker-### und mix-### setzen)
 sudo thonny /home/pi/mh_prog/NewSHAudioServer/config.json
@@ -29,9 +21,6 @@ UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 sudo reboot damit USB-Stick gemountet wird
-
-#cd /home/pi/wss-install/
-#sudo bash install-nextcloud-client.sh
 
 Zubehör / Nextcloud Client
 Konto Audio | Video
