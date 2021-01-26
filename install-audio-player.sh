@@ -157,8 +157,8 @@ echo 'get and install mausberry power button script'
 sudo wget http://files.mausberrycircuits.com/setup.sh
 sudo bash setup.sh
 
-echo 'install nextcloud client'
-sudo apt-get install -y nextcloud-desktop
+#echo 'install nextcloud client'
+#sudo apt-get install -y nextcloud-desktop
 
 #Hifiberry Audio Card
 if  [ $HIFIBERRY = true ];
