@@ -1,16 +1,8 @@
 === Audio / Video Player ===
 - Raspberry Pi Imager -> Raspian with Desktop (ohne recommended Software)
-
-(- USB Stick mit NTFS formattieren als "usb_audio" (Inhalte kommen später per Nextcloud))
-
 - HDMI Kabel und USB Tastatur / Maus einstecken bei Pi und starten
-
-(- Login pi / raspberry -> Achtung mit z)
-
 - Config durchklicken
-
 - Bluetooth deaktivieren
-
 - In Raspi-Config: SSH aktivieren
 
 sudo -s
@@ -21,13 +13,6 @@ thonny config (PW setzen)
 ./install-audio-player.sh | ./install-video-player.sh
 
 === statische IP-Vergabe ===
-
-service dhcpcd status
-
-//Sollte dies nicht der Fall sein, aktivieren Sie den DHCPC wie folgt:
-service dhcpcd start
-systemctl enable dhcpcd
-
 thonny /etc/dhcpcd.conf
 
 interface wlan0

@@ -1,8 +1,16 @@
-ggf. Remote Desktop Zugriff installieren
-sudo apt-get install -y xrdp
+USB-Audio-Karte
+aplay -l
+-> Karte-Nr ermitteln (Nummer kann sich ändern wenn kein HDMI mehr eingesteckt, daher hotplug bei Raspi 4?)
 
-//Status
-sudo systemctl status xrdp
+thonny /usr/share/alsa/alsa.conf
+defaults.ctl.card CARD-Nr
+defaults.pcm.card CARD-Nr
+
+Test
+speaker-test -c2
+
+Test ob nicht gemutet
+alsamixer
 
 //boot-Optimierung
 sudo apt-get purge -y modemmanager
@@ -33,28 +41,26 @@ Bei Fehler
 init=/bin/bash
 in cmdline.txt ganz hinten
 
+ggf. Remote Desktop Zugriff installieren
+sudo apt-get install -y xrdp
+
+//Status
+sudo systemctl status xrdp
+
 bei read only system
 rw vor rootwait einfügen in cmdline.txt
-
-USB-Audio-Karte
-aplay -l
--> Karte-Nr ermitteln (Nummer kann sich ändern wenn kein HDMI mehr eingesteckt, daher hotplug bei Raspi 4?)
-
-thonny /usr/share/alsa/alsa.conf
-defaults.ctl.card CARD-Nr
-defaults.pcm.card CARD-Nr
-
-Test
-speaker-test -c2
-
-Test ob nicht gemutet
-alsamixer
 
 environment-Werte in audiolist.json verschieben (domainModes) auch bei NewSHAudioClient
 kein Ping, Variable connected -> ping Zeit veroppeln?
 
 #cd /home/pi/wss-install/
 #sudo bash install-nextcloud-client.sh
+
+service dhcpcd status
+
+//Sollte dies nicht der Fall sein, aktivieren Sie den DHCPC wie folgt:
+service dhcpcd start
+systemctl enable dhcpcd
 
 === Bei Installation von Lite ===
 

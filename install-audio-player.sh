@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo 'set static ip address in router settings'
-echo '192.168.0.1'
-
 echo 'update / dist-upgrade system'
 sudo apt-get update && sudo apt-get -y dist-upgrade
 echo
