@@ -1,26 +1,37 @@
+=== Soundkarte ermitteln ===
+aplay -l
+
+thonny /usr/share/alsa/alsa.conf
+defaults.ctl.card CARD-Nr
+defaults.pcm.card CARD-Nr
+
+speaker-test -c2
+
+=== Name der Soundkarte (Spekaer, Master,...) ===
+alsamixer
+
 === AudioServer config ===
-sudo thonny /home/pi/mh_prog/AudioServer/config.json (joker-### und mix-### setzen)
-sudo thonny /home/pi/mh_prog/NewSHAudioServer/config.json
-sudo thonny /home/pi/mh_prog/SoundquizServer/config.json
+thonny /home/pi/mh_prog/AudioServer/config.json (joker-### und mix-### setzen)
+thonny /home/pi/mh_prog/NewSHAudioServer/config.json
+thonny /home/pi/mh_prog/SoundquizServer/config.json
 
 === Config usb rfid reader ===
 cat /dev/input/event0
-sudo thonny /home/pi/mh_prog/WSRFID/config.json
-ID ändert sich ggf., wenn USB Maus / Tastatur entfernt wird
+thonny /home/pi/mh_prog/WSRFID/config.json
 
 === USB automount ===
-sudo blkid -o list -w /dev/null 
+blkid -o list -w /dev/null 
 -> get UUID like E012519312517010 | B8EA48B6EA487324 | 78C20C88C20C4CB6
 
-sudo thonny /etc/fstab 
+thonny /etc/fstab 
 UUID=C470BE3C70BE34D0 /media/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
-sudo reboot damit USB-Stick gemountet wird
+reboot damit USB-Stick gemountet wird
 
 wenn Audio nicht auf SD Karte
 UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
-sudo reboot damit USB-Stick gemountet wird
+reboot damit USB-Stick gemountet wird
 
 Zubehör / Nextcloud Client
 Konto Audio | Video

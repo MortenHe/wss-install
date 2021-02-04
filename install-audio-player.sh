@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo 'update / dist-upgrade system'
-sudo apt-get update && sudo apt-get -y dist-upgrade
+apt-get update && apt-get -y dist-upgrade
 echo
 
 #read values from config file
@@ -15,7 +15,7 @@ then
 fi
 
 echo 'set root pw'
-sudo sh -c "echo root:$ROOTPW | chpasswd"
+sh -c "echo root:$ROOTPW | chpasswd"
 echo
 
 echo 'enable ssh root login'
@@ -30,9 +30,9 @@ sed "$ a alias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'" -
 sed "$ a alias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'" -i /root/.bashrc
 sed "$ a alias startnodesoundplayer='/home/pi/mh_prog/SoundQuizServer/startnodesoundplayer.sh'" -i /root/.bashrc
 sed "$ a alias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'" -i /root/.bashrc
-sed "$ a alias pullgit='sudo /home/pi/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
-sed "$ a alias npmupdate='sudo /home/pi/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
-sed "$ a alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean && pullgit && npmupdate'" -i /root/.bashrc
+sed "$ a alias pullgit='/home/pi/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
+sed "$ a alias npmupdate='/home/pi/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
+sed "$ a alias update='apt-get update && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get -y autoclean && pullgit && npmupdate'" -i /root/.bashrc
 sed "$ a alias tailf='tail -f /home/pi/mh_prog/output-server.txt'" -i /root/.bashrc
 source /root/.bashrc
 echo
@@ -48,12 +48,12 @@ chmod 777 /home/pi/wss-install/last-player
 echo
 
 echo 'install nodejs'
-curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_15.x | bash -
+apt-get install -y nodejs
 echo
 
 echo 'install mplayer'
-sudo apt-get install -y mplayer 
+apt-get install -y mplayer 
 echo
 
 echo 'set git config'
@@ -89,8 +89,8 @@ npm --prefix /home/pi/mh_prog/SoundQuizServer install
 cp /home/pi/mh_prog/SoundQuizServer/config.json.dist /home/pi/mh_prog/SoundQuizServer/config.json
 
 echo 'install apache'
-sudo apt-get install -y apache2
-sudo a2enmod rewrite
+apt-get install -y apache2
+a2enmod rewrite
 echo
 
 echo 'update apache config'
@@ -99,7 +99,7 @@ systemctl restart apache2
 echo
 
 echo 'install php'
-sudo apt-get install -y php libapache2-mod-php
+apt-get install -y php libapache2-mod-php
 sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
 echo
 
@@ -110,8 +110,8 @@ echo
 
 #Audio liegt auf SD Karte und wird per Nextcloud gesynct, daher kein USB-Stick mehr
 #echo 'prepare usb automount mount'
-#sudo apt-get install -y ntfs-3g
-#sudo mkdir /media/usb_audio
+#apt-get install -y ntfs-3g
+#mkdir /media/usb_audio
 #echo
 
 #GPIO Buttons
@@ -122,7 +122,7 @@ then
   echo
 
   echo 'install gpio buttons' 
-  sudo npm --prefix /home/pi/mh_prog/WSGpioButtons install
+  npm --prefix /home/pi/mh_prog/WSGpioButtons install
   cp /home/pi/mh_prog/WSGpioButtons/config_7070.json.dist /home/pi/mh_prog/WSGpioButtons/config_7070.json
   cp /home/pi/mh_prog/WSGpioButtons/config_8080.json.dist /home/pi/mh_prog/WSGpioButtons/config_8080.json
   cp /home/pi/mh_prog/WSGpioButtons/config_9090.json.dist /home/pi/mh_prog/WSGpioButtons/config_9090.json
@@ -151,11 +151,11 @@ then
 fi
 
 echo 'get and install mausberry power button script'
-sudo wget http://files.mausberrycircuits.com/setup.sh
-sudo bash setup.sh
+wget http://files.mausberrycircuits.com/setup.sh
+bash setup.sh
 
 #echo 'install nextcloud client'
-#sudo apt-get install -y nextcloud-desktop
+#apt-get install -y nextcloud-desktop
 
 #Hifiberry Audio Card
 if  [ $HIFIBERRY = true ];
@@ -166,31 +166,36 @@ then
 fi  
 
 echo 'optimize startup time in /boot/config.txt'
-echo "# Disable the rainbow splash screen" >> /boot/config.txt
-echo "disable_splash=1" >> /boot/config.txt
+sed "$ a # Disable the rainbow splash screen" -i /boot/config.txt
+sed "$ a disable_splash=1" -i /boot/config.txt
 
-echo "# Disable bluetooth" >> /boot/config.txt
-echo "dtoverlay=pi3-disable-bt" >> /boot/config.txt
+sed "$ a # Disable bluetooth" -i /boot/config.txt
+sed "$ a dtoverlay=pi3-disable-bt" -i /boot/config.txt
 
-echo "# Overclock the SD Card from 50 to 100MHz" >> /boot/config.txt
-echo "# This can only be done with at least a UHS Class 1 card" >> /boot/config.txt
-echo "dtoverlay=sdtweak,overclock_50=100" >> /boot/config.txt
+sed "$ a # Overclock the SD Card from 50 to 100MHz" -i /boot/config.txt
+sed "$ a # This can only be done with at least a UHS Class 1 card" -i /boot/config.txt
+sed "$ a dtoverlay=sdtweak,overclock_50=100" -i /boot/config.txt
 
-echo "# Set the bootloader delay to 0 seconds. The default is 1s if not specified." >> /boot/config.txt
-echo "boot_delay=0" >> /boot/config.txt
+sed "$ a # Set the bootloader delay to 0 seconds. The default is 1s if not specified." -i /boot/config.txt
+sed "$ a boot_delay=0" -i /boot/config.txt
 
-echo "# Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply." >> /boot/config.txt
-echo "force_turbo=1" >> /boot/config.txt
+sed "$ a # Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply." -i /boot/config.txt
+sed "$ a force_turbo=1" -i /boot/config.txt
 
 echo "disable unused services"
-sudo systemctl disable raspi-config.service
-sudo systemctl disable keyboard-setup.service
-sudo systemctl disable dphys-swapfile.service
-sudo systemctl disable avahi-daemon.service
-sudo systemctl disable triggerhappy.service
-sudo systemctl disable apt-daily.service
-sudo systemctl disable avahi-daemon.service
-sudo systemctl disable rsyslog.service
+systemctl disable raspi-config.service
+systemctl disable keyboard-setup.service
+systemctl disable dphys-swapfile.service
+systemctl disable avahi-daemon.service
+systemctl disable triggerhappy.service
+systemctl disable apt-daily.service
+systemctl disable avahi-daemon.service
+systemctl disable rsyslog.service
+systemctl disable rpi-eeprom-update
+
+echo "uninstall unused software"
+apt-get purge -y modemmanager
+apt-get purge -y avahi-daemon
 
 echo 'installation done'
 echo 'please reboot pi and read 02-after-installation.txt'

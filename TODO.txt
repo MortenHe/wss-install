@@ -1,21 +1,14 @@
-USB-Audio-Karte
-aplay -l
--> Karte-Nr ermitteln (Nummer kann sich ändern wenn kein HDMI mehr eingesteckt, daher hotplug bei Raspi 4?)
+//stopnode
+reset -> damit Schrift in Terminal nicht unsichtbar
 
-thonny /usr/share/alsa/alsa.conf
-defaults.ctl.card CARD-Nr
-defaults.pcm.card CARD-Nr
+/etc/mplayer/mplayer.conf
+Audio Settings
+ao=alsa
 
-Test
-speaker-test -c2
+//check
+sudo systemctl mask rpi-eeprom-update
 
-Test ob nicht gemutet
-alsamixer
-
-//boot-Optimierung
-sudo apt-get purge -y modemmanager
-sudo apt-get purge -y avahi-daemon
-
+reset nach stopnode
 
 Raspi 4
 /boot/config.txt
@@ -27,6 +20,10 @@ Info nach install-Skript -> reboot wegen DHCP
 - Audio / NewSH Code hochladen vs. auf Server bauen
 
 Hifiberry Code aus install / config rausnehmen
+
+Digital=Hifiberry
+Master|Spaeker=USB Audio
+
 
 DHCP Config in Install-Skript
 
@@ -43,6 +40,9 @@ in cmdline.txt ganz hinten
 
 ggf. Remote Desktop Zugriff installieren
 sudo apt-get install -y xrdp
+
+//Count files in folders (Nextcloud)
+find . -type f | wc -l
 
 //Status
 sudo systemctl status xrdp
@@ -63,21 +63,30 @@ service dhcpcd start
 systemctl enable dhcpcd
 
 === Bei Installation von Lite ===
+pi / raspberry (z = y)
 
-//Bei Installation mit Lite
 sudo raspi-config
 8 update tool
-1 change user pi password : martin12
-2-2 Wifi Country DE -> Haustralien
-3-2 Don't wait for network
-4-1 de_DE utf-8
-4-2 Europe -> Berlin
-4-3 Generic 105 - other - German - German - Default - Default
-4-4 DE
-5-2 ssh
-7-1 resize sd card
+1
+s1 wifi
+S3 change user pi password : martin12
+S5 autologin
+S6 Don't wait for network
 
-apt-get install git
+3
+P2 SSH
+
+5
+L1 de_DE utf-8
+L2 Europe -> Berlin
+L3 Generic 105 - Other - German - German - Default - Default
+L4 DE
+
+6
+A1 resize sd card
+A7 Latest version bootloader
+
+sudo apt-get install git -y
 
 vi config
 
@@ -95,6 +104,7 @@ auf View Suche vs. Playlist per Route
 # AudioServer
 
 # NewSHAudioClient
+Select für Modes
 -- Liste der neuesten Tracks auf der Seite zeigen
 Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
 Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
