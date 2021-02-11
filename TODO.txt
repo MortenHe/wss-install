@@ -1,14 +1,6 @@
-//stopnode
-reset -> damit Schrift in Terminal nicht unsichtbar
-
 /etc/mplayer/mplayer.conf
 Audio Settings
 ao=alsa
-
-//check
-sudo systemctl mask rpi-eeprom-update
-
-reset nach stopnode
 
 Raspi 4
 /boot/config.txt
@@ -69,7 +61,7 @@ sudo raspi-config
 8 update tool
 1
 s1 wifi
-S3 change user pi password : martin12
+S3 change user pi password : XXX
 S5 autologin
 S6 Don't wait for network
 
@@ -88,7 +80,10 @@ A7 Latest version bootloader
 
 sudo apt-get install git -y
 
-vi config
+nano config
+
+
+===
 
 volume ohne sync
 Suchfelder ggf. nur mit border-bottom
