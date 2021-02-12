@@ -150,10 +150,6 @@ then
   sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i /home/pi/mh_prog/NewSHAudioServer/config.json
 fi
 
-echo 'get and install mausberry power button script'
-wget http://files.mausberrycircuits.com/setup.sh
-bash setup.sh
-
 #echo 'install nextcloud client'
 #apt-get install -y nextcloud-desktop
 
@@ -196,6 +192,10 @@ systemctl disable rpi-eeprom-update
 echo "uninstall unused software"
 apt-get purge -y modemmanager
 apt-get purge -y avahi-daemon
+
+echo 'get and install mausberry power button script'
+wget http://files.mausberrycircuits.com/setup.sh
+bash setup.sh
 
 echo 'installation done'
 echo 'please reboot pi and read 02-after-installation.txt'

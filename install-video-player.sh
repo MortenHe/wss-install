@@ -108,7 +108,7 @@ echo "dtoverlay=pi3-disable-bt" >> /boot/config.txt
 echo "# Overclock the SD Card from 50 to 100MHz" >> /boot/config.txt
 echo "# This can only be done with at least a UHS Class 1 card" >> /boot/config.txt
 echo "dtoverlay=sdtweak,overclock_50=100" >> /boot/config.txt
- 
+
 echo "# Set the bootloader delay to 0 seconds. The default is 1s if not specified." >> /boot/config.txt
 echo "boot_delay=0" >> /boot/config.txt
 

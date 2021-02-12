@@ -27,6 +27,8 @@ password XXX
 
 chmod 0600 ~/.netrc
 
+mkdir /home/pi/Nextcloud
+
 1.2.21 (22.21 Uhr)
 nextcloudcmd --non-interactive -n /home/pi/Nextcloud/ https://nx10108.your-storageshare.de
 -s = silent

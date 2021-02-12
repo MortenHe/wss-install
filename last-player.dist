@@ -1,1 +1,1 @@
-AUTOSTART=sudo /home/pi/mh_prog/AudioServer/startnode.sh
+AUTOSTART=sudo /home/pi/mh_prog/NewSHAudioServer/startnodesh.sh
