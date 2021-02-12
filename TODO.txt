@@ -85,7 +85,7 @@ sudo raspi-config
 1
 s1 wifi
 S3 change user pi password : XXX
-S5 autologin
+S5 autologin as pi
 S6 Don't wait for network
 
 3
@@ -99,7 +99,7 @@ L4 DE
 
 6
 A1 resize sd card
-A7 Latest version bootloader
+A7 Latest version bootloader -> mal weglassen ggf. Frage auch bei install-audio-player
 
 sudo apt-get install git -y
 
