@@ -2,6 +2,13 @@
 Audio Settings
 ao=alsa
 
+POWER-LED constant vs. acitivy
+
+# Use pulse, then alsa, then SDL video with the aalib subdriver by default.
+ao=pulse,alsa,sdl:aalib
+
+Do you have ao overridden in ~/.mplayer/config?
+
 Raspi Lite
 boot dhcpcd service 10 Sek
 If don't wait for network at boot, then the file is deleted: /etc/systemd/system/dhcpcd.service.d/wait.conf

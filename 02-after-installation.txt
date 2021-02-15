@@ -45,21 +45,13 @@ Nextcloud Autostart aktivieren
 AudioClient
 cd src/tools
 connection.js
-node .\deployWebsiteToServer.js laila
-node .\deployWebsiteToServer.js luis
-node .\deployWebsiteToServer.js pw
-node .\deployWebsiteToServer.js sh
-node .\deployWebsiteToServer.js mh
+node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
 
 === build and deploy sh audio app from local computer ===
 NewSHAudioServer
 cd src/tools
 connection.js
-node .\deployWebsiteToServer.js laila
-node .\deployWebsiteToServer.js luis
-node .\deployWebsiteToServer.js pw
-node .\deployWebsiteToServer.js sh
-node .\deployWebsiteToServer.js mh
+node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
 
 === build and deploy video app from local computer ===
 VideoClient

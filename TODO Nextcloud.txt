@@ -18,6 +18,7 @@ nextcloudcmd /home/pi/Nextcloud/ https://nx10108.your-storageshare.de
 
 nextcloudcmd -u Audio -p XXX /home/pi/Nextcloud/ https://nx10108.your-storageshare.de
 
+### Für Raspi Lite
 
 nano ~/.netrc
 
