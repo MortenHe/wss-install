@@ -1,6 +1,7 @@
 === Soundkarte ermitteln ===
 aplay -l
 
+//Lösung für root unter Ubuntu kein Sound (aplay -l)
 thonny /usr/share/alsa/alsa.conf
 defaults.ctl.card CARD-Nr
 defaults.pcm.card CARD-Nr

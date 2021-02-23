@@ -47,6 +47,10 @@ User=pi
 WantedBy=local-fs.target
 
 
+==
+sudo cp /home/pi/mh_prog/wss-install/mhaudio.service /lib/systemd/system/
+
+
 Joker / Mix config.json mit Wert Laila setzen bein install-audio
 audioOutput setzen?
 
