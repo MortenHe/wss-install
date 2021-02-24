@@ -6,6 +6,8 @@
 - In Raspi-Config: SSH aktivieren
 
 sudo -s
+mkdir -p /home/pi/mh_prog
+cd mh_prog
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
 cp config-audio.dist config (Achtung nicht config-audio) | cp config-video.dist config (Achtung nicht config-video)

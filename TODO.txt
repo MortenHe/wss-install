@@ -1,3 +1,7 @@
+install-skript
+* python3 install
++ vosk-api pull, copy file...
+
 /etc/mplayer/mplayer.conf
 Audio Settings
 ao=alsa

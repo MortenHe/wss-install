@@ -1,5 +1,11 @@
 #!/bin/sh
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+PROG_DIR="${DIR}/..";
+echo ${PROG_DIR}
+
+exit
+
 echo 'update / dist-upgrade system'
 apt-get update && apt-get -y dist-upgrade
 echo
@@ -25,15 +31,15 @@ echo
 
 echo 'set aliases in /root/.bashrc'
 sed "$ a alias ..='cd ..'" -i /root/.bashrc
-sed "$ a alias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'" -i /root/.bashrc
-sed "$ a alias startnodesh='/home/pi/mh_prog/NewSHAudioServer/startnodesh.sh'" -i /root/.bashrc
-sed "$ a alias startnodesound='/home/pi/mh_prog/SoundQuizServer/startnodesound.sh'" -i /root/.bashrc
-sed "$ a alias startnodesoundplayer='/home/pi/mh_prog/SoundQuizServer/startnodesoundplayer.sh'" -i /root/.bashrc
-sed "$ a alias stopnode='/home/pi/mh_prog/AudioServer/stopnode.sh'" -i /root/.bashrc
-sed "$ a alias pullgit='/home/pi/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
-sed "$ a alias npmupdate='/home/pi/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
+sed "$ a alias startnode='${PROG_DIR}/AudioServer/startnode.sh'" -i /root/.bashrc
+sed "$ a alias startnodesh='${PROG_DIR}/AudioServer/startnodesh.sh'" -i /root/.bashrc
+sed "$ a alias startnodesound='${PROG_DIR}/AudioServer/startnodesound.sh'" -i /root/.bashrc
+sed "$ a alias startnodesoundplayer='${PROG_DIR}/AudioServer/startnodesoundplayer.sh'" -i /root/.bashrc
+sed "$ a alias stopnode='${PROG_DIR}/AudioServer/stopnode.sh'" -i /root/.bashrc
+sed "$ a alias pullgit='${PROG_DIR}/wss-install/pull-git-audio-repos.sh'" -i /root/.bashrc
+sed "$ a alias npmupdate='${PROG_DIR}/wss-install/update-audio-npm-packages.sh'" -i /root/.bashrc
 sed "$ a alias update='apt-get update && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get -y autoclean && pullgit && npmupdate'" -i /root/.bashrc
-sed "$ a alias tailf='tail -f /home/pi/mh_prog/output-server.txt'" -i /root/.bashrc
+sed "$ a alias tailf='tail -f ${PROG_DIR}/output-server.txt'" -i /root/.bashrc
 source /root/.bashrc
 echo
 
@@ -42,9 +48,9 @@ sed 's/$/ quiet/' -i /boot/cmdline.txt
 echo
 
 echo 'set wss player autostart in rc.local'
-sed '$ i\/home/pi/wss-install/start-last-wss-player.sh &' -i /etc/rc.local
-cp /home/pi/wss-install/last-player.dist /home/pi/wss-install/last-player
-chmod 777 /home/pi/wss-install/last-player
+sed '$ i\${PROG_DIR}/wss-install/start-last-wss-player.sh &' -i /etc/rc.local
+cp ${PROG_DIR}/wss-install/last-player.dist /home/pi/wss-install/last-player
+chmod 777 ${PROG_DIR}/wss-install/last-player
 echo
 
 echo 'install nodejs'
@@ -53,7 +59,7 @@ apt-get install -y nodejs
 echo
 
 echo 'install mplayer'
-apt-get install -y mplayer 
+apt-get install -y mplayer
 echo
 
 echo 'set git config'
@@ -61,32 +67,20 @@ git config --global user.email "martin-helfer@gmx.de"
 git config --global user.name "Martin Helfer"
 echo
 
-echo 'get audio wss code from github'
-mkdir -p /home/pi/mh_prog
-git clone https://github.com/MortenHe/AudioServer /home/pi/mh_prog/AudioServer
+echo 'get and install AUDIO wss code from github'
+git clone https://github.com/MortenHe/AudioServer ${PROG_DIR}/AudioServer
+npm --prefix ${PROG_DIR}/AudioServer install
+cp ${PROG_DIR}/AudioServer/config.json.dist ${PROG_DIR}/AudioServer/config.json
 echo
 
-echo 'install audio wss server' 
-npm --prefix /home/pi/mh_prog/AudioServer install
-cp /home/pi/mh_prog/AudioServer/config.json.dist /home/pi/mh_prog/AudioServer/config.json
+echo 'get and install SH AUDIO wss code from github'
+git clone https://github.com/MortenHe/NewSHAudioServer ${PROG_DIR}/NewSHAudioServer
+npm --prefix ${PROG_DIR}/NewSHAudioServer install
 echo
 
-echo 'get sh audio wss code from github'
-git clone https://github.com/MortenHe/NewSHAudioServer /home/pi/mh_prog/NewSHAudioServer
-echo
-
-echo 'install sh audio wss server' 
-npm --prefix /home/pi/mh_prog/NewSHAudioServer install
-cp /home/pi/mh_prog/NewSHAudioServer/config.json.dist /home/pi/mh_prog/NewSHAudioServer/config.json
-echo
-
-echo 'get soundquiz wss code from github' 
-git clone https://github.com/MortenHe/SoundQuizServer /home/pi/mh_prog/SoundQuizServer
-echo 
-
-echo 'install soundquiz wss server'
-npm --prefix /home/pi/mh_prog/SoundQuizServer install
-cp /home/pi/mh_prog/SoundQuizServer/config.json.dist /home/pi/mh_prog/SoundQuizServer/config.json
+echo 'get and install SOUNDQUIZ wss code from github' 
+git clone https://github.com/MortenHe/SoundQuizServer ${PROG_DIR}/SoundQuizServer
+npm --prefix ${PROG_DIR}/SoundQuizServer install
 
 echo 'install apache'
 apt-get install -y apache2
@@ -117,37 +111,28 @@ echo
 #GPIO Buttons
 if [ $GPIOBUTTONS = true ];
 then
-  echo 'get gpio buttons code from github'
-  git clone https://github.com/MortenHe/WSGpioButtons /home/pi/mh_prog/WSGpioButtons
+  echo 'get and install GPIO BUTTONS code from github'
+  git clone https://github.com/MortenHe/WSGpioButtons ${PROG_DIR}/WSGpioButtons
+  npm --prefix ${PROG_DIR}/WSGpioButtons install
+  cp ${PROG_DIR}/WSGpioButtons/config_7070.json.dist ${PROG_DIR}/WSGpioButtons/config_7070.json
+  cp ${PROG_DIR}/WSGpioButtons/config_8080.json.dist ${PROG_DIR}/WSGpioButtons/config_8080.json
+  cp ${PROG_DIR}/WSGpioButtons/config_9090.json.dist ${PROG_DIR}/WSGpioButtons/config_9090.json
   echo
 
-  echo 'install gpio buttons' 
-  npm --prefix /home/pi/mh_prog/WSGpioButtons install
-  cp /home/pi/mh_prog/WSGpioButtons/config_7070.json.dist /home/pi/mh_prog/WSGpioButtons/config_7070.json
-  cp /home/pi/mh_prog/WSGpioButtons/config_8080.json.dist /home/pi/mh_prog/WSGpioButtons/config_8080.json
-  cp /home/pi/mh_prog/WSGpioButtons/config_9090.json.dist /home/pi/mh_prog/WSGpioButtons/config_9090.json
-  echo
-
-  echo 'enable gpio buttons in audio and sh audio server'
-  sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i /home/pi/mh_prog/AudioServer/config.json
-  sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i /home/pi/mh_prog/NewSHAudioServer/config.json
+  echo 'enable GPIO BUTTONS in AUDIO CONFIG'
+  sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i ${PROG_DIR}/AudioServer/config.json
 fi
 
 #USB RFID Reader
 if [ $USBRFIDREADER = true ];
 then
-  echo 'get usb rfid reader code from github'
-  git clone https://github.com/MortenHe/WSRFID /home/pi/mh_prog/WSRFID
+  echo 'get and install USB RFID READER code from github'
+  git clone https://github.com/MortenHe/WSRFID ${PROG_DIR}/WSRFID
+  npm --prefix ${PROG_DIR}/WSRFID install
   echo
 
-  echo 'install usb rfid reader' 
-  npm --prefix /home/pi/mh_prog/WSRFID install
-  cp /home/pi/mh_prog/WSRFID/config.json.dist /home/pi/mh_prog/WSRFID/config.json
-  echo
-
-  echo 'enable usb rfid reader in audio and sh audio server'
-  sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i /home/pi/mh_prog/AudioServer/config.json
-  sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i /home/pi/mh_prog/NewSHAudioServer/config.json
+  echo 'enable USB RFID READER in AUDIO CONFIG'
+  sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i ${PROG_DIR}/AudioServer/config.json
 fi
 
 #echo 'install nextcloud client'
