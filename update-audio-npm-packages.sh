@@ -1,28 +1,32 @@
-#!/bin/sh
+#!/bin/bash
+
+#Installtion-Dir fuer Audio Server ect. aus aktuellem Verzeichnis ableiten
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+PROG_DIR="${DIR}/..";
 
 #read values from config file in this dir
-. $(dirname "$0")/config
+. ${DIR}/config
 
 #Audio Server NPM packages updaten
 echo 'install AudioServer npm packages'
-npm ci --prefix /home/pi/mh_prog/AudioServer
+npm ci --prefix ${PROG_DIR}/AudioServer
 echo
 
 #SH Audio Server NPM packages updaten
 echo 'install NewSHAudioServer npm packages'
-npm ci --prefix /home/pi/mh_prog/NewSHAudioServer
+npm ci --prefix ${PROG_DIR}/NewSHAudioServer
 echo
 
 #SoundQuiz Server NPM packages updaten
 echo 'install SoundQuizServer npm packages'
-npm ci --prefix /home/pi/mh_prog/SoundQuizServer
+npm ci --prefix ${PROG_DIR}/SoundQuizServer
 echo
 
 #GPIO Buttons NPM packages updaten
 if [ $GPIOBUTTONS = true ];
 then
   echo 'install WSGpioButtons npm packages'
-  npm ci --prefix /home/pi/mh_prog/WSGpioButtons
+  npm ci --prefix ${PROG_DIR}/WSGpioButtons
   echo
 fi
 
@@ -30,6 +34,6 @@ fi
 if [ $USBRFIDREADER = true ];
 then
   echo 'install WSRFID npm packages'
-  npm ci --prefix /home/pi/mh_prog/WSRFID
+  npm ci --prefix ${PROG_DIR}/WSRFID
   echo
 fi

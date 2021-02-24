@@ -5,14 +5,15 @@ header('Access-Control-Allow-Origin: *');
 $mode = filter_input(INPUT_GET, 'mode');
 
 //Bisherigen Prozess stoppen (Node und mplayer)
-exec('sudo /home/pi/mh_prog/AudioServer/stopnode.sh');
+$audioServerDir = "/home/pi/mh_prog/AudioServer";
+exec("sudo $audioServerDir/stopnode.sh");
 
 //passenden Modus starten
 switch ($mode) {
 
         //Audio Player
     case "audio":
-        exec("sudo /home/pi/mh_prog/AudioServer/startnode.sh");
+        exec("sudo $audioServerDir/startnode.sh");
         break;
 
         //SH Audio Player
@@ -23,7 +24,7 @@ switch ($mode) {
         $suffix = $audioMode ? " " . $audioMode : "";
 
         //Player starten
-        exec("sudo /home/pi/mh_prog/NewSHAudioServer/startnodesh.sh" . $suffix);
+        exec("sudo $audioServerDir/startnodesh.sh" . $suffix);
         break;
 
         //Sound Quiz
@@ -34,11 +35,11 @@ switch ($mode) {
         $suffix = $gameSelect ? " " . $gameSelect : "";
 
         //Quiz starten
-        exec('sudo /home/pi/mh_prog/SoundQuizServer/startnodesound.sh' . $suffix);
+        exec("sudo $audioServerDir/startnodesound.sh" . $suffix);
         break;
 
         //Sound Quiz Player
     case "soundquizplayer":
-        exec('sudo /home/pi/mh_prog/SoundQuizServer/startnodesoundplayer.sh');
+        exec("sudo $audioServerDir/startnodesoundplayer.sh");
         break;
 };
