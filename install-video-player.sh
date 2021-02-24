@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo 'set static ip address in router settings'
 echo '192.168.0.1'

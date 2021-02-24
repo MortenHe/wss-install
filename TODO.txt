@@ -55,12 +55,16 @@ WantedBy=local-fs.target
 sudo cp /home/pi/mh_prog/wss-install/mhaudio.service /lib/systemd/system/
 
 
-Joker / Mix config.json mit Wert Laila setzen bein install-audio
-audioOutput setzen?
+#Audio liegt auf SD Karte und wird per Nextcloud gesynct, daher kein USB-Stick mehr
+#echo 'prepare usb automount mount'
+#apt-get install -y ntfs-3g
+#mkdir /media/usb_audio
+#echo
+
+#echo 'install nextcloud client'
+#apt-get install -y nextcloud-desktop
 
 path dependencies
-newsh / soundquiz config -> Nextcloud Pfad
-config Hifiberry = false
 
 Bei Fehler
 init=/bin/bash

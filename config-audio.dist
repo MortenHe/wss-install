@@ -3,3 +3,4 @@ GPIOBUTTONS=true
 USBRFIDREADER=true
 STT=false
 HIFIBERRY=false
+EARLYEXIT=false
