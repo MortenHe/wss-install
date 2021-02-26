@@ -1,3 +1,9 @@
+//mic
+device über Config
+
+//pico2wave
+sudo apt-get install libttspico-utils (geht nicht auf Raspi)
+
 install-skript
 * python3 install
 + vosk-api pull, copy file...
@@ -5,13 +11,6 @@ install-skript
 /etc/mplayer/mplayer.conf
 Audio Settings
 ao=alsa
-
-POWER-LED constant vs. acitivy
-
-# Use pulse, then alsa, then SDL video with the aalib subdriver by default.
-ao=pulse,alsa,sdl:aalib
-
-Do you have ao overridden in ~/.mplayer/config?
 
 Raspi Lite
 boot dhcpcd service 10 Sek
@@ -145,15 +144,8 @@ Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
 
-# NewSHAudioServer
-
 # VideoClient
 font-awesome 5
-
-# VideoServer
-# WSGpioButtons
-# WSRIF
-# SoundQuizGPIO
 
 # SoundQuizServer
 - Answer wrong right Variationen. Quatsch, genau so ist es

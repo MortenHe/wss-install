@@ -115,13 +115,20 @@ then
   sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i ${PROG_DIR}/AudioServer/config.json
 fi
 
-#Hifiberry Audio Card
-BOOT_CONFIG_FILE=/boot/config.txt
-if [ $HIFIBERRY = true ];
+#STT (Speech to Text)
+if [ $STT = true ];
 then
-  echo 'set hifiberry audio card'
-  sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i ${BOOT_CONFIG_FILE}
-  echo
+  echo 'get and install TTS from github'
+  git clone https://github.com/alphacep/vosk-api ${PROG_DIR}/vosk-api
+  wget https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip -P ${PROG_DIR}
+  unzip ${PROG_DIR}/vosk-model-small-de-0.15.zip -d ${PROG_DIR}
+  mv ${PROG_DIR}/vosk-model-small-de-0.15 ${PROG_DIR}/vosk-api/python/example/model
+  cp ${PROG_DIR}/wss-install/stt-mh.py ${PROG_DIR}/vosk-api/python/example
+
+  #pico2wave install
+  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb
+  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb
+  apt-get install -f ./libttspico0_1.0+git20130326-9_armhf.deb ./libttspico-utils_1.0+git20130326-9_armhf.deb
 fi
 
 #Ggf. Installation hier abbrechen (z.B. bei Installation auf Linux-Laptop) -> kein Pi-spez. Anpassungen mehr
@@ -129,6 +136,15 @@ if  [ $EARLYEXIT = true ];
 then
   echo 'short installation done'
   exit
+fi
+
+#Hifiberry Audio Card
+BOOT_CONFIG_FILE=/boot/config.txt
+if [ $HIFIBERRY = true ];
+then
+  echo 'set hifiberry audio card'
+  sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i ${BOOT_CONFIG_FILE}
+  echo
 fi
 
 echo 'set AUDIO player AUTOSTART in rc.local'
