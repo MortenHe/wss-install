@@ -7,74 +7,11 @@ sudo apt-cache search owncloud
 sudo apt update
 sudo apt install nextcloud-desktop-cmd
 
-//Web-Dav URL
-https://nx10108.your-storageshare.de/remote.php/dav/files/Audio/
-
-//Nextcloud cmd
-mkdir /home/pi/Nextcloud
-
-//Händisch
-nextcloudcmd /home/pi/Nextcloud/ https://nx10108.your-storageshare.de
-
-nextcloudcmd -u Audio -p XXX /home/pi/Nextcloud/ https://nx10108.your-storageshare.de
-
 ### Für Raspi Lite
 
-nano ~/.netrc
-
-machine nx10108.your-storageshare.de
-login Audio
-password XXX
-
-chmod 0600 ~/.netrc
-
-mkdir /home/pi/Nextcloud
-
 1.2.21 (22.21 Uhr)
-nextcloudcmd --non-interactive -n /home/pi/Nextcloud/ https://nx10108.your-storageshare.de
+nextcloudcmd --non-interactive -n /home/pi/Nextcloud/ https://nxTODO
 -s = silent
-
-=== cron job ===
-
-/home/pi/cloud-sync.sh
-
-#!/bin/bash
-LOCAL=/home/pi/Nextcloud/
-REMOTE=https://nx10108.your-storageshare.de
-PARAMS="--non-interactive -n -s"
-
-LOG=/var/log/cloud-sync.log
-
-if [ pgrep -x nextcloudcmd ]; then
-  echo "====================" | tee -a $LOG
-  date -R | tee -a $LOG
-  echo "Cloud-Sync läuft schon!" | tee -a $LOG
-  echo "====================" | tee -a $LOG
-  exit 1
-fi
-
-echo "====================" | tee -a $LOG
-date -R | tee -a $LOG
-echo "Cloud-Sync gestartet" | tee -a $LOG
-echo "====================" | tee -a $LOG
-
-/usr/local/bin/nextcloudcmd $PARAMS $LOCAL $REMOTE 2>&1 | tee -a $LOG
-
-echo "====================" | tee -a $LOG
-date -R | tee -a $LOG
-echo "Cloud-Sync beendet" | tee -a $LOG
-echo "====================" | tee -a $LOG
-echo | tee -a $LOG
-echo | tee -a $LOG
-
-====
-
-chmod +x /home/pi/cloud-sync.sh
-crontab -e
-
-# [...]
-# every minute
-* * * * * /home/pi/cloud-sync.sh >/dev/null &
 
 # ggf. nicht nötig
 sudo touch /var/log/cloud-sync.log

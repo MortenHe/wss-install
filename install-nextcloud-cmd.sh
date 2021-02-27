@@ -27,4 +27,19 @@ grep '/usr/local/lib/arm-linux-gnueabihf' /etc/ld.so.conf.d/x86_64-linux-gnu.con
 sudo ldconfig
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/arm-linux-gnueabihf
 
-#start nextcloud client with cli command: nextcloudcmd
+#Script dir
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+#Make Nextcloud dir'
+mkdir ${DIR}/../../Nextcloud
+
+#Create .netrc file
+cp .netrc ~/.netrc
+
+#Create sync-Skript
+cp nextcloud-sync.sh.dist nextcloud-sync.sh
+
+#Create Nextcloud sync Cronjob
+(crontab -l ; echo "* * * * * ${DIR}/cloud-sync.sh >/dev/null &") | crontab -
+
+echo 'edit nextcloud-sync.sh and ~/.netrc'
