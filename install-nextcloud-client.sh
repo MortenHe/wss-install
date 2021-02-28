@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 # https://forum-raspberrypi.de/forum/thread/47007-tutorial-nextcloud-client-fuer-den-raspberry/
-cd /home/pi
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+PROG_DIR="${DIR}/..";
+cd ${PROG_DIR}
 wget ftp.de.debian.org/debian/pool/main/n/nextcloud-desktop/nextcloud-desktop_2.5.1-3+deb10u1_armhf.deb
 sudo apt install -y nextcloud-desktop-common nextcloud-desktop-l10n libqt5keychain1 libqt5positioning5 libqt5qml5 libqt5quick5 libqt5webchannel5 libqt5webkit5 libqt5webengine-data libminizip1 libre2-5 libqt5quickwidgets5
 

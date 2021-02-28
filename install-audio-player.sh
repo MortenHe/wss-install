@@ -126,9 +126,12 @@ then
   cp ${PROG_DIR}/wss-install/stt-mh.py ${PROG_DIR}/vosk-api/python/example
 
   #pico2wave install
-  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb
-  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb
-  apt-get install -f ./libttspico0_1.0+git20130326-9_armhf.deb ./libttspico-utils_1.0+git20130326-9_armhf.deb
+  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
+  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
+  apt-get install -f -y ${PROG_DIR}/libttspico0_1.0+git20130326-9_armhf.deb ${PROG_DIR}/libttspico-utils_1.0+git20130326-9_armhf.deb
+
+  echo 'enable USB TTS in AUDIO CONFIG'
+  sed 's/"STT": false/"STT": true/' -i ${PROG_DIR}/AudioServer/config.json
 fi
 
 #Ggf. Installation hier abbrechen (z.B. bei Installation auf Linux-Laptop) -> kein Pi-spez. Anpassungen mehr
@@ -190,8 +193,8 @@ apt-get purge -y modemmanager
 apt-get purge -y avahi-daemon
 
 echo 'get and install MAUSBERRY power button script'
-wget http://files.mausberrycircuits.com/setup.sh
-bash setup.sh
+wget http://files.mausberrycircuits.com/setup.sh -P ${PROG_DIR}
+bash ${PROG_DIR}/setup.sh
 
 echo 'installation done'
 echo 'please reboot pi and read 02-after-installation.txt'

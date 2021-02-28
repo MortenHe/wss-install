@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #https://crycode.de/nextcloud-client-auf-dem-raspberry-pi
 sudo apt update
 sudo apt -y install build-essential git cmake openssl libssl-dev sqlite3 libsqlite3-dev qt5-default libqt5webkit5-dev qttools5-dev qttools5-dev-tools python-sphinx texlive-latex-base inotify-tools qt5keychain-dev doxygen extra-cmake-modules kio-dev
@@ -40,6 +40,6 @@ cp .netrc ~/.netrc
 cp nextcloud-sync.sh.dist nextcloud-sync.sh
 
 #Create Nextcloud sync Cronjob
-(crontab -l ; echo "* * * * * ${DIR}/cloud-sync.sh >/dev/null &") | crontab -
+(crontab -l ; echo "* * * * * ${DIR}/nextcloud-sync.sh >/dev/null &") | crontab -
 
 echo 'edit nextcloud-sync.sh and ~/.netrc'

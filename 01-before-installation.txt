@@ -11,7 +11,7 @@ cd mh_prog
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
 cp config-audio.dist config (Achtung nicht config-audio) | cp config-video.dist config (Achtung nicht config-video)
-thonny config (PW setzen)
+thonny | nano config (PW setzen)
 ./install-audio-player.sh | ./install-video-player.sh
 
 === statische IP-Vergabe ===
