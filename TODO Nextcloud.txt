@@ -13,11 +13,6 @@ sudo apt install nextcloud-desktop-cmd
 nextcloudcmd --non-interactive -n /home/pi/Nextcloud/ https://nxTODO
 -s = silent
 
-# ggf. nicht nötig
-sudo touch /var/log/cloud-sync.log
-sudo chown pi:pi /var/log/cloud-sync.log
-
-
 # Logrotate
 sudo nano /etc/logrotate.d/cloud-sync
 /var/log/cloud-sync.log {
