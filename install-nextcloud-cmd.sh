@@ -1,5 +1,6 @@
 #!/bin/bash
 #https://crycode.de/nextcloud-client-auf-dem-raspberry-pi
+# Fuer Installtion mit Raspberry OS Lite
 sudo apt update
 sudo apt -y install build-essential git cmake openssl libssl-dev sqlite3 libsqlite3-dev qt5-default libqt5webkit5-dev qttools5-dev qttools5-dev-tools python-sphinx texlive-latex-base inotify-tools qt5keychain-dev doxygen extra-cmake-modules kio-dev
 

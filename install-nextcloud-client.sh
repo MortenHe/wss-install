@@ -1,5 +1,6 @@
 #!/bin/bash
 # https://forum-raspberrypi.de/forum/thread/47007-tutorial-nextcloud-client-fuer-den-raspberry/
+# Fuer Installtion mit Raspberry OS Desktop (geht nicht mit Lite wegen qt5)
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 PROG_DIR="${DIR}/..";
 cd ${PROG_DIR}
