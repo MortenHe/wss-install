@@ -42,3 +42,11 @@ then
   git -C ${PROG_DIR}/WSRFID pull
   echo
 fi
+
+#STT git pull
+if [ $STT = true ];
+then
+  echo 'pull STT git repo'
+  git -C ${PROG_DIR}/WSSTT pull
+  echo
+fi

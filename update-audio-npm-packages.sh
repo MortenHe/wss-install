@@ -37,3 +37,11 @@ then
   npm ci --prefix ${PROG_DIR}/WSRFID
   echo
 fi
+
+#STT NPM packages updaten
+if [ $STT = true ];
+then
+  echo 'install WSSTT npm packages'
+  npm ci --prefix ${PROG_DIR}/WSSTT
+  echo
+fi
