@@ -12,7 +12,7 @@ speaker-test -c2
 alsamixer
 
 === AudioServer config ===
-thonny /home/pi/mh_prog/AudioServer/config.json (joker-### und mix-### setzen)
+thonny /home/pi/mh_prog/AudioServer/config.json
 //RFID-USB-READER
 cat /dev/input/event0
 

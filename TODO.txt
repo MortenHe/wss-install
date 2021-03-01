@@ -2,11 +2,7 @@
 device über Config
 
 //pico2wave
-sudo apt-get install libttspico-utils (geht nicht auf Raspi)
-
-install-skript
-* python3 install
-+ vosk-api pull, copy file...
+sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
 
 /etc/mplayer/mplayer.conf
 Audio Settings
@@ -86,12 +82,6 @@ kein Ping, Variable connected -> ping Zeit veroppeln?
 
 #cd /home/pi/wss-install/
 #sudo bash install-nextcloud-client.sh
-
-service dhcpcd status
-
-//Sollte dies nicht der Fall sein, aktivieren Sie den DHCPC wie folgt:
-service dhcpcd start
-systemctl enable dhcpcd
 
 ===
 
