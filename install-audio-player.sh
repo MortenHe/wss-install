@@ -118,12 +118,26 @@ fi
 #STT (Speech to Text)
 if [ $STT = true ];
 then
+  echo 'install FFMPEG'
+  apt-get install -y ffmpeg
+
+  echo 'install PYTHON PIP'
+  apt-get install -y python3-pip
+
+  echo 'install PTYHON VOSK'
+  pip3 install vosk
+
   echo 'get and install TTS from github'
   git clone https://github.com/alphacep/vosk-api ${PROG_DIR}/vosk-api
   wget https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip -P ${PROG_DIR}
   unzip ${PROG_DIR}/vosk-model-small-de-0.15.zip -d ${PROG_DIR}
   mv ${PROG_DIR}/vosk-model-small-de-0.15 ${PROG_DIR}/vosk-api/python/example/model
   cp ${PROG_DIR}/wss-install/stt-mh.py ${PROG_DIR}/vosk-api/python/example
+
+  echo 'get and install WSS TTS code from github'
+  git clone https://github.com/MortenHe/WSSTT ${PROG_DIR}/WSSTT
+  npm --prefix ${PROG_DIR}/WSSTT install
+  echo
 
   #pico2wave install
   wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
