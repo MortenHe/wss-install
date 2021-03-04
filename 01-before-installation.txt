@@ -15,24 +15,24 @@ raspi-config
 8 update tool
 
 1
-s1 wifi
+//s1 wifi
 S3 change user pi password : XXX
-S5 autologin as pi (B2)
-S6 Don't wait for network (N=)
+//S5 autologin as pi (B2)
+S6 Don't wait for network (No)
 
 3
-P2 SSH
+//P2 SSH
 
 5
 L1 de_DE utf-8 (en UTF 8 entfernen?)
 L2 Europe -> Berlin
 L3 Generic 105 - Other - German - German - Default - Default
-L4 DE
+//L4 DE
 
 6
-A1 resize sd card
+//A1 resize sd card
 
-sudo apt-get install git -y
+sudo apt-get install -y git
 
 sudo -s
 mkdir -p /home/pi/mh_prog
@@ -44,9 +44,15 @@ thonny | nano config (PW setzen)
 ./install-audio-player.sh | ./install-video-player.sh
 
 === statische IP-Vergabe ===
-thonny /etc/dhcpcd.conf
+thonny | nano /etc/dhcpcd.conf
 
 interface wlan0
 static ip_address=192.168.0.XXX/24
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
+
+=== Nextcloud install ===
+./install-nextcloud-cmd.sh
+nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh (-s ggf. wegmachen)
+nano ~/.netrc
+crontab -e

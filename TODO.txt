@@ -2,7 +2,14 @@
 
 Nextcloud Install Skript
 
+next steps
+nano dhcpcd
+nano config.json
 
+
+//headless
+Datei "ssh" in boot Verzeichnis
+Datei "wpa_supplicant.conf" in boot Verzeichnis
 
 
 /etc/mplayer/mplayer.conf

@@ -13,6 +13,11 @@ sudo apt install nextcloud-desktop-cmd
 nextcloudcmd --non-interactive -n /home/pi/Nextcloud/ https://nxTODO
 -s = silent
 
+Bei Fehler der Sync Aufruf ohne -s (silent). Fehlerhafte Dateien löschen und neu sync
+
+//TODO: Nextcloud GUI Pakete aktualisieren bei Installskript
+http://ftp.de.debian.org/debian/pool/main/n/nextcloud-desktop/
+
 # Logrotate
 sudo nano /etc/logrotate.d/cloud-sync
 /var/log/cloud-sync.log {
