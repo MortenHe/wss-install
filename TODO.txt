@@ -1,12 +1,36 @@
+-x: Zweistelliger (binärer) Operator erwartet.
+
+Nextcloud Install Skript
+
+
+
+
+/etc/mplayer/mplayer.conf
+Audio Settings
+ao=alsa
+
+Beep Sounds bei no results, too short, waiting, results found
+
 //mic
 device über Config
 
 //pico2wave
 sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
 
-/etc/mplayer/mplayer.conf
-Audio Settings
-ao=alsa
+Github aufräumen und sichern
+
+WWW Vorlesejoker -> Folgen werden vorgelesen bis ok gedrückt und ausgewählt
+
+GPIO 6 für Soundrecord Button, GPIO 21 für LED
+
+=====
+
+Line 6: View gedrückt halten, Cursor 2 mal runter, Tastern 1-4 Mic einstellen
+Line 6: arecord -f S16_LE -r 48000 -D hw:2,0 -d 3 -c 1 test-bob.wav
+pico2wave -l de-DE -w test.wav "Das ist ein Test" && aplay test.wav
+ffmpeg Compressor: ffmpeg -i lookdave.wav -af acompressor=threshold=-11dB:ratio=9:attack=200:release=1000:makeup=2 look-ff1.wav
+
+
 
 Raspi Lite
 boot dhcpcd service 10 Sek

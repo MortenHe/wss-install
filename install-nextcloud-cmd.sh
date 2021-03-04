@@ -1,4 +1,19 @@
 #!/bin/bash
+#Script dir
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+#Make Nextcloud dir'
+mkdir ${DIR}/../../Nextcloud
+
+#Create .netrc file
+cp ${DIR}/.netrc ~/.netrc
+
+#Create sync-Skript
+cp ${DIR}/nextcloud-sync.sh.dist ${DIR}/nextcloud-sync.sh
+
+#Create Nextcloud sync Cronjob (need to uncomment later)
+(crontab -l ; echo "# * * * * * ${DIR}/nextcloud-sync.sh >/dev/null &") | crontab -
+
 #https://crycode.de/nextcloud-client-auf-dem-raspberry-pi
 # Fuer Installtion mit Raspberry OS Lite
 sudo apt update
@@ -28,19 +43,7 @@ grep '/usr/local/lib/arm-linux-gnueabihf' /etc/ld.so.conf.d/x86_64-linux-gnu.con
 sudo ldconfig
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/arm-linux-gnueabihf
 
-#Script dir
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-#Make Nextcloud dir'
-mkdir ${DIR}/../../Nextcloud
-
-#Create .netrc file
-cp .netrc ~/.netrc
-
-#Create sync-Skript
-cp nextcloud-sync.sh.dist nextcloud-sync.sh
-
-#Create Nextcloud sync Cronjob
-(crontab -l ; echo "* * * * * ${DIR}/nextcloud-sync.sh >/dev/null &") | crontab -
-
-echo 'edit nextcloud-sync.sh and ~/.netrc'
+echo "EDIT FILES:"
+echo "nano ${DIR}/nextcloud-sync.sh"
+echo "nano ~/.netrc"
+echo "crontab -e"
