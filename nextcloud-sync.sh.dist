@@ -5,7 +5,7 @@ PARAMS="--non-interactive -n -s"
 
 LOG=/var/log/cloud-sync.log
 
-if [ pgrep -x nextcloudcmd ]; then
+if [ `pgrep -x nextcloudcmd` ]; then
   echo "====================" | tee -a $LOG
   date -R | tee -a $LOG
   echo "Cloud-Sync läuft schon!" | tee -a $LOG
