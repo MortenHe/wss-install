@@ -77,6 +77,12 @@ Line 6: arecord -f S16_LE -r 48000 -D hw:2,0 -d 3 -c 1 test-bob.wav
 pico2wave -l de-DE -w test.wav "Das ist ein Test" && aplay test.wav
 ffmpeg Compressor: ffmpeg -i lookdave.wav -af acompressor=threshold=-11dB:ratio=9:attack=200:release=1000:makeup=2 look-ff1.wav
 
+https://indibit.de/raspberry-pi-externe-status-leds-ueber-gpio-pwr_led-act_led/
+https://forum-raspberrypi.de/forum/thread/48619-externe-pwr-led-und-act-led/
+https://www.raspberrypi.org/forums/viewtopic.php?t=273194
+https://howchoo.com/shop/product/prebuilt-raspberry-pi-power-button
+https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
+
 
 
 Raspi Lite
