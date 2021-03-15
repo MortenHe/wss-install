@@ -7,6 +7,10 @@
 
 
 === Bei Installation von Lite ===
+
+Datei "ssh" in SD-boot Verzeichnis
+Datei "wpa_supplicant.conf" in SD-boot Verzeichnis und anpassen
+
 pi / raspberry (z = y)
 
 sudo -s

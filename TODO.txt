@@ -1,21 +1,40 @@
+/etc/mplayer/mplayer.conf
+Audio Settings
+ao=alsa
+CHECK
+
+
+
 next steps
 nano dhcpcd
 nano config.json
 
-https://github.com/gnoddep/mausberry
+GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
 
-pkill -f /home/...
-
-Power Button, Power LED, https://indibit.de/raspberry-pi-externe-status-leds-ueber-gpio-pwr_led-act_led/
-
+Power Button, Power LED
+https://indibit.de/raspberry-pi-externe-status-leds-ueber-gpio-pwr_led-act_led/
 https://howchoo.com/g/ytzjyzy4m2e/build-a-simple-raspberry-pi-led-power-status-indicator
 https://github.com/Howchoo/pi-power-button/pull/20
 https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
 https://superkris.tweakblogs.net/blog/14481
 
+IndexSearch
+- Zahlensuchen (Benjamin Blümchen 26)
+
+Nextcloud
+- Hier kommt die Maus (.Stefan Raab)? 
+
+Github sichern
+
+Pumuckl Textliste
+
+====
+
+https://github.com/gnoddep/mausberry
+
+pkill -f /home/...
 
 alias vosk='cd /home/pi/mh_prog/vosk-api/python/example'
-alias mh_prog='cd /home/pi/mh_prog'
 
 9.3. silence detect
 ffmpeg -i knolle.wav -af silencedetect=n=-20dB:d=1 -f null - |& awk '/silence_start/ {print $5}'
@@ -36,37 +55,15 @@ ffmpeg -i rec-long.wav -af silencedetect=n=-30dB:d=1 -f null - |& awk '/silenced
 
 ffmpeg -i rec-long.wav -to 2.87219 -c copy output_02.wav -y
 
-
 https://ffmpeg.org/ffmpeg-filters.html#silencedetect
 https://stackoverflow.com/questions/42507879/how-to-detect-the-silence-at-the-end-of-an-audio-file
 https://askubuntu.com/questions/1264779/how-to-split-an-mp3-file-by-detecting-silent-parts
 https://stackoverflow.com/questions/36074224/how-to-split-video-or-audio-by-silent-parts
 
-IndexSearch
-- Zahlensuchen (Benjamin Blümchen 26)
+//Wenn WLAN nicht geht
+https://askubuntu.com/questions/1108766/wlan0-not-showing-up-in-ifconfig-iwconfig
+https://qastack.com.de/ubuntu/62166/siocsifflags-operation-not-possible-due-to-rf-kill
 
-ssh .bashrc
-cd /home/pi/prog .bashrc
-AudioServer: jsonpath-plus
-
-Record Tim style
-- trim wav file
-Nextcloud
-- Hier kommt die Maus (.Stefan Raab)? 
-- Logrotate
-Status LED
-
-
-//headless
-Datei "ssh" in boot Verzeichnis
-Datei "wpa_supplicant.conf" in boot Verzeichnis
-
-
-/etc/mplayer/mplayer.conf
-Audio Settings
-ao=alsa
-
-Beep Sounds bei no results, too short, waiting, results found
 
 //mic
 device über Config
@@ -74,11 +71,8 @@ device über Config
 //pico2wave
 sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
 
-Github aufräumen und sichern
-
-WWW Vorlesejoker -> Folgen werden vorgelesen bis ok gedrückt und ausgewählt
-
-GPIO 6 für Soundrecord Button, GPIO 21 für LED
+//Nextcloud cmd
+Logrotate?
 
 =====
 
@@ -205,35 +199,3 @@ Lernspiel: Wer hat am 18.11. Geburtstag, Musikinstrumente, Flaggen, Was bedeutet
 http://www.makercase.com/
 https://www.festi.info/boxes.py/
 https://www.formulor.de/uploadHelp
-
-# wss-install
-gemeinsame Tasks von Audio und Video in gemeinsames Bash auslagern und nur spezielle Anweisungen
-
-mögliche Fehler: ^M, wenn Linux-Datei mit Windows bearbeitet wurde
-
-
-Service audioplayer.service anlegen in
-
-/etc/systemd/system
-
-[Unit]
-Description=Audio Player
-
-[Service]
-ExecStart=/usr/bin/node /home/pi/mh_prog/AudioServer/server.js > /home/pi/mh_prog/output-server.txt
-
-[Install]
-WantedBy=sysinit.target
-
-[Unit]
-Description=qtdemo
-DefaultDependencies=no
-[Service]
-ExecStart=/usr/bin/qtdemoE -qws
-[Install]
-WantedBy=basic.target
-
-sudo chmod 644 /lib/systemd/system/audioplayer.service
-
-in Autostart mit
-systemctl enable audioplayer.service

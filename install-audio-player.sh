@@ -27,6 +27,13 @@ sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd
 /etc/init.d/ssh restart
 echo
 
+echo 'set STATIC IP ADDRESS'
+DHCP_FILE=/etc/dhcpcd.conf
+sed "$ a interface wlan0" -i ${DHCP_FILE}
+sed "$ a ip_address=192.168.0.${IP_ADDRESS}/24" -i ${DHCP_FILE}
+sed "$ a routers=192.168.0.1" -i ${DHCP_FILE}
+sed "$ a domain_name_servers=192.168.0.1" -i ${DHCP_FILE}
+
 echo 'set ALIASES in .bashrc'
 BASH_FILE=/root/.bashrc
 sed "$ a alias ..='cd ..'" -i ${BASH_FILE}
@@ -39,6 +46,7 @@ sed "$ a alias tailf='tail -f ${PROG_DIR}/output-server.txt'" -i ${BASH_FILE}
 sed "$ a alias pullgit='${PROG_DIR}/wss-install/pull-git-audio-repos.sh'" -i ${BASH_FILE}
 sed "$ a alias npmupdate='${PROG_DIR}/wss-install/update-audio-npm-packages.sh'" -i ${BASH_FILE}
 sed "$ a alias update='apt-get update && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get -y autoclean && pullgit && npmupdate'" -i ${BASH_FILE}
+sed "$ a alias mh_prog='cd ${PROG_DIR}" -i ${BASH_FILE}
 source ${BASH_FILE}
 echo
 
@@ -47,8 +55,9 @@ curl -sL https://deb.nodesource.com/setup_15.x | bash -
 apt-get install -y nodejs
 echo
 
-echo 'install MPLAYER'
+echo 'install MPLAYER and update CONFIG'
 apt-get install -y mplayer
+sed 's/ao=pulse,alsa,/ao=alsa,/' -i /etc/mplayer/mplayer.conf
 echo
 
 echo 'install APACHE'
