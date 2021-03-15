@@ -27,13 +27,6 @@ sed 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' -i /etc/ssh/sshd
 /etc/init.d/ssh restart
 echo
 
-echo 'set STATIC IP ADDRESS'
-DHCP_FILE=/etc/dhcpcd.conf
-sed "$ a interface wlan0" -i ${DHCP_FILE}
-sed "$ a ip_address=192.168.0.${IP_ADDRESS}/24" -i ${DHCP_FILE}
-sed "$ a routers=192.168.0.1" -i ${DHCP_FILE}
-sed "$ a domain_name_servers=192.168.0.1" -i ${DHCP_FILE}
-
 echo 'set ALIASES in .bashrc'
 BASH_FILE=/root/.bashrc
 sed "$ a alias ..='cd ..'" -i ${BASH_FILE}
@@ -46,7 +39,7 @@ sed "$ a alias tailf='tail -f ${PROG_DIR}/output-server.txt'" -i ${BASH_FILE}
 sed "$ a alias pullgit='${PROG_DIR}/wss-install/pull-git-audio-repos.sh'" -i ${BASH_FILE}
 sed "$ a alias npmupdate='${PROG_DIR}/wss-install/update-audio-npm-packages.sh'" -i ${BASH_FILE}
 sed "$ a alias update='apt-get update && apt-get -y dist-upgrade && apt-get -y autoremove && apt-get -y autoclean && pullgit && npmupdate'" -i ${BASH_FILE}
-sed "$ a alias mh_prog='cd ${PROG_DIR}" -i ${BASH_FILE}
+sed "$ a alias mh_prog='cd ${PROG_DIR}'" -i ${BASH_FILE}
 source ${BASH_FILE}
 echo
 
@@ -65,6 +58,14 @@ apt-get install -y apache2
 a2enmod rewrite
 sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
 systemctl restart apache2
+echo
+
+echo 'set STATIC IP ADDRESS'
+DHCP_FILE=/etc/dhcpcd.conf
+sed "$ a interface wlan0" -i ${DHCP_FILE}
+sed "$ a static ip_address=192.168.0.${IP_ADDRESS}/24" -i ${DHCP_FILE}
+sed "$ a static routers=192.168.0.1" -i ${DHCP_FILE}
+sed "$ a static domain_name_servers=192.168.0.1" -i ${DHCP_FILE}
 echo
 
 echo 'install PHP'
@@ -148,13 +149,15 @@ then
   npm --prefix ${PROG_DIR}/WSSTT install
   echo
 
-  #pico2wave install
+  echo 'get and install STT pico2wave'
   wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
   wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
   apt-get install -f -y ${PROG_DIR}/libttspico0_1.0+git20130326-9_armhf.deb ${PROG_DIR}/libttspico-utils_1.0+git20130326-9_armhf.deb
+  echo
 
   echo 'enable USB TTS in AUDIO CONFIG'
   sed 's/"STT": false/"STT": true/' -i ${PROG_DIR}/AudioServer/config.json
+  echo
 fi
 
 #Ggf. Installation hier abbrechen (z.B. bei Installation auf Linux-Laptop) -> kein Pi-spez. Anpassungen mehr

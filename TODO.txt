@@ -1,12 +1,4 @@
-/etc/mplayer/mplayer.conf
-Audio Settings
-ao=alsa
-CHECK
-
-
-
 next steps
-nano dhcpcd
 nano config.json
 
 GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
@@ -29,6 +21,16 @@ Github sichern
 Pumuckl Textliste
 
 ====
+
+AudioClient package.json aufrauemen (Auswirkung auf Angular dist?), ggf. eigenes Projekt fuer deploy-Skripte
+
+=== statische IP-Vergabe ===
+thonny | nano /etc/dhcpcd.conf
+
+interface wlan0
+static ip_address=192.168.0.XXX/24
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1
 
 https://github.com/gnoddep/mausberry
 
@@ -106,7 +108,7 @@ Hifiberry Code aus install / config rausnehmen
 
 Digital=Hifiberry
 Master|Spaeker=USB Audio
-
+HDMI=HDMI
 
 DHCP Config in Install-Skript
 
