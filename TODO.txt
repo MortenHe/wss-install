@@ -1,3 +1,24 @@
+Hifiberry aus config nehmen und eigenes install
+
+# Delay boot until network is established: 0=disabled | 1=10 second wait max (default) | 2=infinite wait
+CONFIG_BOOT_WAIT_FOR_NETWORK=0
+
+# Network time sync: 0=disabled | 1=boot only | 2=boot + daily | 3=boot + hourly | 4=Daemon + Drift
+CONFIG_NTP_MODE=0
+
+
+lighttp (apache alternative)
+
+sudo apt install lighttpd
+sudo apt install php-cgi
+
+sudo lighty-enable-mod fastcgi 
+sudo lighty-enable-mod fastcgi-php
+sudo service lighttpd force-reload
+
+shutdown bashrc
+
+
 dietpi: 
 - 2 txt files bearbeiten
 - SSH (auch root) kommt über Config (nicht install Skript), OpenSSH statt Dropbear
@@ -16,9 +37,6 @@ Pi-Imager ctrl + shift + x -> advanced settings SSH
 pkill -f /home/...
 
 01-before und 02-after zusammenführen
-
-
-Mausberry vs. Powerblock in config
 
 deployTools: flag "ohne build" (nur Zip und Upload)
 

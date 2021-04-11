@@ -40,3 +40,7 @@ nano config (PW setzen)
 nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh (-s ggf. wegmachen)
 nano ~/.netrc
 crontab -e
+
+=== Power-Button install ===
+./install-mausberry.sh
+./install-powerblock.sh

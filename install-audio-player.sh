@@ -218,9 +218,5 @@ echo "uninstall UNUSED SOFTWARE"
 apt-get purge -y modemmanager
 apt-get purge -y avahi-daemon
 
-echo 'get and install MAUSBERRY power button script'
-wget http://files.mausberrycircuits.com/setup.sh -P ${PROG_DIR}
-bash ${PROG_DIR}/setup.sh
-
 echo 'installation done'
 echo 'please reboot pi and read 02-after-installation.txt'
