@@ -1,14 +1,28 @@
-next steps
-nano config.json
+dietpi: 
+- 2 txt files bearbeiten
+- SSH (auch root) kommt über Config (nicht install Skript), OpenSSH statt Dropbear
+- mkdir /home/pi/mh_prog
+- DHCHP No such file or directory
+- GPIO Buttons / WSTT npm install?
+- Services to disable
+- dietpi config
+    - enable alsa -> force hdmi  
+
+
+https://www.hifiberry.com/docs/software/mixing-different-audio-sources/
+
+Pi-Imager ctrl + shift + x -> advanced settings SSH
+
+pkill -f /home/...
+
+01-before und 02-after zusammenführen
+
+
+Mausberry vs. Powerblock in config
+
+deployTools: flag "ohne build" (nur Zip und Upload)
 
 GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
-
-Power Button, Power LED
-https://indibit.de/raspberry-pi-externe-status-leds-ueber-gpio-pwr_led-act_led/
-https://howchoo.com/g/ytzjyzy4m2e/build-a-simple-raspberry-pi-led-power-status-indicator
-https://github.com/Howchoo/pi-power-button/pull/20
-https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
-https://superkris.tweakblogs.net/blog/14481
 
 IndexSearch
 - Zahlensuchen (Benjamin Blümchen 26)
@@ -18,14 +32,12 @@ Nextcloud
 
 Github sichern
 
-Pumuckl Textliste
-
 ====
 
 AudioClient package.json aufrauemen (Auswirkung auf Angular dist?), ggf. eigenes Projekt fuer deploy-Skripte
 
 === statische IP-Vergabe ===
-thonny | nano /etc/dhcpcd.conf
+nano /etc/dhcpcd.conf
 
 interface wlan0
 static ip_address=192.168.0.XXX/24
@@ -33,8 +45,6 @@ static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
 
 https://github.com/gnoddep/mausberry
-
-pkill -f /home/...
 
 alias vosk='cd /home/pi/mh_prog/vosk-api/python/example'
 
@@ -109,6 +119,7 @@ Hifiberry Code aus install / config rausnehmen
 Digital=Hifiberry
 Master|Spaeker=USB Audio
 HDMI=HDMI
+Digital=Hifiberry
 
 DHCP Config in Install-Skript
 
