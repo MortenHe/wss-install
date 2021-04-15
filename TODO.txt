@@ -1,14 +1,4 @@
-Hifiberry aus config nehmen und eigenes install
-
-# Delay boot until network is established: 0=disabled | 1=10 second wait max (default) | 2=infinite wait
-CONFIG_BOOT_WAIT_FOR_NETWORK=0
-
-# Network time sync: 0=disabled | 1=boot only | 2=boot + daily | 3=boot + hourly | 4=Daemon + Drift
-CONFIG_NTP_MODE=0
-
-
-lighttp (apache alternative)
-
+apache vs. lighttp (install script)
 sudo apt install lighttpd
 sudo apt install php-cgi
 
@@ -16,8 +6,25 @@ sudo lighty-enable-mod fastcgi
 sudo lighty-enable-mod fastcgi-php
 sudo service lighttpd force-reload
 
-shutdown bashrc
+buttons vs. dac vs. powerblock
 
+GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
+
+Test: .mp3 / .MP3 wap & shp
+getMixFiles / mixSearchFiles .mp3 / .MP3
+
+Für IQaudio in /boot/config.txt
+#dtparam=audio=on auskommentieren
+
+# Delay boot until network is established: 0=disabled | 1=10 second wait max (default) | 2=infinite wait
+CONFIG_BOOT_WAIT_FOR_NETWORK=0
+
+# Network time sync: 0=disabled | 1=boot only | 2=boot + daily | 3=boot + hourly | 4=Daemon + Drift
+CONFIG_NTP_MODE=0
+-> ggf. Problem bei Update weil dann Zeit nicht mehr stimmt (release file not valid yet)
+
+
+shutdown bashrc
 
 dietpi: 
 - 2 txt files bearbeiten
@@ -40,13 +47,8 @@ pkill -f /home/...
 
 deployTools: flag "ohne build" (nur Zip und Upload)
 
-GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
-
 IndexSearch
 - Zahlensuchen (Benjamin Blümchen 26)
-
-Nextcloud
-- Hier kommt die Maus (.Stefan Raab)? 
 
 Github sichern
 
@@ -137,7 +139,6 @@ Hifiberry Code aus install / config rausnehmen
 Digital=Hifiberry
 Master|Spaeker=USB Audio
 HDMI=HDMI
-Digital=Hifiberry
 
 DHCP Config in Install-Skript
 

@@ -53,24 +53,25 @@ apt-get install -y mplayer
 sed 's/ao=pulse,alsa,/ao=alsa,/' -i /etc/mplayer/mplayer.conf
 echo
 
-echo 'install APACHE'
-apt-get install -y apache2
-a2enmod rewrite
-sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
-systemctl restart apache2
-echo
+#echo 'install APACHE'
+#apt-get install -y apache2
+#a2enmod rewrite
+#sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
+#systemctl restart apache2
+#echo
 
 echo 'set STATIC IP ADDRESS'
 DHCP_FILE=/etc/dhcpcd.conf
 sed "$ a interface wlan0" -i ${DHCP_FILE}
-sed "$ a static ip_address=192.168.0.${IP_ADDRESS}/24" -i ${DHCP_FILE}
+sed "$ a static ip_address=192.168.0.${IP_ADDRESS_SUFFIX}/24" -i ${DHCP_FILE}
 sed "$ a static routers=192.168.0.1" -i ${DHCP_FILE}
 sed "$ a static domain_name_servers=192.168.0.1" -i ${DHCP_FILE}
 echo
 
 echo 'install PHP'
-apt-get install -y php libapache2-mod-php
-sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
+#apt-get install -y php libapache2-mod-php
+apt-get install -y php
+#sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
 echo
 
 echo 'deploy PHP SCRIPT'
@@ -165,15 +166,6 @@ if  [ $EARLYEXIT = true ];
 then
   echo 'short installation done'
   exit
-fi
-
-#Hifiberry Audio Card
-BOOT_CONFIG_FILE=/boot/config.txt
-if [ $HIFIBERRY = true ];
-then
-  echo 'set hifiberry audio card'
-  sed 's/dtparam=audio=on/dtoverlay=hifiberry-dacplus/' -i ${BOOT_CONFIG_FILE}
-  echo
 fi
 
 echo 'set AUDIO player AUTOSTART in rc.local'
