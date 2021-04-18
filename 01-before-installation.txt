@@ -42,5 +42,9 @@ nano ~/.netrc
 crontab -e
 
 === Power-Button install ===
-./install-mausberry.sh
 ./install-powerblock.sh
+./install-mausberry.sh
+
+=== Audio install ===
+./install-iqaudio.sh
+./install-hifiberry.sh

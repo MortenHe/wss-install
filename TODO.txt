@@ -6,9 +6,16 @@ sudo lighty-enable-mod fastcgi
 sudo lighty-enable-mod fastcgi-php
 sudo service lighttpd force-reload
 
+sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
+
 buttons vs. dac vs. powerblock
 
 GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
+
+//install-audio
+enable ssh
+change pi psswd
+dont't wait for network boot
 
 Test: .mp3 / .MP3 wap & shp
 getMixFiles / mixSearchFiles .mp3 / .MP3
@@ -25,6 +32,7 @@ CONFIG_NTP_MODE=0
 
 
 shutdown bashrc
+wss aufräumen / Unterordner für .wav
 
 dietpi: 
 - 2 txt files bearbeiten
@@ -96,6 +104,9 @@ https://stackoverflow.com/questions/36074224/how-to-split-video-or-audio-by-sile
 https://askubuntu.com/questions/1108766/wlan0-not-showing-up-in-ifconfig-iwconfig
 https://qastack.com.de/ubuntu/62166/siocsifflags-operation-not-possible-due-to-rf-kill
 
+https://www.soundjay.com/free-music.html
+
+chmod +x vs. 777
 
 //mic
 device über Config

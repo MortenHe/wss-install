@@ -53,12 +53,12 @@ apt-get install -y mplayer
 sed 's/ao=pulse,alsa,/ao=alsa,/' -i /etc/mplayer/mplayer.conf
 echo
 
-#echo 'install APACHE'
-#apt-get install -y apache2
-#a2enmod rewrite
-#sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
-#systemctl restart apache2
-#echo
+echo 'install APACHE'
+apt-get install -y apache2
+a2enmod rewrite
+sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
+systemctl restart apache2
+echo
 
 echo 'set STATIC IP ADDRESS'
 DHCP_FILE=/etc/dhcpcd.conf
@@ -69,9 +69,8 @@ sed "$ a static domain_name_servers=192.168.0.1" -i ${DHCP_FILE}
 echo
 
 echo 'install PHP'
-#apt-get install -y php libapache2-mod-php
-apt-get install -y php
-#sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
+apt-get install -y php libapache2-mod-php
+sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
 echo
 
 echo 'deploy PHP SCRIPT'
@@ -112,6 +111,7 @@ then
 
   echo 'enable GPIO BUTTONS in AUDIO CONFIG'
   sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i ${PROG_DIR}/AudioServer/config.json
+  echo
 fi
 
 #USB RFID Reader
@@ -124,6 +124,7 @@ then
 
   echo 'enable USB RFID READER in AUDIO CONFIG'
   sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i ${PROG_DIR}/AudioServer/config.json
+  echo
 fi
 
 #STT (Speech to Text)
@@ -131,12 +132,15 @@ if [ $STT = true ];
 then
   echo 'install FFMPEG'
   apt-get install -y ffmpeg
+  echo
 
   echo 'install PYTHON PIP'
   apt-get install -y python3-pip
+  echo
 
   echo 'install PTYHON VOSK'
   pip3 install vosk
+  echo
 
   echo 'get and install TTS from github'
   git clone https://github.com/alphacep/vosk-api ${PROG_DIR}/vosk-api
@@ -144,6 +148,7 @@ then
   unzip ${PROG_DIR}/vosk-model-small-de-0.15.zip -d ${PROG_DIR}
   mv ${PROG_DIR}/vosk-model-small-de-0.15 ${PROG_DIR}/vosk-api/python/example/model
   cp ${PROG_DIR}/wss-install/stt-mh.py ${PROG_DIR}/vosk-api/python/example
+  echo
 
   echo 'get and install WSS TTS code from github'
   git clone https://github.com/MortenHe/WSSTT ${PROG_DIR}/WSSTT
@@ -194,6 +199,7 @@ sed "$ a boot_delay=0" -i ${BOOT_CONFIG_FILE}
 
 sed "$ a # Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply." -i ${BOOT_CONFIG_FILE}
 sed "$ a force_turbo=1" -i ${BOOT_CONFIG_FILE}
+echo
 
 echo "disable UNUSED SERVICES"
 systemctl disable raspi-config.service
@@ -205,10 +211,12 @@ systemctl disable apt-daily.service
 systemctl disable avahi-daemon.service
 systemctl disable rsyslog.service
 systemctl disable rpi-eeprom-update
+echo
 
 echo "uninstall UNUSED SOFTWARE"
 apt-get purge -y modemmanager
 apt-get purge -y avahi-daemon
+echo
 
 echo 'installation done'
 echo 'please reboot pi and read 02-after-installation.txt'
