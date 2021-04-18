@@ -184,6 +184,7 @@ sed 's/$/ quiet/' -i /boot/cmdline.txt
 echo
 
 echo 'OPTIMIZE STARTUP time in /boot/config.txt'
+BOOT_CONFIG_FILE=/boot/config.txt
 sed "$ a # Disable the rainbow splash screen" -i ${BOOT_CONFIG_FILE}
 sed "$ a disable_splash=1" -i ${BOOT_CONFIG_FILE}
 
