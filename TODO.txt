@@ -1,5 +1,8 @@
 Start Player vor Start WSS in server.js?
 
+//USB Mic
+arecord --list-devices
+
 apache vs. lighttp (install script)
 sudo apt install lighttpd
 sudo apt install php-cgi
