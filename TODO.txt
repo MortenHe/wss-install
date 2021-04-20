@@ -1,3 +1,5 @@
+Start Player vor Start WSS in server.js?
+
 apache vs. lighttp (install script)
 sudo apt install lighttpd
 sudo apt install php-cgi
@@ -9,8 +11,6 @@ sudo service lighttpd force-reload
 sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
 
 buttons vs. dac vs. powerblock
-
-GPIO 6 für Soundrecord Button, GPIO 21 für LED -> Grafik anpassen
 
 //install-audio
 enable ssh
@@ -145,10 +145,9 @@ Info nach install-Skript -> reboot wegen DHCP
 - Nextcloud syncen 
 - Audio / NewSH Code hochladen vs. auf Server bauen
 
-Hifiberry Code aus install / config rausnehmen
-
+Digital=IQaudio
 Digital=Hifiberry
-Master|Spaeker=USB Audio
+Master|Speaker=USB Audio
 HDMI=HDMI
 
 DHCP Config in Install-Skript
