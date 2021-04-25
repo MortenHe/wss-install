@@ -12,8 +12,6 @@ pi / raspberry (z = y)
 sudo -s
 raspi-config
 
-8 update tool
-
 1
 S3 change user pi password : XXX
 S6 Don't wait for network (No)
@@ -48,3 +46,27 @@ crontab -e
 === Audio install ===
 ./install-iqaudio.sh
 ./install-hifiberry.sh
+
+=== AudioServer config ===
+nano /home/pi/mh_prog/AudioServer/config.json
+
+//RFID-USB-READER
+cat /dev/input/event0
+
+=== check start time ===
+systemd-analyze blame
+
+=== build and deploy audio app from local computer ===
+AudioClient
+cd src/tools
+code connection.js
+node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
+
+=== build and deploy sh audio app from local computer ===
+NewSHAudioServer
+cd src/tools
+node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
+
+=== LED-Button === 
+Button = äußere Kontakte auf Button
+LED = innere Kontakte auf Button (ggf. + / - vertauschen)

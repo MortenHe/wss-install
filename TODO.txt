@@ -1,3 +1,5 @@
+stt: pico2wave equalizer
+
 Start Player vor Start WSS in server.js?
 
 //USB Mic
@@ -211,7 +213,7 @@ kein Ping, Variable connected -> ping Zeit veroppeln?
 
 ===
 
-volume ohne sync
+Mix starten -> Playlist wird angzeigt als mix statt Mix MH
 Suchfelder ggf. nur mit border-bottom
 
 Versionsnummer in Oberfläche anzeigen

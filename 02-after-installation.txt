@@ -11,15 +11,6 @@ speaker-test -c2
 === Name der Soundkarte (Spekaer, Master,...) ===
 alsamixer
 
-=== AudioServer config ===
-nano /home/pi/mh_prog/AudioServer/config.json
-//RFID-USB-READER
-cat /dev/input/event0
-
-//check start time
-systemd-analyze blame
-
-
 === USB automount ===
 blkid -o list -w /dev/null 
 -> get UUID like E012519312517010 | B8EA48B6EA487324 | 78C20C88C20C4CB6
@@ -42,18 +33,6 @@ keine Bestätitung erfragen für 500MB / externe Speicher
 Schlüsselbund -> leeres PW
 Nextcloud Autostart aktivieren
 
-=== build and deploy audio app from local computer ===
-AudioClient
-cd src/tools
-connection.js
-node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
-
-=== build and deploy sh audio app from local computer ===
-NewSHAudioServer
-cd src/tools
-connection.js
-node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
-
 === build and deploy video app from local computer ===
 VideoClient
 cd src/tools
@@ -63,5 +42,3 @@ node .\deployWebsiteToServer.js
 === Mausberry power button ===
 out GPIO 23 (8. Pin von Seite SD-Karte aussen)
 in GPIO 24 (9. Pin von Seite SD-Karte aussen)
-Button = SW = auessere Kontakte auf Button
-LED = innere Kontakte auf Button (ggf. + / - vertauschen)
