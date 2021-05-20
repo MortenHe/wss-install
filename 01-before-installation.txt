@@ -57,15 +57,11 @@ cat /dev/input/event0
 systemd-analyze blame
 
 === build and deploy audio app from local computer ===
-AudioClient
-cd src/tools
+TODO
+AudioTools
 code connection.js
-node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
-
-=== build and deploy sh audio app from local computer ===
-NewSHAudioServer
-cd src/tools
-node .\deployWebsiteToServer.js laila | luis | pw | sh | mh
+node .\deployAudioWebsiteToServer.js laila | luis | pw | sh | mh
+node .\deployNewSHAudioWebsiteToServer.js laila | luis | pw | sh | mh
 
 === LED-Button === 
 Button = äußere Kontakte auf Button

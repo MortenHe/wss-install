@@ -1,21 +1,8 @@
 stt: pico2wave equalizer
 
-Start Player vor Start WSS in server.js?
-
 //USB Mic
 arecord --list-devices
-
-apache vs. lighttp (install script)
-sudo apt install lighttpd
-sudo apt install php-cgi
-
-sudo lighty-enable-mod fastcgi 
-sudo lighty-enable-mod fastcgi-php
-sudo service lighttpd force-reload
-
-sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
-
-buttons vs. dac vs. powerblock
+hdmi -> hw:2,0
 
 //install-audio
 enable ssh
@@ -35,7 +22,6 @@ CONFIG_BOOT_WAIT_FOR_NETWORK=0
 CONFIG_NTP_MODE=0
 -> ggf. Problem bei Update weil dann Zeit nicht mehr stimmt (release file not valid yet)
 
-
 shutdown bashrc
 wss aufräumen / Unterordner für .wav
 
@@ -49,7 +35,6 @@ dietpi:
 - dietpi config
     - enable alsa -> force hdmi  
 
-
 https://www.hifiberry.com/docs/software/mixing-different-audio-sources/
 
 Pi-Imager ctrl + shift + x -> advanced settings SSH
@@ -58,8 +43,6 @@ pkill -f /home/...
 
 01-before und 02-after zusammenführen
 
-deployTools: flag "ohne build" (nur Zip und Upload)
-
 IndexSearch
 - Zahlensuchen (Benjamin Blümchen 26)
 
@@ -67,7 +50,7 @@ Github sichern
 
 ====
 
-AudioClient package.json aufrauemen (Auswirkung auf Angular dist?), ggf. eigenes Projekt fuer deploy-Skripte
+Bootstrap 4 -> 5
 
 === statische IP-Vergabe ===
 nano /etc/dhcpcd.conf
@@ -77,33 +60,6 @@ static ip_address=192.168.0.XXX/24
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1
 
-https://github.com/gnoddep/mausberry
-
-alias vosk='cd /home/pi/mh_prog/vosk-api/python/example'
-
-9.3. silence detect
-ffmpeg -i knolle.wav -af silencedetect=n=-20dB:d=1 -f null - |& awk '/silence_start/ {print $5}'
-1.86885
-3.2789
-7.0116
-
-//Wert > 2, nur 1 Wert
-ffmpeg -i knolle.wav -af silencedetect=n=-20dB:d=1 -f null - |& awk '/silence_start/ && ($5 > 2) {print $5}' | head -1
-3.2789
-
-//ugly?
-ffmpeg -i knolle.wav -af silencedetect=n=-20dB:d=1 -f null - |& awk '/silence_start/ && ($5 > 2) {print $5; exit}'
-3.2789
-
-ffmpeg -i rec-long.wav -af silencedetect=n=-30dB:d=1 -f null -
-ffmpeg -i rec-long.wav -af silencedetect=n=-30dB:d=1 -f null - |& awk '/silencedetect/ {print $4,$5}'
-
-ffmpeg -i rec-long.wav -to 2.87219 -c copy output_02.wav -y
-
-https://ffmpeg.org/ffmpeg-filters.html#silencedetect
-https://stackoverflow.com/questions/42507879/how-to-detect-the-silence-at-the-end-of-an-audio-file
-https://askubuntu.com/questions/1264779/how-to-split-an-mp3-file-by-detecting-silent-parts
-https://stackoverflow.com/questions/36074224/how-to-split-video-or-audio-by-silent-parts
 
 //Wenn WLAN nicht geht
 https://askubuntu.com/questions/1108766/wlan0-not-showing-up-in-ifconfig-iwconfig
@@ -113,9 +69,6 @@ https://www.soundjay.com/free-music.html
 
 chmod +x vs. 777
 
-//mic
-device über Config
-
 //pico2wave
 sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
 
@@ -123,18 +76,6 @@ sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
 Logrotate?
 
 =====
-
-Line 6: View gedrückt halten, Cursor 2 mal runter, Tastern 1-4 Mic einstellen
-Line 6: arecord -f S16_LE -r 48000 -D hw:2,0 -d 3 -c 1 test-bob.wav
-pico2wave -l de-DE -w test.wav "Das ist ein Test" && aplay test.wav
-ffmpeg Compressor: ffmpeg -i lookdave.wav -af acompressor=threshold=-11dB:ratio=9:attack=200:release=1000:makeup=2 look-ff1.wav
-
-https://indibit.de/raspberry-pi-externe-status-leds-ueber-gpio-pwr_led-act_led/
-https://forum-raspberrypi.de/forum/thread/48619-externe-pwr-led-und-act-led/
-https://www.raspberrypi.org/forums/viewtopic.php?t=273194
-https://howchoo.com/shop/product/prebuilt-raspberry-pi-power-button
-https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
-
 
 
 Raspi Lite
@@ -187,47 +128,24 @@ sudo cp /home/pi/mh_prog/wss-install/mhaudio.service /lib/systemd/system/
 #echo 'install nextcloud client'
 #apt-get install -y nextcloud-desktop
 
-path dependencies
-
 Bei Fehler
 init=/bin/bash
 in cmdline.txt ganz hinten
 
-ggf. Remote Desktop Zugriff installieren
-sudo apt-get install -y xrdp
-
-//Count files in folders (Nextcloud)
-find . -type f | wc -l
-
-//Status
-sudo systemctl status xrdp
-
-bei read only system
-rw vor rootwait einfügen in cmdline.txt
-
-environment-Werte in audiolist.json verschieben (domainModes) auch bei NewSHAudioClient
 kein Ping, Variable connected -> ping Zeit veroppeln?
-
-#cd /home/pi/wss-install/
-#sudo bash install-nextcloud-client.sh
 
 ===
 
-Mix starten -> Playlist wird angzeigt als mix statt Mix MH
 Suchfelder ggf. nur mit border-bottom
 
 Versionsnummer in Oberfläche anzeigen
-Favicon / color pro Instanz
-volume Wert anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
+volume Wert als progress anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
 Filter, Suchterm etc. per URL-Parameter setzen
 
 # AudioClient
 auf View Suche vs. Playlist per Route
 
-# AudioServer
-
 # NewSHAudioClient
-Select für Modes
 -- Liste der neuesten Tracks auf der Seite zeigen
 Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
 Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
