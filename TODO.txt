@@ -1,5 +1,7 @@
 stt: pico2wave equalizer
 
+owncloud Client testen
+
 //USB Mic
 arecord --list-devices
 hdmi -> hw:2,0

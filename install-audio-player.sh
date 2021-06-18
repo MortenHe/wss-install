@@ -166,13 +166,6 @@ then
   echo
 fi
 
-#Ggf. Installation hier abbrechen (z.B. bei Installation auf Linux-Laptop) -> kein Pi-spez. Anpassungen mehr
-if  [ $EARLYEXIT = true ];
-then
-  echo 'short installation done'
-  exit
-fi
-
 echo 'set AUDIO player AUTOSTART in rc.local'
 sed "$ i\ ${PROG_DIR}/wss-install/start-last-wss-player.sh &" -i /etc/rc.local
 cp ${PROG_DIR}/wss-install/last-player.dist ${PROG_DIR}/wss-install/last-player
@@ -219,5 +212,4 @@ apt-get purge -y modemmanager
 apt-get purge -y avahi-daemon
 echo
 
-echo 'installation done'
-echo 'please reboot pi and read 02-after-installation.txt'
+echo 'OK'
