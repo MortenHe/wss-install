@@ -1,3 +1,8 @@
+apache2.conf
+sites-available/000-default.conf
+/home/pi/Nextcloud/audio/website
+systemctl restart apache2
+
 stt: pico2wave equalizer
 
 owncloud Client testen
