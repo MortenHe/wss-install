@@ -56,8 +56,13 @@ echo
 echo 'install APACHE'
 apt-get install -y apache2
 a2enmod rewrite
+#allow override fuer angular
 sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
+#Nextcloud als Ort fuer Webseite
+sed 's|/var/www/html|/home/pi/Nextcloud/audio/website|g' -i /etc/apache2/sites-available/000-default.conf
+sed 's|/var/www/|/home/pi/Nextcloud/audio/website|g' -i /etc/apache2/apache2.conf
 systemctl restart apache2
+cp ${PROG_DIR}/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
 echo
 
 echo 'set STATIC IP ADDRESS'
@@ -71,11 +76,6 @@ echo
 echo 'install PHP'
 apt-get install -y php libapache2-mod-php
 sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
-echo
-
-echo 'deploy PHP SCRIPT'
-mkdir /var/www/html/php
-cp ${PROG_DIR}/wss-install/activateAudioApp.php /var/www/html/php/
 echo
 
 echo 'set GIT CONFIG'
