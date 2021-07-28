@@ -61,8 +61,9 @@ sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverri
 #Nextcloud als Ort fuer Webseite
 sed 's|/var/www/html|/home/pi/Nextcloud/audio/website|g' -i /etc/apache2/sites-available/000-default.conf
 sed 's|/var/www/|/home/pi/Nextcloud/audio/website|g' -i /etc/apache2/apache2.conf
-systemctl restart apache2
+#.htaccess in Nextcloud-Ordner kopieren
 cp ${PROG_DIR}/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
+systemctl restart apache2
 echo
 
 echo 'set STATIC IP ADDRESS'
