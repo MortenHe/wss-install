@@ -1,5 +1,22 @@
 #!/bin/bash
 
+Apache
+/media/pi/usb_red auf root setzen rekursiv über WinSCP?
+ggf. x bei /media/pi setzen über WinSCP?
+
+echo 'install APACHE'
+apt-get install -y apache2
+a2enmod rewrite
+#allow override fuer angular
+sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
+#Nextcloud als Ort fuer Webseite
+sed 's|/var/www/html|/media/pi/usb_red/Nextcloud/video/website|g' -i /etc/apache2/sites-available/000-default.conf
+sed 's|/var/www/|/media/pi/usb_red/Nextcloud/video/website|g' -i /etc/apache2/apache2.conf
+#.htaccess in Nextcloud-Ordner kopieren
+cp ${PROG_DIR}/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
+systemctl restart apache2
+echo
+
 echo 'set static ip address in router settings'
 echo '192.168.0.1'
 
