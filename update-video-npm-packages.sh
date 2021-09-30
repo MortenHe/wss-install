@@ -6,5 +6,5 @@ PROG_DIR="${DIR}/..";
 
 #Video Server NPM packages updaten
 echo 'install VideoServer npm packages'
-npm ci --prefix ${PROG_DIR}/VideoServer
+npm ci --prefix ${PROG_DIR}/VideoServer --no-fund
 echo
