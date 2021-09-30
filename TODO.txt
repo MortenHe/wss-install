@@ -1,9 +1,11 @@
-apache2.conf
-sites-available/000-default.conf
-/home/pi/Nextcloud/audio/website
-systemctl restart apache2
-
 stt: pico2wave equalizer
+
+//Install Video
+echo 'add cec-shutdown to mausberry script'
+sed '/\poweroff/i echo standby 0 | cec-client -s -d 1' -i /etc/switch.sh
+echo
+
+//Nextcloud cmd Ordner config fuer Video Player
 
 owncloud Client testen
 

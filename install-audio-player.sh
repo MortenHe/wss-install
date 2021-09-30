@@ -80,7 +80,7 @@ sed '$ i\%www-data ALL=NOPASSWD: ALL' -i /etc/sudoers
 echo
 
 echo 'set GIT CONFIG'
-git config --global user.email "martin-helfer@gmx.de"
+git config --global user.email "martin.helfer@posteo.de"
 git config --global user.name "Martin Helfer"
 echo
 
