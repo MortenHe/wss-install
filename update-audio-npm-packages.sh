@@ -9,24 +9,24 @@ PROG_DIR="${DIR}/..";
 
 #Audio Server NPM packages updaten
 echo 'install AudioServer npm packages'
-npm ci --prefix ${PROG_DIR}/AudioServer
+npm ci --prefix ${PROG_DIR}/AudioServer --no-fund
 echo
 
 #SH Audio Server NPM packages updaten
 echo 'install NewSHAudioServer npm packages'
-npm ci --prefix ${PROG_DIR}/NewSHAudioServer
+npm ci --prefix ${PROG_DIR}/NewSHAudioServer --no-fund
 echo
 
 #SoundQuiz Server NPM packages updaten
 echo 'install SoundQuizServer npm packages'
-npm ci --prefix ${PROG_DIR}/SoundQuizServer
+npm ci --prefix ${PROG_DIR}/SoundQuizServer --no-fund
 echo
 
 #GPIO Buttons NPM packages updaten
 if [ $GPIOBUTTONS = true ];
 then
   echo 'install WSGpioButtons npm packages'
-  npm ci --prefix ${PROG_DIR}/WSGpioButtons
+  npm ci --prefix ${PROG_DIR}/WSGpioButtons --no-fund
   echo
 fi
 
@@ -34,7 +34,7 @@ fi
 if [ $USBRFIDREADER = true ];
 then
   echo 'install WSRFID npm packages'
-  npm ci --prefix ${PROG_DIR}/WSRFID
+  npm ci --prefix ${PROG_DIR}/WSRFID --no-fund
   echo
 fi
 
@@ -42,6 +42,6 @@ fi
 if [ $STT = true ];
 then
   echo 'install WSSTT npm packages'
-  npm ci --prefix ${PROG_DIR}/WSSTT
+  npm ci --prefix ${PROG_DIR}/WSSTT --no-fund
   echo
 fi
