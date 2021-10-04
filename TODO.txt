@@ -57,19 +57,6 @@ IndexSearch
 
 Github sichern
 
-====
-
-Bootstrap 4 -> 5
-
-=== statische IP-Vergabe ===
-nano /etc/dhcpcd.conf
-
-interface wlan0
-static ip_address=192.168.0.XXX/24
-static routers=192.168.0.1
-static domain_name_servers=192.168.0.1
-
-
 //Wenn WLAN nicht geht
 https://askubuntu.com/questions/1108766/wlan0-not-showing-up-in-ifconfig-iwconfig
 https://qastack.com.de/ubuntu/62166/siocsifflags-operation-not-possible-due-to-rf-kill
@@ -85,7 +72,6 @@ sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
 Logrotate?
 
 =====
-
 
 Raspi Lite
 boot dhcpcd service 10 Sek
@@ -105,8 +91,6 @@ Digital=Hifiberry
 Master|Speaker=USB Audio
 HDMI=HDMI
 
-DHCP Config in Install-Skript
-
 Service geht (12.02.2021)
 [Unit]
 Description=My service
@@ -122,7 +106,6 @@ User=pi
 
 [Install]
 WantedBy=local-fs.target
-
 
 ==
 sudo cp /home/pi/mh_prog/wss-install/mhaudio.service /lib/systemd/system/
