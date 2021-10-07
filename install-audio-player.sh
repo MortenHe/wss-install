@@ -14,8 +14,8 @@ echo
 #check if default root pw from config file was changed
 if [ $ROOTPW = "CHANGEME" ];
 then
-  echo 'please change root pw in config file'
-  exit 1;
+    echo 'please change root pw in config file'
+    exit 1;
 fi
 
 echo 'set ROOT PW'
@@ -84,6 +84,17 @@ git config --global user.email "martin.helfer@posteo.de"
 git config --global user.name "Martin Helfer"
 echo
 
+#pico2wave und ffmpeg auch ohne STT installieren, da bei random hsp auch ein Text vorgelesen wird
+echo 'get and install STT pico2wave'
+wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
+wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
+apt-get install -f -y ${PROG_DIR}/libttspico0_1.0+git20130326-9_armhf.deb ${PROG_DIR}/libttspico-utils_1.0+git20130326-9_armhf.deb
+echo
+
+echo 'install FFMPEG'
+apt-get install -y ffmpeg
+echo
+
 echo 'get and install AUDIO wss code from github'
 git clone https://github.com/MortenHe/AudioServer ${PROG_DIR}/AudioServer
 npm --prefix ${PROG_DIR}/AudioServer install
@@ -95,76 +106,66 @@ git clone https://github.com/MortenHe/NewSHAudioServer ${PROG_DIR}/NewSHAudioSer
 npm --prefix ${PROG_DIR}/NewSHAudioServer install
 echo
 
-echo 'get and install SOUNDQUIZ wss code from github' 
+echo 'get and install SOUNDQUIZ wss code from github'
 git clone https://github.com/MortenHe/SoundQuizServer ${PROG_DIR}/SoundQuizServer
 npm --prefix ${PROG_DIR}/SoundQuizServer install
 
 #GPIO Buttons
 if [ $GPIOBUTTONS = true ];
 then
-  echo 'get and install GPIO BUTTONS code from github'
-  git clone https://github.com/MortenHe/WSGpioButtons ${PROG_DIR}/WSGpioButtons
-  npm --prefix ${PROG_DIR}/WSGpioButtons install
-  cp ${PROG_DIR}/WSGpioButtons/config_7070.json.dist ${PROG_DIR}/WSGpioButtons/config_7070.json
-  cp ${PROG_DIR}/WSGpioButtons/config_8080.json.dist ${PROG_DIR}/WSGpioButtons/config_8080.json
-  cp ${PROG_DIR}/WSGpioButtons/config_9090.json.dist ${PROG_DIR}/WSGpioButtons/config_9090.json
-  echo
-
-  echo 'enable GPIO BUTTONS in AUDIO CONFIG'
-  sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i ${PROG_DIR}/AudioServer/config.json
-  echo
+    echo 'get and install GPIO BUTTONS code from github'
+    git clone https://github.com/MortenHe/WSGpioButtons ${PROG_DIR}/WSGpioButtons
+    npm --prefix ${PROG_DIR}/WSGpioButtons install
+    cp ${PROG_DIR}/WSGpioButtons/config_7070.json.dist ${PROG_DIR}/WSGpioButtons/config_7070.json
+    cp ${PROG_DIR}/WSGpioButtons/config_8080.json.dist ${PROG_DIR}/WSGpioButtons/config_8080.json
+    cp ${PROG_DIR}/WSGpioButtons/config_9090.json.dist ${PROG_DIR}/WSGpioButtons/config_9090.json
+    echo
+    
+    echo 'enable GPIO BUTTONS in AUDIO CONFIG'
+    sed 's/"GPIOButtons": false/"GPIOButtons": true/' -i ${PROG_DIR}/AudioServer/config.json
+    echo
 fi
 
 #USB RFID Reader
 if [ $USBRFIDREADER = true ];
 then
-  echo 'get and install USB RFID READER code from github'
-  git clone https://github.com/MortenHe/WSRFID ${PROG_DIR}/WSRFID
-  npm --prefix ${PROG_DIR}/WSRFID install
-  echo
-
-  echo 'enable USB RFID READER in AUDIO CONFIG'
-  sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i ${PROG_DIR}/AudioServer/config.json
-  echo
+    echo 'get and install USB RFID READER code from github'
+    git clone https://github.com/MortenHe/WSRFID ${PROG_DIR}/WSRFID
+    npm --prefix ${PROG_DIR}/WSRFID install
+    echo
+    
+    echo 'enable USB RFID READER in AUDIO CONFIG'
+    sed 's/"USBRFIDReader": false/"USBRFIDReader": true/' -i ${PROG_DIR}/AudioServer/config.json
+    echo
 fi
 
 #STT (Speech to Text)
 if [ $STT = true ];
 then
-  echo 'install FFMPEG'
-  apt-get install -y ffmpeg
-  echo
-
-  echo 'install PYTHON PIP'
-  apt-get install -y python3-pip
-  echo
-
-  echo 'install PTYHON VOSK'
-  pip3 install vosk
-  echo
-
-  echo 'get and install TTS from github'
-  git clone https://github.com/alphacep/vosk-api ${PROG_DIR}/vosk-api
-  wget https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip -P ${PROG_DIR}
-  unzip ${PROG_DIR}/vosk-model-small-de-0.15.zip -d ${PROG_DIR}
-  mv ${PROG_DIR}/vosk-model-small-de-0.15 ${PROG_DIR}/vosk-api/python/example/model
-  cp ${PROG_DIR}/wss-install/stt-mh.py ${PROG_DIR}/vosk-api/python/example
-  echo
-
-  echo 'get and install WSS TTS code from github'
-  git clone https://github.com/MortenHe/WSSTT ${PROG_DIR}/WSSTT
-  npm --prefix ${PROG_DIR}/WSSTT install
-  echo
-
-  echo 'get and install STT pico2wave'
-  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
-  wget http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb -P ${PROG_DIR}
-  apt-get install -f -y ${PROG_DIR}/libttspico0_1.0+git20130326-9_armhf.deb ${PROG_DIR}/libttspico-utils_1.0+git20130326-9_armhf.deb
-  echo
-
-  echo 'enable USB TTS in AUDIO CONFIG'
-  sed 's/"STT": false/"STT": true/' -i ${PROG_DIR}/AudioServer/config.json
-  echo
+    echo 'install PYTHON PIP'
+    apt-get install -y python3-pip
+    echo
+    
+    echo 'install PTYHON VOSK'
+    pip3 install vosk
+    echo
+    
+    echo 'get and install TTS from github'
+    git clone https://github.com/alphacep/vosk-api ${PROG_DIR}/vosk-api
+    wget https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip -P ${PROG_DIR}
+    unzip ${PROG_DIR}/vosk-model-small-de-0.15.zip -d ${PROG_DIR}
+    mv ${PROG_DIR}/vosk-model-small-de-0.15 ${PROG_DIR}/vosk-api/python/example/model
+    cp ${PROG_DIR}/wss-install/stt-mh.py ${PROG_DIR}/vosk-api/python/example
+    echo
+    
+    echo 'get and install WSS TTS code from github'
+    git clone https://github.com/MortenHe/WSSTT ${PROG_DIR}/WSSTT
+    npm --prefix ${PROG_DIR}/WSSTT install
+    echo
+    
+    echo 'enable USB TTS in AUDIO CONFIG'
+    sed 's/"STT": false/"STT": true/' -i ${PROG_DIR}/AudioServer/config.json
+    echo
 fi
 
 echo 'set AUDIO player AUTOSTART in rc.local'

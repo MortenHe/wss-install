@@ -1,9 +1,10 @@
-stt: pico2wave equalizer
-
 //Install Video
 echo 'add cec-shutdown to mausberry script'
 sed '/\poweroff/i echo standby 0 | cec-client -s -d 1' -i /etc/switch.sh
 echo
+
+Herz Mix Link in Zeile oben zu Select
+SHP 2 Zeilen Design (Suche oben)
 
 //Nextcloud cmd Ordner config fuer Video Player
 
