@@ -35,16 +35,6 @@ CONFIG_NTP_MODE=0
 shutdown bashrc
 wss aufräumen / Unterordner für .wav
 
-dietpi: 
-- 2 txt files bearbeiten
-- SSH (auch root) kommt über Config (nicht install Skript), OpenSSH statt Dropbear
-- mkdir /home/pi/mh_prog
-- DHCHP No such file or directory
-- GPIO Buttons / WSTT npm install?
-- Services to disable
-- dietpi config
-    - enable alsa -> force hdmi  
-
 https://www.hifiberry.com/docs/software/mixing-different-audio-sources/
 
 Pi-Imager ctrl + shift + x -> advanced settings SSH
@@ -89,7 +79,7 @@ Info nach install-Skript -> reboot wegen DHCP
 
 Digital=IQaudio
 Digital=Hifiberry
-Master|Speaker=USB Audio
+Master|Speaker|PCM=USB Audio
 HDMI=HDMI
 
 Service geht (12.02.2021)
