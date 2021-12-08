@@ -49,7 +49,16 @@ crontab -e
 ./install-iqaudio.sh
 ./install-hifiberry.sh
 
+=== Soundkarte ermitteln ===
+aplay -l
+
+nano /usr/share/alsa/alsa.conf
+- defaults.ctl.card CARD-Nr
+- defaults.pcm.card CARD-Nr
+speaker-test -c2
+
 === AudioServer config ===
+alsamixer
 nano /home/pi/mh_prog/AudioServer/config.json
 
 //RFID-USB-READER
@@ -57,19 +66,6 @@ cat /dev/input/event0
 
 === check start time ===
 systemd-analyze blame
-
-=== Soundkarte ermitteln ===
-aplay -l
-
-speaker-test -c2
-
-=== Name der Soundkarte (Spekaer, Master,...) ===
-alsamixer
-
-//Lösung für root unter Ubuntu kein Sound (aplay -l)
-thonny | nano /usr/share/alsa/alsa.conf
-defaults.ctl.card CARD-Nr
-defaults.pcm.card CARD-Nr
 
 === USB automount ===
 blkid -o list -w /dev/null 
@@ -93,12 +89,6 @@ keine Bestätitung erfragen für 500MB / externe Speicher
 /home/pi/Nextcloud | /media/usb_red/Nextcloud
 Schlüsselbund -> leeres PW
 Nextcloud Autostart aktivieren
-
-=== build and deploy video app from local computer ===
-VideoClient
-cd src/tools
-connection.js
-node .\deployWebsiteToServer.js
 
 === Mausberry power button ===
 out GPIO 23 (8. Pin von Seite SD-Karte aussen)

@@ -18,7 +18,7 @@ date -R | tee -a $LOG
 echo "Cloud-Sync gestartet" | tee -a $LOG
 echo "====================" | tee -a $LOG
 
-/root/desktop/build/bin/nextcloudcmd $PARAMS $LOCAL $REMOTE 2>&1 | tee -a $LOG
+/usr/local/bin/nextcloudcmd $PARAMS $LOCAL $REMOTE 2>&1 | tee -a $LOG
 
 echo "====================" | tee -a $LOG
 date -R | tee -a $LOG
