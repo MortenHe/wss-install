@@ -19,13 +19,16 @@ touch /var/log/cloud-sync.log
 chown pi:pi /var/log/cloud-sync.log
 
 #https://crycode.de/nextcloud-client-auf-dem-raspberry-pi
-wget http://ftp.de.debian.org/debian/pool/main/n/nextcloud-desktop/libnextcloudsync0_3.1.1-2+deb11u1_armhf.deb
-sudo dpkg -i libnextcloudsync0_3.1.1-2+deb11u1_armhf.deb
-sudo apt install --fix-broken
+apt-get install -y cmake g++ openssl libssl-dev libzip-dev qtbase5-private-dev qtdeclarative5-dev  qt5keychain-dev qttools5-dev sqlite3 libsqlite3-dev libqt5svg5-dev zlib1g-dev libqt5websockets5-dev qtquickcontrols2-5-dev shared-mime-info inksacpe
+cd ~
+git clone https://github.com/nextcloud/desktop.git
+cd desktop
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=~/nextcloud-desktop-client -DCMAKE_BUILD_TYPE=Debug
+make install
 
-wget http://ftp.de.debian.org/debian/pool/main/n/nextcloud-desktop/nextcloud-desktop-cmd_3.1.1-2+deb11u1_armhf.deb
-sudo dpkg -i nextcloud-desktop-cmd_3.1.1-2+deb11u1_armhf.deb
-sudo apt install --fix-broken
+#Skript wird gestartet mit /root/desktop/build/bin/nextcloudcmd
 
 echo "EDIT FILES:"
 echo "nano ${DIR}/nextcloud-sync.sh"
