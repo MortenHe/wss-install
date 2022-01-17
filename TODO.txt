@@ -8,8 +8,6 @@ SHP 2 Zeilen Design (Suche oben)
 
 //Nextcloud cmd Ordner config fuer Video Player
 
-owncloud Client testen
-
 //USB Mic
 arecord --list-devices
 hdmi -> hw:2,0
@@ -18,6 +16,25 @@ hdmi -> hw:2,0
 enable ssh
 change pi psswd
 dont't wait for network boot
+
+wenn Audio nicht auf SD Karte
+UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+reboot damit USB-Stick gemountet wird
+
+=== Nextcloud GUI ===
+Zubehör / Nextcloud Client
+Konto Audio | Video
+Alle Dateien sync
+keine Bestätitung erfragen für 500MB / externe Speicher
+/home/pi/Nextcloud | /media/usb_red/Nextcloud
+Schlüsselbund -> leeres PW
+Nextcloud Autostart aktivieren
+
+=== Mausberry power button ===
+out GPIO 23 (8. Pin von Seite SD-Karte aussen)
+in GPIO 24 (9. Pin von Seite SD-Karte aussen)
 
 Test: .mp3 / .MP3 wap & shp
 getMixFiles / mixSearchFiles .mp3 / .MP3

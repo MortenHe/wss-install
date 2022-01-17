@@ -31,9 +31,11 @@ cd mh_prog
 
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
-cp config-audio.dist config (Achtung nicht config-audio) | cp config-video.dist config (Achtung nicht config-video)
+cp config-audio.dist config (Achtung nicht config-audio)
+cp config-video.dist config (Achtung nicht config-video)
 nano config (PW setzen)
-./install-audio-player.sh | ./install-video-player.sh
+./install-audio-player.sh 2>&1 | tee /install-audio.log
+./install-video-player.sh 2>&1 | tee /install-video.log
 
 === Nextcloud install ===
 ./install-nextcloud-cmd.sh
@@ -61,35 +63,19 @@ speaker-test -c2
 alsamixer
 nano /home/pi/mh_prog/AudioServer/config.json
 
-//RFID-USB-READER
+//USB-RFID-Reader
 cat /dev/input/event0
+nano /home/pi/mh_prog/AudioServer/config.json
 
 === check start time ===
 systemd-analyze blame
 
-=== USB automount ===
+==============================
+
+=== USB automount (Video) ===
 blkid -o list -w /dev/null 
 -> get UUID like E012519312517010 | B8EA48B6EA487324 | 78C20C88C20C4CB6
 
 thonny /etc/fstab 
 UUID=C470BE3C70BE34D0 /media/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 reboot damit USB-Stick gemountet wird
-
-wenn Audio nicht auf SD Karte
-UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
-UUID=B8EA48B6EA487324 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
-UUID=78C20C88C20C4CB6 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
-reboot damit USB-Stick gemountet wird
-
-=== Nextcloud GUI ===
-Zubehör / Nextcloud Client
-Konto Audio | Video
-Alle Dateien sync
-keine Bestätitung erfragen für 500MB / externe Speicher
-/home/pi/Nextcloud | /media/usb_red/Nextcloud
-Schlüsselbund -> leeres PW
-Nextcloud Autostart aktivieren
-
-=== Mausberry power button ===
-out GPIO 23 (8. Pin von Seite SD-Karte aussen)
-in GPIO 24 (9. Pin von Seite SD-Karte aussen)

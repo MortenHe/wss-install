@@ -21,11 +21,11 @@ chown pi:pi /var/log/cloud-sync.log
 #https://crycode.de/nextcloud-client-auf-dem-raspberry-pi
 wget http://ftp.de.debian.org/debian/pool/main/n/nextcloud-desktop/libnextcloudsync0_3.1.1-2+deb11u1_armhf.deb
 sudo dpkg -i libnextcloudsync0_3.1.1-2+deb11u1_armhf.deb
-sudo apt install --fix-broken
+sudo apt install -y --fix-broken
 
 wget http://ftp.de.debian.org/debian/pool/main/n/nextcloud-desktop/nextcloud-desktop-cmd_3.1.1-2+deb11u1_armhf.deb
 sudo dpkg -i nextcloud-desktop-cmd_3.1.1-2+deb11u1_armhf.deb
-sudo apt install --fix-broken
+sudo apt install -y --fix-broken
 
 echo "EDIT FILES:"
 echo "nano ${DIR}/nextcloud-sync.sh"
