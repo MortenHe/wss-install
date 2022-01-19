@@ -1,3 +1,9 @@
+diable ipv6
+nowarp
+
+disable raspi-config
+
+
 #?WEG WEGEN POWER SUPPLY RASPI 4 mit PowerBlock?
 sed "$ a force_turbo=1" -i ${BOOT_CONFIG_FILE}
 

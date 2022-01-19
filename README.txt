@@ -15,8 +15,12 @@ sudo -s
 raspi-config
 
 1
+S1 WLAN
 NO (S3 change user pi password : XXX)
 S6 Don't wait for network (No)
+
+3
+P2 SSH
 
 5
 NO (L1 de_DE utf-8)
@@ -51,7 +55,7 @@ crontab -e
 ./install-iqaudio.sh
 ./install-hifiberry.sh
 
-=== Soundkarte ermitteln (nicht bei IQAudio & Hifiberry) ===
+=== Soundkarte ermitteln (ggf. nicht bei IQAudio & Hifiberry -> HDMI-Screen entfernen vorher) ===
 aplay -l
 
 nano /usr/share/alsa/alsa.conf
@@ -59,19 +63,22 @@ nano /usr/share/alsa/alsa.conf
 - defaults.pcm.card CARD-Nr
 speaker-test -c2
 
+=== gleichzeitiges Abspielen von Musik und Button Beep === (bei IQAuadio & Hifiberry, ggf. Wert schon ok)
+nano /etc/asound.conf
+
 === AudioServer config ===
 alsamixer
 nano /home/pi/mh_prog/AudioServer/config.json
 
-//USB-RFID-Reader (erst USB-Dongle entfernen und reboot)
+=== USB-RFID-Reader === (erst USB-Dongle entfernen und reboot)
 cat /dev/input/event0
 nano /home/pi/mh_prog/AudioServer/config.json
 
-//STT (erst USB-Dongle entfernen und reboot)
+=== STT === (erst USB-Dongle entfernen und reboot)
 arecord --list-devices
 nano /home/pi/mh_prog/AudioServer/config.json
 
-//Wenn Sync abgeschlossen ist, .htaccess in Nextcloud-Ordner kopieren
+=== .htaccess für wap in Nextcloud-Ordner kopieren === (wenn Sync abgeschlossen ist)
 cp /home/pi/mh_prog/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
 
 === check start time ===
