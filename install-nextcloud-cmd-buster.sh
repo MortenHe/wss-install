@@ -9,7 +9,7 @@ mkdir ${DIR}/../../Nextcloud
 cp ${DIR}/.netrc ~/.netrc
 
 #Create sync-Skript
-cp ${DIR}/nextcloud-sync-old.sh.dist ${DIR}/nextcloud-sync.sh
+cp ${DIR}/nextcloud-sync-buster.sh.dist ${DIR}/nextcloud-sync.sh
 
 #Create Nextcloud sync Cronjob (need to uncomment later)
 (crontab -l ; echo "# * * * * * ${DIR}/nextcloud-sync.sh >/dev/null &") | crontab -

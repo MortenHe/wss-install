@@ -15,13 +15,13 @@ sudo -s
 raspi-config
 
 1
-(S3 change user pi password : XXX)
+NO (S3 change user pi password : XXX)
 S6 Don't wait for network (No)
 
 5
-(L1 de_DE utf-8)
-(L2 Europe -> Berlin)
-(L3 Generic 105 - Other - German - German - Default - Default)
+NO (L1 de_DE utf-8)
+NO (L2 Europe -> Berlin)
+NO (L3 Generic 105 - Other - German - German - Default - Default)
 
 === WSS install ===
 apt-get install -y git
@@ -31,15 +31,15 @@ cd mh_prog
 
 git clone https://github.com/MortenHe/wss-install
 cd wss-install
-cp config-audio.dist config (Achtung nicht config-audio)
-cp config-video.dist config (Achtung nicht config-video)
-nano config (PW setzen)
+cp config-audio.dist config
+cp config-video.dist config
+nano config
 ./install-audio-player.sh 2>&1 | tee /install-audio.log
 ./install-video-player.sh 2>&1 | tee /install-video.log
 
 === Nextcloud install ===
 ./install-nextcloud-cmd.sh
-nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh (-s ggf. wegmachen)
+nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh
 nano ~/.netrc
 crontab -e
 
@@ -51,7 +51,7 @@ crontab -e
 ./install-iqaudio.sh
 ./install-hifiberry.sh
 
-=== Soundkarte ermitteln ===
+=== Soundkarte ermitteln (nicht bei IQAudio & Hifiberry) ===
 aplay -l
 
 nano /usr/share/alsa/alsa.conf
@@ -63,9 +63,16 @@ speaker-test -c2
 alsamixer
 nano /home/pi/mh_prog/AudioServer/config.json
 
-//USB-RFID-Reader
+//USB-RFID-Reader (erst USB-Dongle entfernen und reboot)
 cat /dev/input/event0
 nano /home/pi/mh_prog/AudioServer/config.json
+
+//STT (erst USB-Dongle entfernen und reboot)
+arecord --list-devices
+nano /home/pi/mh_prog/AudioServer/config.json
+
+//Wenn Sync abgeschlossen ist, .htaccess in Nextcloud-Ordner kopieren
+cp /home/pi/mh_prog/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
 
 === check start time ===
 systemd-analyze blame

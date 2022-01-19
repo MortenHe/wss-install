@@ -14,8 +14,8 @@ echo
 #check if default root pw from config file was changed
 if [ $ROOTPW = "CHANGEME" ];
 then
-  echo 'please change root pw in config file'
-  exit 1;
+    echo 'please change root pw in config file'
+    exit 1;
 fi
 
 echo 'set ROOT PW'
@@ -74,6 +74,7 @@ echo
 echo 'set GIT CONFIG'
 git config --global user.email "martin.helfer@posteo.de"
 git config --global user.name "Martin Helfer"
+git config --global pull.rebase false
 echo
 
 echo 'get and install VIDEO wss code from github'

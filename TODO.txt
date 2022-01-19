@@ -1,3 +1,6 @@
+#?WEG WEGEN POWER SUPPLY RASPI 4 mit PowerBlock?
+sed "$ a force_turbo=1" -i ${BOOT_CONFIG_FILE}
+
 //Install Video
 echo 'add cec-shutdown to mausberry script'
 sed '/\poweroff/i echo standby 0 | cec-client -s -d 1' -i /etc/switch.sh
@@ -5,6 +8,8 @@ echo
 
 Herz Mix Link in Zeile oben zu Select
 SHP 2 Zeilen Design (Suche oben)
+
+//Gibt es Probleme, wenn bei STT Session geschrieben wird und trotzdem noch wap läuft und Session File schreibt (pos: 15 von Fredrik Vahle bei Bibi und Tina Hufschmied, das mit 0 starten soll)
 
 //Nextcloud cmd Ordner config fuer Video Player
 
