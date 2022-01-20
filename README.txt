@@ -8,6 +8,7 @@ SSH, PW und WLAN per Pi Imager setzen
 
 Über Router http://192.168.0.1/ IP-Adresse des Pi ermitteln
 
+=== Installation auf Kommandozeile ===
 ssh pi@192.168.0.92
 (pi / raspberry (z = y) falls nicht schon eigenes PW über Pi Imager gesetzt)
 
@@ -61,10 +62,10 @@ aplay -l
 nano /usr/share/alsa/alsa.conf
 - defaults.ctl.card CARD-Nr
 - defaults.pcm.card CARD-Nr
-speaker-test -c2
 
 === gleichzeitiges Abspielen von Musik und Button Beep === (bei IQAuadio & Hifiberry, ggf. Wert schon ok)
 nano /etc/asound.conf
+speaker-test -c2
 
 === AudioServer config ===
 alsamixer
