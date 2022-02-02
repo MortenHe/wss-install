@@ -157,9 +157,9 @@ Filter, Suchterm etc. per URL-Parameter setzen
 auf View Suche vs. Playlist per Route
 
 # NewSHAudioClient
--- Liste der neuesten Tracks auf der Seite zeigen
+-- Liste der neuesten Titel auf der Seite zeigen
 Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
-Nur Reihenfolge der Tracks von Server erhalten, Anzeige der Titel über Array
+Nur Reihenfolge der Titel von Server erhalten, Anzeige der Titel über Array
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
 
