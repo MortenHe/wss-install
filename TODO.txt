@@ -1,23 +1,25 @@
-diable ipv6
-nowarp
+IndexSearch
+- Zahlensuchen (Benjamin Blümchen 26)
 
-disable raspi-config
+install audio 64 bit für Nextcloud und pico2wave
 
+Laufzeit des Installskripts ausgeben
 
 #?WEG WEGEN POWER SUPPLY RASPI 4 mit PowerBlock?
 sed "$ a force_turbo=1" -i ${BOOT_CONFIG_FILE}
+
+svg statt font awesome
+tailwind statt boostrap
 
 //Install Video
 echo 'add cec-shutdown to mausberry script'
 sed '/\poweroff/i echo standby 0 | cec-client -s -d 1' -i /etc/switch.sh
 echo
 
-Herz Mix Link in Zeile oben zu Select
 SHP 2 Zeilen Design (Suche oben)
 
-//Gibt es Probleme, wenn bei STT Session geschrieben wird und trotzdem noch wap läuft und Session File schreibt (pos: 15 von Fredrik Vahle bei Bibi und Tina Hufschmied, das mit 0 starten soll)
-
 //Nextcloud cmd Ordner config fuer Video Player
+Logrotate einfügen (s. TODO Nextcloud)
 
 //USB Mic
 arecord --list-devices
@@ -50,9 +52,6 @@ in GPIO 24 (9. Pin von Seite SD-Karte aussen)
 Test: .mp3 / .MP3 wap & shp
 getMixFiles / mixSearchFiles .mp3 / .MP3
 
-Für IQaudio in /boot/config.txt
-#dtparam=audio=on auskommentieren
-
 # Delay boot until network is established: 0=disabled | 1=10 second wait max (default) | 2=infinite wait
 CONFIG_BOOT_WAIT_FOR_NETWORK=0
 
@@ -61,18 +60,8 @@ CONFIG_NTP_MODE=0
 -> ggf. Problem bei Update weil dann Zeit nicht mehr stimmt (release file not valid yet)
 
 shutdown bashrc
-wss aufräumen / Unterordner für .wav
 
 https://www.hifiberry.com/docs/software/mixing-different-audio-sources/
-
-Pi-Imager ctrl + shift + x -> advanced settings SSH
-
-pkill -f /home/...
-
-01-before und 02-after zusammenführen
-
-IndexSearch
-- Zahlensuchen (Benjamin Blümchen 26)
 
 Github sichern
 
@@ -83,12 +72,6 @@ https://qastack.com.de/ubuntu/62166/siocsifflags-operation-not-possible-due-to-r
 https://www.soundjay.com/free-music.html
 
 chmod +x vs. 777
-
-//pico2wave
-sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
-
-//Nextcloud cmd
-Logrotate?
 
 =====
 
@@ -103,32 +86,11 @@ damit Nextcloud Gui Client geht
 
 Info nach install-Skript -> reboot wegen DHCP
 - Nextcloud syncen 
-- Audio / NewSH Code hochladen vs. auf Server bauen
 
 Digital=IQaudio
 Digital=Hifiberry
 Master|Speaker|PCM=USB Audio
 HDMI=HDMI
-
-Service geht (12.02.2021)
-[Unit]
-Description=My service
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/node server.js
-WorkingDirectory=/home/pi/mh_prog/NewSHAudioServer
-StandardOutput=inherit
-StandardError=inherit
-Restart=always
-User=pi
-
-[Install]
-WantedBy=local-fs.target
-
-==
-sudo cp /home/pi/mh_prog/wss-install/mhaudio.service /lib/systemd/system/
-
 
 #Audio liegt auf SD Karte und wird per Nextcloud gesynct, daher kein USB-Stick mehr
 #echo 'prepare usb automount mount'
@@ -136,12 +98,12 @@ sudo cp /home/pi/mh_prog/wss-install/mhaudio.service /lib/systemd/system/
 #mkdir /media/usb_audio
 #echo
 
-#echo 'install nextcloud client'
-#apt-get install -y nextcloud-desktop
+Raspian 64 bit
+echo 'install nextcloud client'
+apt-get install -y nextcloud-desktop-cmd
 
-Bei Fehler
-init=/bin/bash
-in cmdline.txt ganz hinten
+//pico2wave
+sudo apt-get install libttspico-utils
 
 kein Ping, Variable connected -> ping Zeit veroppeln?
 
@@ -149,7 +111,6 @@ kein Ping, Variable connected -> ping Zeit veroppeln?
 
 Suchfelder ggf. nur mit border-bottom
 
-Versionsnummer in Oberfläche anzeigen
 volume Wert als progress anzeigen in Oberfläche, bei kleiner Auflösung ggf. ausblenden
 Filter, Suchterm etc. per URL-Parameter setzen
 
@@ -162,9 +123,6 @@ Ripple / Fade bei Enqeue / Remove (setTimeout?) vs. Spinner
 Nur Reihenfolge der Titel von Server erhalten, Anzeige der Titel über Array
 searchfield und searchresult aufteilen
 getFiles nur einmal aufrufen bei searchfield. Achtung bei Mode-Wechsel
-
-# VideoClient
-font-awesome 5
 
 # SoundQuizServer
 - Answer wrong right Variationen. Quatsch, genau so ist es
