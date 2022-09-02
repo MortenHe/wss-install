@@ -1,12 +1,12 @@
 === Audio / Video Player ===
-Raspberry Pi Imager -> Raspian Lite
+Raspberry Pi Imager -> Raspian Lite (Raspian Buster Desktop für Video Player, weil ab Bullseye kein OMXPlayer mehr)
 
 SSH, PW und WLAN per Pi Imager setzen
 
-(Datei "ssh" in SD-boot Verzeichnis)
-(Datei "wpa_supplicant.conf" in SD-boot Verzeichnis und anpassen)
+NO (Datei "ssh" in SD-boot Verzeichnis)
+NO (Datei "wpa_supplicant.conf" in SD-boot Verzeichnis und anpassen)
 
-Über Router http://192.168.0.1/ IP-Adresse des Pi ermitteln
+Über ifconfig oder Router http://192.168.0.1/ IP-Adresse des Pi ermitteln
 
 === Installation auf Kommandozeile ===
 ssh pi@192.168.0.92
@@ -16,12 +16,12 @@ sudo -s
 raspi-config
 
 1
-S1 WLAN
+NO (S1 WLAN)
 NO (S3 change user pi password : XXX)
 S6 Don't wait for network (No)
 
 3
-P2 SSH
+NO (P2 SSH)
 
 5
 NO (L1 de_DE utf-8)
@@ -29,7 +29,7 @@ NO (L2 Europe -> Berlin)
 NO (L3 Generic 105 - Other - German - German - Default - Default)
 
 === WSS install ===
-apt-get install -y git
+NO (apt-get install -y git)
 
 mkdir mh_prog
 cd mh_prog
@@ -42,9 +42,12 @@ nano config
 ./install-audio-player.sh 2>&1 | tee /install-audio.log
 ./install-video-player.sh 2>&1 | tee /install-video.log
 
+=== Bei Videoplayer USB Mount installieren (s. unten) ===
+
 === Nextcloud install ===
 ./install-nextcloud-cmd.sh
 nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh
+-> Videoplayer => LOCAL=/media/usb_red/Nextcloud/
 nano ~/.netrc
 crontab -e
 
@@ -89,8 +92,10 @@ systemd-analyze blame
 
 === USB automount (Video) ===
 blkid -o list -w /dev/null 
--> get UUID like E012519312517010 | B8EA48B6EA487324 | 78C20C88C20C4CB6
+-> get UUID C470BE3C70BE34D0
 
-thonny /etc/fstab 
+NO (apt-get install -y ntfs-3g) -> ntfs schon installiert
+
+nano /etc/fstab 
 UUID=C470BE3C70BE34D0 /media/usb_red/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
 reboot damit USB-Stick gemountet wird

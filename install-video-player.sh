@@ -51,10 +51,10 @@ a2enmod rewrite
 #allow override fuer angular
 sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
 #Nextcloud als Ort fuer Webseite
-sed 's|/var/www/html|/media/pi/usb_red/Nextcloud/video/website|g' -i /etc/apache2/sites-available/000-default.conf
-sed 's|/var/www/|/media/pi/usb_red/Nextcloud/video/website|g' -i /etc/apache2/apache2.conf
+sed 's|/var/www/html|/media/usb_red/Nextcloud/video/website|g' -i /etc/apache2/sites-available/000-default.conf
+sed 's|/var/www/|/media/usb_red/Nextcloud/video/website|g' -i /etc/apache2/apache2.conf
 #.htaccess in Nextcloud-Ordner kopieren
-cp ${PROG_DIR}/wss-install/.htaccess-wvp /media/pi/usb_red/Nextcloud/video/website/wvp/.htaccess
+cp ${PROG_DIR}/wss-install/.htaccess-wvp /media/usb_red/Nextcloud/video/website/wvp/.htaccess
 systemctl restart apache2
 echo
 
