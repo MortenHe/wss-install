@@ -84,6 +84,7 @@ nano /home/pi/mh_prog/AudioServer/config.json
 
 === .htaccess für wap in Nextcloud-Ordner kopieren === (wenn Sync abgeschlossen ist)
 cp /home/pi/mh_prog/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
+cp /home/pi/mh_prog/wss-install/.htaccess-wvp /media/usb_red/Nextcloud/video/website/wvp/.htaccess
 
 === check start time ===
 systemd-analyze blame
