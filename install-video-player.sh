@@ -14,8 +14,8 @@ echo
 #check if default root pw from config file was changed
 if [ $ROOTPW = "CHANGEME" ];
 then
-  echo 'please change root pw in config file'
-  exit 1;
+    echo 'please change root pw in config file'
+    exit 1;
 fi
 
 echo 'set ROOT PW'
@@ -41,7 +41,7 @@ source ${BASH_FILE}
 echo
 
 echo 'install NODEJS'
-curl -sL https://deb.nodesource.com/setup_14.x | bash -
+curl -sL https://deb.nodesource.com/setup_16.x | bash -
 apt-get install -y nodejs
 echo
 
@@ -51,10 +51,8 @@ a2enmod rewrite
 #allow override fuer angular
 sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' -i /etc/apache2/apache2.conf
 #Nextcloud als Ort fuer Webseite
-sed 's|/var/www/html|/media/pi/usb_red/Nextcloud/video/website|g' -i /etc/apache2/sites-available/000-default.conf
-sed 's|/var/www/|/media/pi/usb_red/Nextcloud/video/website|g' -i /etc/apache2/apache2.conf
-#.htaccess in Nextcloud-Ordner kopieren
-cp ${PROG_DIR}/wss-install/.htaccess-wvp /media/pi/usb_red/Nextcloud/video/website/wvp/.htaccess
+sed 's|/var/www/html|/media/usb_red/Nextcloud/video/website|g' -i /etc/apache2/sites-available/000-default.conf
+sed 's|/var/www/|/media/usb_red/Nextcloud/video/website|g' -i /etc/apache2/apache2.conf
 systemctl restart apache2
 echo
 
@@ -74,6 +72,7 @@ echo
 echo 'set GIT CONFIG'
 git config --global user.email "martin.helfer@posteo.de"
 git config --global user.name "Martin Helfer"
+git config --global pull.rebase false
 echo
 
 echo 'get and install VIDEO wss code from github'

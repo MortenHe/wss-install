@@ -44,7 +44,7 @@ source ${BASH_FILE}
 echo
 
 echo 'install NODEJS'
-curl -sL https://deb.nodesource.com/setup_14.x | bash -
+curl -sL https://deb.nodesource.com/setup_16.x | bash -
 apt-get install -y nodejs
 echo
 
@@ -61,8 +61,6 @@ sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverri
 #Nextcloud als Ort fuer Webseite
 sed 's|/var/www/html|/home/pi/Nextcloud/audio/website|g' -i /etc/apache2/sites-available/000-default.conf
 sed 's|/var/www/|/home/pi/Nextcloud/audio/website|g' -i /etc/apache2/apache2.conf
-#.htaccess in Nextcloud-Ordner kopieren
-cp ${PROG_DIR}/wss-install/.htaccess-wap /home/pi/Nextcloud/audio/website/wap/.htaccess
 systemctl restart apache2
 echo
 
@@ -82,6 +80,7 @@ echo
 echo 'set GIT CONFIG'
 git config --global user.email "martin.helfer@posteo.de"
 git config --global user.name "Martin Helfer"
+git config --global pull.rebase false
 echo
 
 #pico2wave und ffmpeg auch ohne STT installieren, da bei random hsp auch ein Text vorgelesen wird
