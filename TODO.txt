@@ -66,8 +66,8 @@ https://www.soundjay.com/free-music.html
 
 chmod +x vs. 777
 
-//pico2wave
-sudo apt-get install libttspico-utils (geht nicht auf Raspi?)
+//pico2wave für wsl (z.B. createReadFiles)
+sudo apt-get -y install libttspico-utils (geht nicht auf Raspi?)
 
 //Nextcloud cmd
 Logrotate?
