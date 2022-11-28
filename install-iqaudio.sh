@@ -13,5 +13,4 @@ sed "$ a #enable simultaneous playback" -i ${BOOT_CONFIG_FILE}
 sed "$ a dtoverlay=i2s-mmap" -i ${BOOT_CONFIG_FILE}
 echo
 
-#TODO: alsamixer Gain -6dB`
 echo 'reboot'

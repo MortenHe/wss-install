@@ -51,12 +51,15 @@ nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh
 nano ~/.netrc
 crontab -e
 
+//Anzahl der synchronisierten Dateien verfolgen
+find /home/pi/Nextcloud -type f | wc -l
+
 === Power-Button install ===
-./install-powerblock.sh
+./install-powerblock.sh -> shutdown pin 18 -> 14
 ./install-mausberry.sh
 
 === Soundcard install ===
-./install-iqaudio.sh
+./install-iqaudio.sh -> alsamixer Gain -6dB
 ./install-hifiberry.sh
 
 === Soundkarte ermitteln (ggf. nicht bei IQAudio & Hifiberry -> HDMI-Screen entfernen vorher) ===
@@ -73,6 +76,10 @@ speaker-test -c2
 === AudioServer config ===
 alsamixer
 nano /home/pi/mh_prog/AudioServer/config.json
+
+2022 (pw player neu): For disabling HDMI audio, altering the 
+config.txt line "dtoverlay=vc4-kms-v3d" => "dtoverlay=vc4-kms-v3d,noaudio" disables it.
+The analogue audio output can be disabled by omitting "dtparam=audio=on" from config.txt.
 
 === USB-RFID-Reader === (erst USB-Dongle entfernen und reboot)
 cat /dev/input/event0
