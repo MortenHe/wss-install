@@ -45,7 +45,7 @@ nano config
 === Bei Videoplayer USB Mount installieren (s. unten) ===
 
 === Nextcloud install ===
-./install-nextcloud-cmd.sh
+./install-nextcloud-cmd.sh (bei Video Player install-nextcloud-cmd-buster.sh)
 nano /home/pi/mh_prog/wss-install/nextcloud-sync.sh
 -> Videoplayer => LOCAL=/media/usb_red/Nextcloud/
 nano ~/.netrc
