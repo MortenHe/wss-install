@@ -149,7 +149,7 @@ then
     pip3 install vosk
     echo
     
-    echo 'get and install TTS from github'
+    echo 'get and install STT from github'
     git clone https://github.com/alphacep/vosk-api ${PROG_DIR}/vosk-api
     wget https://alphacephei.com/vosk/models/vosk-model-small-de-0.15.zip -P ${PROG_DIR}
     unzip ${PROG_DIR}/vosk-model-small-de-0.15.zip -d ${PROG_DIR}
