@@ -54,6 +54,9 @@ crontab -e
 //Anzahl der synchronisierten Dateien verfolgen
 find /home/pi/Nextcloud -type f | wc -l
 
+=== Nextcloud Sept. 2026 ===
+ggf. neuen Client bauen und stattdessen auch anderes Sync-Skript verwenden
+
 === Power-Button install ===
 ./install-powerblock.sh -> shutdown pin 18 -> 14
 ./install-mausberry.sh

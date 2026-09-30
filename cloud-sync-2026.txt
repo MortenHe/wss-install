@@ -1,0 +1,76 @@
+#!/bin/bash
+
+export HOME="/root"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+LOCAL="/home/pi/Nextcloud/"
+REMOTE="https://nxTODO"
+
+NEXTCLOUDCMD="/usr/local/bin/nextcloudcmd"
+LOG="/var/log/cloud-sync.log"
+LOCK="/var/run/cloud-sync.lock"
+
+# Für normalen Betrieb:
+PARAMS=(--non-interactive -n -s)
+
+# Für Fehlersuche stattdessen:
+# PARAMS=(--non-interactive -n)
+
+# Prüfen, ob nextcloudcmd existiert
+if [ ! -x "$NEXTCLOUDCMD" ]; then
+    {
+        echo "===================="
+        date -R
+        echo "FEHLER: $NEXTCLOUDCMD nicht gefunden oder nicht ausführbar"
+        echo "===================="
+        echo
+    } >> "$LOG"
+
+    exit 1
+fi
+
+# Lock setzen, damit nicht mehrere Syncs parallel laufen
+exec 9>"$LOCK"
+
+if ! flock -n 9; then
+    {
+        echo "===================="
+        date -R
+        echo "Cloud-Sync läuft schon!"
+        echo "===================="
+        echo
+    } >> "$LOG"
+
+    exit 1
+fi
+
+{
+    echo "===================="
+    date -R
+    echo "Cloud-Sync gestartet"
+    echo "Nextcloud Client: $("$NEXTCLOUDCMD" --version | head -1)"
+    echo "===================="
+} >> "$LOG"
+
+"$NEXTCLOUDCMD" \
+    "${PARAMS[@]}" \
+    "$LOCAL" \
+    "$REMOTE" >> "$LOG" 2>&1
+
+STATUS=$?
+
+{
+    echo "===================="
+    date -R
+
+    if [ "$STATUS" -eq 0 ]; then
+        echo "Cloud-Sync erfolgreich beendet"
+    else
+        echo "Cloud-Sync FEHLER - Exit-Code: $STATUS"
+    fi
+
+    echo "===================="
+    echo
+} >> "$LOG"
+
+exit "$STATUS"

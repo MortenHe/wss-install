@@ -1,0 +1,80 @@
+apt update
+
+apt install -y \
+  git \
+  cmake \
+  build-essential \
+  pkg-config \
+  qtbase5-dev \
+  qttools5-dev \
+  qttools5-dev-tools \
+  libqt5svg5-dev \
+  qt5keychain-dev \
+  libsqlite3-dev \
+  libssl-dev \
+  libzstd-dev \
+  libkf5archive-dev \
+  libqt5websockets5-dev \
+  qtdeclarative5-dev \
+  qtquickcontrols2-5-dev \
+  libkf5guiaddons-dev \
+  qtbase5-private-dev \
+  librsvg2-bin
+  
+===
+  
+cd /usr/local/src
+
+git clone https://github.com/nextcloud/desktop.git nextcloud-desktop
+cd nextcloud-desktop
+
+git checkout v3.13.4
+git submodule update --init --recursive
+
+mkdir -p build
+cd build
+
+===
+
+git ls-remote https://github.com/dschmidt/libcrashreporter-qt.git
+
+===
+
+cd /usr/local/src/nextcloud-desktop
+
+rm -rf src/3rdparty/libcrashreporter-qt
+git submodule sync --recursive
+git submodule update --init --recursive
+
+===
+
+cd /usr/local/src/nextcloud-desktop/build
+
+cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX=/usr/local \
+  -DBUILD_GUI=OFF \
+  -DBUILD_CLIENT=ON \
+  -DBUILD_WITH_WEBENGINE=OFF \
+  -DBUILD_TESTING=OFF
+  
+===
+  
+make -j2
+make install
+
+===
+
+echo '/usr/local/lib/arm-linux-gnueabihf' \
+  > /etc/ld.so.conf.d/nextcloud-local.conf
+
+ldconfig
+
+===
+
+/usr/local/bin/nextcloudcmd --version
+
+=== (ggf. Zeitzone anpassen)
+
+timedatectl set-timezone Europe/Berlin
+timedatectl
